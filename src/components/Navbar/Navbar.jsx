@@ -1,91 +1,50 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
+import { AppBar, Toolbar, IconButton, Typography, Box } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import DesktopMenu from "./DesktopMenu";
+import MobileDrawer from "./MobileDrawer";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    // { name: "Home", href: "/" },
+    // { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Project", href: "/project" },
+    { name: "Industries", href: "/industries" },
+    { name: "Expertise", href: "/expertise" },
+    { name: "Company", href: "/company" },
+    // { name: "Project", href: "/project" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white text-gray-900 px-8 py-4 flex justify-between items-center shadow-md z-50">
-      {/* Logo */}
-      <Link
-        href="/"
-        className="text-2xl font-extrabold tracking-wide text-orange-600 hover:text-orange-700 transition-colors"
-      >
-        MySite
-      </Link>
+    <AppBar position="fixed" sx={{ background: "white", color: "black", boxShadow: 2 }}>
+      <Toolbar className="flex justify-between">
+        <Link href="/">
+          <Box className="flex items-center space-x-2">
+          <Image src="/home.png" alt="logo" width={40} height={40} />
+          <Typography variant="h6" sx={{ fontWeight: "bold", color: "orange" }}>
+            Chola
+          </Typography>
+        </Box>
+        </Link>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-8 text-lg font-medium">
-        {links.map((link) => {
-          const isActive = pathname === link.href;
-          return (
-            <li key={link.name}>
-              <Link
-                href={link.href}
-                className={`relative transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-600 after:transition-all after:duration-300 hover:after:w-full
-                ${isActive ? "text-orange-600 after:w-full font-semibold" : "hover:text-orange-600"}`}
-              >
-                {link.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+        {/* Desktop Menu */}
+        <DesktopMenu links={links} pathname={pathname} />
 
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden text-3xl z-50 focus:outline-none"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? "✕" : "☰"}
-      </button>
-
-      {/* Mobile Drawer */}
-      <div
-        className={`fixed top-0 left-0 h-full w-72 bg-white text-gray-900 shadow-lg transform 
-        ${isOpen ? "translate-x-0 opacity-95" : "-translate-x-full opacity-0"} 
-        transition-all duration-300 ease-out md:hidden z-40`}
-      >
-        <div className="flex flex-col items-start p-6 space-y-6 text-lg font-medium">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`transition-colors ${
-                  isActive
-                    ? "text-orange-600 font-semibold"
-                    : "hover:text-orange-600"
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Overlay */}
-      {isOpen && (
-        <div
-  className="fixed inset-0  bg-opacity-60 md:hidden z-30"
-  onClick={() => setIsOpen(false)}
-></div>
-
-      )}
-    </nav>
+        {/* Mobile Menu */}
+        <IconButton edge="end" color="inherit" sx={{ display: { md: "none" } }} onClick={() => setIsOpen(true)}>
+          <MenuIcon />
+        </IconButton>
+        <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} links={links} pathname={pathname} />
+      </Toolbar>
+    </AppBar>
   );
 }

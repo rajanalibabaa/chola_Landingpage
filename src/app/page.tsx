@@ -1,90 +1,165 @@
 "use client";
+import React from "react";
+import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Home() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <div className="font-sans min-h-screen bg-orange-50 mt-15">
-      <main className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl mx-auto p-6 sm:p-12 lg:p-20 gap-12">
-        
-        {/* Left Side Content */}
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <motion.h1
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #fff7ed, #ffffff, #fff3e0)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: { xs: 3, sm: 6, md: 12 ,},
+        mt:5
+      }}
+    >
+      <Box
+        sx={{
+          maxWidth: 1400,
+          width: "100%",
+          display: "flex",
+          flexDirection: { xs: "column-reverse", md: "row" },
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 6,
+        }}
+      >
+        {/* Left Content */}
+        <Box
+          sx={{
+            flex: 1,
+            textAlign: { xs: "center", md: "left" },
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
+          }}
+        >
+          <motion.div
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-snug"
           >
-            Welcome to{" "}
-            <span className="text-orange-600">
-              MySite
-            </span>
-          </motion.h1>
+            <Typography
+              variant="h3"
+              component="h1"
+              sx={{
+                fontWeight: "bold",
+                fontSize: { xs: "2.25rem", sm: "3rem", md: "3.75rem" },
+                lineHeight: 1.2,
+              }}
+            >
+              Welcome to{" "}
+              <Box
+                component="span"
+                sx={{
+                  background: "linear-gradient(to right, #f97316, #ef4444)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Chola Business Automation Private Ltd
+              </Box>
+            </Typography>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-            className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto md:mx-0"
           >
-            We specialize in building <span className="font-semibold">cutting-edge</span> web and
-            mobile applications that help businesses scale and thrive in the
-            digital era.
-          </motion.p>
-
-          {/* Services Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full mt-8 sm:mt-10">
-            {/* App Development */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="group p-5 sm:p-6 bg-white rounded-2xl shadow-md  border-orange-500 hover:shadow-xl hover:-translate-y-2 transition-all"
+            <Typography
+              sx={{
+                mt: 3,
+                fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
+                color: "#4b5563",
+              }}
             >
-              <h2 className="text-lg sm:text-xl font-bold text-orange-600 mb-2 sm:mb-3 group-hover:scale-105 transition-transform">
-                📱 App Development
-              </h2>
-              <p className="text-gray-700 text-sm sm:text-base">
-                Cross-platform apps for Android & iOS.
-              </p>
-            </motion.div>
+              We craft{" "}
+              <Box component="span" sx={{ fontWeight: "bold", color: "#f97316" }}>
+                cutting-edge
+              </Box>{" "}
+              web and mobile applications that empower businesses to scale and thrive in the digital era.
+            </Typography>
+          </motion.div>
 
-            {/* Web Development */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-              className="group p-5 sm:p-6 bg-white rounded-2xl shadow-md border-l hover:shadow-xl hover:-translate-y-2 transition-all"
-            >
-              <h2 className="text-lg sm:text-xl font-bold text-orange-600 mb-2 sm:mb-3 group-hover:scale-105 transition-transform">
-                💻 Web Development
-              </h2>
-              <p className="text-gray-700 text-sm sm:text-base">
-                Responsive, modern websites & web apps.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: { xs: "center", md: "flex-start" }, mt: 3 }}>
+              <Button
+                component={motion.button}
+                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(251,146,60,0.35)" }}
+                sx={{
+                  px: 5,
+                  py: 1.5,
+                  fontWeight: 700,
+                  borderRadius: "50px",
+                  background: "linear-gradient(45deg, #fb923c, #ef4444, #facc15)",
+                  color: "white",
+                  boxShadow: "0px 5px 15px rgba(251,146,60,0.3)",
+                  textTransform: "none",
+                }}
+              >
+                🚀 Get Started
+              </Button>
 
-        {/* Right Side Image */}
+              <Button
+                component={motion.button}
+                whileHover={{ scale: 1.05, backgroundColor: "#fff3e0" }}
+                sx={{
+                  px: 5,
+                  py: 1.5,
+                  fontWeight: 700,
+                  borderRadius: "50px",
+                  border: "2px solid #fb923c",
+                  color: "#fb923c",
+                  textTransform: "none",
+                }}
+              >
+                Learn More
+              </Button>
+            </Box>
+          </motion.div>
+        </Box>
+
+        {/* Right Image */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 flex justify-center w-full"
+          style={{ flex: 1, display: "flex", justifyContent: "center", width: "100%" }}
         >
-          <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            style={{ width: "100%", maxWidth: isMobile ? "100%" : 650 }}
+          >
             <Image
               src="/home.png"
               alt="Home Banner"
               width={650}
-              height={50}
-              className="w-full h-auto object-contain rounded-xl shadow-lg"
+              height={500}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: 24,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+              }}
               priority
             />
-          </div>
+          </motion.div>
         </motion.div>
-      </main>
-    </div>
+      </Box>
+    </Box>
   );
 }

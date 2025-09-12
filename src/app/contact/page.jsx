@@ -1,22 +1,47 @@
 "use client";
 import React, { useState } from "react";
+import {
+  Box,
+  Button,
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  TextField,
+  Typography,
+  Paper,
+  Grid,
+} from "@mui/material";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+    agree: false,
+  });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // ✅ remove TypeScript type
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.agree) {
+      setStatus({ type: "error", message: "You must accept the Privacy Policy." });
+      return;
+    }
     setLoading(true);
     setStatus(null);
 
     try {
-      console.log(formData)
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,7 +51,14 @@ export default function ContactPage() {
       if (!response.ok) throw new Error("Failed to send message");
 
       setStatus({ type: "success", message: "Message sent successfully!" });
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        message: "",
+        agree: false,
+      });
     } catch (err) {
       setStatus({ type: "error", message: err.message || "Something went wrong" });
     } finally {
@@ -35,68 +67,159 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
-        <h1 className="text-2xl font-bold text-orange-600 mb-6 text-center">Contact Us</h1>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "grey.100",
+        p: 2,
+      }}
+    >
+      <Paper
+        elevation={1}
+        sx={{
+          p: { xs: 3, sm: 4 },
+          maxWidth: 600,
+          width: "100%",
+          borderRadius: 3,
+        }}
+      >
+        <Typography
+          variant="h4"
+          align="center"
+          color="primary"
+          fontWeight="bold"
+          gutterBottom
+        >
+          Contact Us
+        </Typography>
 
         {status && (
-          <div
-            className={`mb-4 p-3 rounded ${
-              status.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-            }`}
+          <Box
+            sx={{
+              mb: 2,
+              p: 2,
+              borderRadius: 2,
+              bgcolor: status.type === "success" ? "green.100" : "red.100",
+              color: status.type === "success" ? "green.700" : "red.700",
+            }}
           >
             {status.message}
-          </div>
+          </Box>
         )}
 
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your Name"
-              required
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            />
-          </div>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={3}>
+            {/* Full name */}
+            <Grid item xs={12}>
+              <TextField
+                label="Your full name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                fullWidth
+                variant="standard"
+              />
+            </Grid>
 
-          <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="you@example.com"
-              required
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            />
-          </div>
+            {/* Company */}
+            <Grid item xs={12}>
+              <TextField
+                label="Company"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                fullWidth
+                variant="standard"
+              />
+            </Grid>
 
-          <div className="flex flex-col">
-            <label className="mb-1 text-gray-700 font-medium">Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your message..."
-              required
-              className="border border-gray-300 rounded-lg px-4 py-2 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-orange-500"
-            />
-          </div>
+            {/* Email */}
+            <Grid item xs={12}>
+              <TextField
+                label="Your email address"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                fullWidth
+                variant="standard"
+              />
+            </Grid>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="mt-4 bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-50"
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
+            {/* Phone */}
+            <Grid item xs={12}>
+              <TextField
+                label="Your phone number"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                fullWidth
+                variant="standard"
+              />
+            </Grid>
+
+            {/* About project */}
+            <Grid item xs={12}>
+              <TextField
+                label="About a project"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                fullWidth
+                multiline
+                variant="standard"
+              />
+            </Grid>
+
+            {/* Checkbox */}
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name="agree"
+                    checked={formData.agree}
+                    onChange={handleChange}
+                    color="primary"
+                  />
+                }
+                label={
+                  <Typography variant="body2">
+                    By sending this form I confirm that I have read and accept the{" "}
+                    <a href="/privacy-policy" style={{ color: "#1976d2" }}>
+                      Privacy Policy
+                    </a>
+                  </Typography>
+                }
+              />
+            </Grid>
+
+            {/* Submit */}
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                disabled={loading}
+                sx={{
+                  py: 1.5,
+                  borderRadius: "50px",
+                  fontWeight: "bold",
+                  width: "100%",
+                }}
+              >
+                {loading ? <CircularProgress size={24} color="inherit" /> : "Send Message"}
+              </Button>
+            </Grid>
+          </Grid>
         </form>
-      </div>
-    </div>
+      </Paper>
+    </Box>
   );
 }
