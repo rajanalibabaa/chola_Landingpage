@@ -10,6 +10,8 @@ import {
   Typography,
   Paper,
   Grid,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 
 export default function ContactPage() {
@@ -20,9 +22,10 @@ export default function ContactPage() {
     phone: "",
     message: "",
     agree: false,
+    attachment: null,
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [snackbar, setSnackbar] = useState({ open: false, type: "success", message: "" });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -34,23 +37,33 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.agree) {
-      setStatus({ type: "error", message: "You must accept the Privacy Policy." });
+      setSnackbar({ open: true, type: "error", message: "You must accept the Privacy Policy." });
       return;
     }
+
     setLoading(true);
-    setStatus(null);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      const formPayload = new FormData();
+      Object.keys(formData).forEach((key) => {
+        if (formData[key] !== null) formPayload.append(key, formData[key]);
       });
 
-      if (!response.ok) throw new Error("Failed to send message");
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/contact", {
+        method: "POST",
+        body: formPayload,
+      });
 
-      setStatus({ type: "success", message: "Message sent successfully!" });
+      if (!response.ok) {
+        setSnackbar({ open: true, type: "error", message: "Failed to send message" });
+        return;
+      }
+
+      const result = await response.json();
+      setSnackbar({ open: true, type: "success", message: result.message });
+
       setFormData({
         name: "",
         company: "",
@@ -58,12 +71,18 @@ export default function ContactPage() {
         phone: "",
         message: "",
         agree: false,
+        attachment: null,
       });
     } catch (err) {
-      setStatus({ type: "error", message: err.message || "Something went wrong" });
+      setSnackbar({ open: true, type: "error", message: err.message || "Something went wrong" });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCloseSnackbar = (_, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbar((prev) => ({ ...prev, open: false }));
   };
 
   return (
@@ -77,118 +96,37 @@ export default function ContactPage() {
         p: 2,
       }}
     >
-      <Paper
-        elevation={1}
-        sx={{
-          p: { xs: 3, sm: 4 },
-          maxWidth: 600,
-          width: "100%",
-          borderRadius: 3,
-        }}
-      >
-        <Typography
-          variant="h4"
-          align="center"
-          color="primary"
-          fontWeight="bold"
-          gutterBottom
-        >
+      <Paper elevation={1} sx={{ p: { xs: 3, sm: 4 }, maxWidth: 600, width: "100%", borderRadius: 3 }}>
+        <Typography variant="h4" align="center" color="primary" fontWeight="bold" gutterBottom>
           Contact Us
         </Typography>
 
-        {status && (
-          <Box
-            sx={{
-              mb: 2,
-              p: 2,
-              borderRadius: 2,
-              bgcolor: status.type === "success" ? "green.100" : "red.100",
-              color: status.type === "success" ? "green.700" : "red.700",
-            }}
-          >
-            {status.message}
-          </Box>
-        )}
-
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
-            {/* Full name */}
             <Grid item xs={12}>
-              <TextField
-                label="Your full name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                fullWidth
-                variant="standard"
-              />
+              <TextField label="Your full name" name="name" value={formData.name} onChange={handleChange} required fullWidth variant="standard" />
             </Grid>
-
-            {/* Company */}
             <Grid item xs={12}>
-              <TextField
-                label="Company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                fullWidth
-                variant="standard"
-              />
+              <TextField label="Company" name="company" value={formData.company} onChange={handleChange} fullWidth variant="standard" />
             </Grid>
-
-            {/* Email */}
             <Grid item xs={12}>
-              <TextField
-                label="Your email address"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                fullWidth
-                variant="standard"
-              />
+              <TextField label="Your email address" name="email" type="email" value={formData.email} onChange={handleChange} required fullWidth variant="standard" />
             </Grid>
-
-            {/* Phone */}
             <Grid item xs={12}>
-              <TextField
-                label="Your phone number"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                fullWidth
-                variant="standard"
-              />
+              <TextField label="Your phone number" name="phone" type="tel" value={formData.phone} onChange={handleChange} fullWidth variant="standard" />
             </Grid>
-
-            {/* About project */}
             <Grid item xs={12}>
-              <TextField
-                label="About a project"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                fullWidth
-                multiline
-                variant="standard"
-              />
+              <TextField label="About a project" name="message" value={formData.message} onChange={handleChange} required fullWidth multiline variant="standard" />
             </Grid>
-
-            {/* Checkbox */}
+            <Grid item xs={12}>
+              <Button variant="outlined" component="label" fullWidth sx={{ py: 1.5, borderRadius: "8px" }}>
+                {formData.attachment ? formData.attachment.name : "Attach a file"}
+                <input type="file" hidden onChange={(e) => setFormData((prev) => ({ ...prev, attachment: e.target.files[0] }))} />
+              </Button>
+            </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={
-                  <Checkbox
-                    name="agree"
-                    checked={formData.agree}
-                    onChange={handleChange}
-                    color="primary"
-                  />
-                }
+                control={<Checkbox name="agree" checked={formData.agree} onChange={handleChange} color="primary" />}
                 label={
                   <Typography variant="body2">
                     By sending this form I confirm that I have read and accept the{" "}
@@ -199,26 +137,31 @@ export default function ContactPage() {
                 }
               />
             </Grid>
-
-            {/* Submit */}
             <Grid item xs={12}>
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 disabled={loading}
-                sx={{
-                  py: 1.5,
-                  borderRadius: "50px",
-                  fontWeight: "bold",
-                  width: "100%",
-                }}
+                sx={{ py: 1.5, borderRadius: "50px", fontWeight: "bold", width: "100%" }}
               >
                 {loading ? <CircularProgress size={24} color="inherit" /> : "Send Message"}
               </Button>
             </Grid>
           </Grid>
         </form>
+
+        {/* Snackbar popup */}
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.type} sx={{ width: "100%" }}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Paper>
     </Box>
   );
