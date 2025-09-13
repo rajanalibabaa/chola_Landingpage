@@ -12,12 +12,15 @@ export default function Home() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #fff7ed, #ffffff, #fff3e0)",
+        backgroundImage: "url('/bg2.jpg')", // ✅ Correct way
+        backgroundSize: "cover",                  // ✅ Cover full area
+        backgroundPosition: "center",             // ✅ Center the image
+        backgroundRepeat: "no-repeat",            // ✅ Prevent repeat
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        p: { xs: 3, sm: 6, md: 12 ,},
-        mt:5
+        p: { xs: 3, sm: 6, md: 12 },
+        mt: 5,
       }}
     >
       <Box
@@ -95,16 +98,28 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: { xs: "center", md: "flex-start" }, mt: 3 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                justifyContent: { xs: "center", md: "flex-start" },
+                mt: 3,
+              }}
+            >
               <Button
                 component={motion.button}
-                whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(251,146,60,0.35)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0px 10px 20px rgba(251,146,60,0.35)",
+                }}
                 sx={{
                   px: 5,
                   py: 1.5,
                   fontWeight: 700,
                   borderRadius: "50px",
-                  background: "linear-gradient(45deg, #fb923c, #ef4444, #facc15)",
+                  background:
+                    "linear-gradient(45deg, #fb923c, #ef4444, #facc15)",
                   color: "white",
                   boxShadow: "0px 5px 15px rgba(251,146,60,0.3)",
                   textTransform: "none",
@@ -137,7 +152,12 @@ export default function Home() {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ flex: 1, display: "flex", justifyContent: "center", width: "100%" }}
+          style={{
+            flex: 1,
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+          }}
         >
           <motion.div
             animate={{ y: [0, -10, 0] }}
