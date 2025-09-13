@@ -78,12 +78,12 @@ const FeatureCards = () => {
 
     hover: {
       scale: 1.03,
-      boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+      boxShadow: "0 20px 40px rgba(255, 255, 255, 0.15)",
     },
   };
 
   return (
-    <Box sx={{ px: 2, py: 10 }} >
+    <Box sx={{ px: 2, py: 10 }} bgcolor={'white'} >
       {/* HEADING (unchanged by request) */}
       <Box sx={{ textAlign: "center", mb: 8 }}>
         <motion.div
@@ -113,7 +113,7 @@ const FeatureCards = () => {
           <Typography
             component="h2"
             variant="h3"
-            sx={{ fontWeight: "bold", color: "white", mb: 2 }}
+            sx={{ fontWeight: "bold", color: "black", mb: 2 }}
           >
             Why Clients Trust Us
           </Typography>
@@ -131,7 +131,7 @@ const FeatureCards = () => {
         <Typography
           variant="body1"
           sx={{
-            color: "rgba(255,255,255,0.85)",
+            color: "rgba(0, 0, 0, 0.85)",
             maxWidth: 650,
             mx: "auto",
             mt: 2,
@@ -191,6 +191,16 @@ const FeatureCards = () => {
               }}
             >
               {feature.title}
+              <Box
+                          sx={{
+                            width:100, 
+                            height: 4,
+                            background: "linear-gradient(90deg, #ff4a22ff, transparent)",
+                            borderRadius: 2,
+                            // mx: "auto",
+                            mb: 3,
+                          }}
+                        />
             </Typography>
             {/* IMAGE */}
             <Box

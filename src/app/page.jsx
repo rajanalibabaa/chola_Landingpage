@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
   import ServicesSection from "@/components/OurServices.jsx";
   import TestimonialSlider from "@/components/TestimonialSlider.jsx";
+  import Invotive from "@/components/Invotive.jsx";
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -348,6 +349,7 @@ export default function Home() {
     </Box>
     <ServicesSection/>
 <TestimonialSlider/>
+<Invotive/>
     </>
   );
 }
