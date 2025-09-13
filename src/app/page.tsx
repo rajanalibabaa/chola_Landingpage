@@ -12,10 +12,10 @@ export default function Home() {
     <Box
       sx={{
         minHeight: "100vh",
-        backgroundImage: "url('/bg2.jpg')", // ✅ Correct way
-        backgroundSize: "cover",                  // ✅ Cover full area
-        backgroundPosition: "center",             // ✅ Center the image
-        backgroundRepeat: "no-repeat",            // ✅ Prevent repeat
+        backgroundImage: "url('/bg2.jpg')", 
+        backgroundSize: "cover",                  
+        backgroundPosition: "center",            
+        backgroundRepeat: "no-repeat",            
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
