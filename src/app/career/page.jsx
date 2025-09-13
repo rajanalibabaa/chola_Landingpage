@@ -7,7 +7,7 @@ import {
   Button,
   Typography,
   Grid,
-  InputAdornment
+  InputAdornment,
 } from "@mui/material";
 import {
   CloudUpload,
@@ -16,7 +16,7 @@ import {
   Phone,
   School,
   Assignment,
-  Message
+  Message,
 } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -95,41 +95,44 @@ export default function StudentFormPage() {
         >
           {/* Left Image */}
           <Grid
-  container
-  spacing={6}
-  className="items-start"
-  direction={{ xs: "column", md: "row" }}
->
-  {/* Left Image */}
-  <Grid item xs={12} md={6} className="flex justify-center">
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-full md:max-w-md rounded-2xl overflow-hidden shadow-lg"
-    >
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Image
-          src="/home.png"
-          alt="Student Registration"
-          width={600} // increase width for desktop
-          height={400} // adjust height proportionally
-          className="w-full h-auto rounded-lg"
-          priority
-        />
-      </motion.div>
-    </motion.div>
-  </Grid>
+            container
+            spacing={6}
+            className="items-start"
+            direction={{ xs: "column", md: "row" }}
+          >
+            {/* Left Image */}
+            <Grid item xs={12} md={6} className="flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-full md:max-w-md rounded-2xl overflow-hidden shadow-lg"
+              >
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <Image
+                    src="/home.png"
+                    alt="Student Registration"
+                    width={600} // increase width for desktop
+                    height={400} // adjust height proportionally
+                    className="w-full h-auto rounded-lg"
+                    priority
+                  />
+                </motion.div>
+              </motion.div>
+            </Grid>
 
-  {/* Right Form */}
-  <Grid item xs={12} md={6}>
-    {/* Form code remains same */}
-  </Grid>
-</Grid>
-
+            {/* Right Form */}
+            <Grid item xs={12} md={6}>
+              {/* Form code remains same */}
+            </Grid>
+          </Grid>
 
           {/* Right Form */}
           <Grid item xs={12} md={7}>
@@ -140,7 +143,9 @@ export default function StudentFormPage() {
             >
               <div className="bg-slate-800/90 backdrop-blur-md border border-slate-700 rounded-2xl shadow-lg p-6 md:p-8">
                 <div className="text-center mb-6">
-                  <h1 className="text-3xl md:text-4xl font-bold text-blue-400 mb-1">Student Registration</h1>
+                  <h1 className="text-3xl md:text-4xl font-bold text-blue-400 mb-1">
+                    Student Registration
+                  </h1>
                   <p className="text-gray-300 text-sm md:text-base">
                     Fill out the form below to start your educational journey
                   </p>
@@ -149,11 +154,31 @@ export default function StudentFormPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
-                      { name: "name", label: "Full Name", icon: <Person className="text-blue-400" /> },
-                      { name: "email", label: "Email Address", icon: <Email className="text-blue-400" /> },
-                      { name: "phone", label: "Phone Number", icon: <Phone className="text-blue-400" /> },
-                      { name: "yourEducation", label: "Current Education", icon: <School className="text-blue-400" /> },
-                      { name: "applyFor", label: "Program Applying For", icon: <Assignment className="text-blue-400" /> },
+                      {
+                        name: "name",
+                        label: "Full Name",
+                        icon: <Person className="text-blue-400" />,
+                      },
+                      {
+                        name: "email",
+                        label: "Email Address",
+                        icon: <Email className="text-blue-400" />,
+                      },
+                      {
+                        name: "phone",
+                        label: "Phone Number",
+                        icon: <Phone className="text-blue-400" />,
+                      },
+                      {
+                        name: "yourEducation",
+                        label: "Current Education",
+                        icon: <School className="text-blue-400" />,
+                      },
+                      {
+                        name: "applyFor",
+                        label: "Program Applying For",
+                        icon: <Assignment className="text-blue-400" />,
+                      },
                     ].map((field) => (
                       <div key={field.name} className="relative">
                         <input
@@ -176,9 +201,16 @@ export default function StudentFormPage() {
                       <label className="flex flex-col items-center justify-center border-2 border-dashed border-slate-600 rounded-lg p-3 text-center hover:border-blue-400 hover:bg-slate-700/40 transition cursor-pointer">
                         <CloudUpload className="text-lg text-blue-400 mb-1" />
                         <span className="text-gray-100 text-xs md:text-sm font-medium">
-                          {resumeFile ? resumeFile.name : "Click to upload resume (PDF, DOC, DOCX - Max 5MB)"}
+                          {resumeFile
+                            ? resumeFile.name
+                            : "Click to upload resume (PDF, DOC, DOCX - Max 5MB)"}
                         </span>
-                        <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} className="hidden" />
+                        <input
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleFileChange}
+                          className="hidden"
+                        />
                       </label>
                     </div>
                   </div>
@@ -198,7 +230,8 @@ export default function StudentFormPage() {
                     type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2 md:py-3 px-4 rounded-lg shadow-lg flex items-center justify-center gap-2 text-sm md:text-base transition transform hover:scale-[1.02]"
                   >
-                    <Person className="text-sm md:text-base" /> Submit Registration
+                    <Person className="text-sm md:text-base" /> Submit
+                    Registration
                   </button>
                 </form>
               </div>
