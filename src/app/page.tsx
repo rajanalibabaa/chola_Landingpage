@@ -3,12 +3,14 @@ import React from "react";
 import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+import Services from "@/components/OurServices.jsx"
+import TestimonialSlider from "@/components/TestimonialSlider.jsx";
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
+    <>
     <Box
       sx={{
         minHeight: "100vh",
@@ -181,5 +183,8 @@ export default function Home() {
         </motion.div>
       </Box>
     </Box>
+    <Services />
+    <TestimonialSlider />
+    </>
   );
 }

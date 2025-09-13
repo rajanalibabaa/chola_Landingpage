@@ -11,18 +11,19 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 
 export const servicesData = {
-  "Mobile Development": [
-    { icon: <PhoneIphoneIcon />, title: "iOS app development", desc: "Native Swift apps for all Apple devices" },
-    { icon: <AndroidIcon />, title: "Android app development", desc: "Build native apps for Android with Kotlin" },
-    { icon: <FlutterDashIcon />, title: "Flutter app development", desc: "Dart-based cross-platform development" },
-    { icon: <CodeIcon />, title: "React-native app development", desc: "Building apps using JavaScript framework" },
-  ],
-  "Web Development": [
+   "Web Development": [
     { icon: <WebIcon />, title: "Front-end development", desc: "User-centric software with smooth UI" },
     { icon: <StorageIcon />, title: "Back-end development", desc: "Robust and secure server-side solutions" },
     { icon: <CodeIcon />, title: "Web app development", desc: "Secure and performant web applications" },
     { icon: <BusinessCenterIcon />, title: "DevOps services", desc: "Security, automation, cloud consulting" },
   ],
+  "Mobile Development": [
+        { icon: <FlutterDashIcon />, title: "Flutter app development", desc: "Dart-based cross-platform development" },
+    { icon: <CodeIcon />, title: "React-native app development", desc: "Building apps using JavaScript framework" },
+    { icon: <PhoneIphoneIcon />, title: "iOS app development", desc: "Native Swift apps for all Apple devices" },
+    { icon: <AndroidIcon />, title: "Android app development", desc: "Build native apps for Android with Kotlin" },
+  ],
+ 
   "Extra Services": [
     { icon: <DesignServicesIcon />, title: "UI/UX design", desc: "Material and HIG design for all platforms" },
     { icon: <BugReportIcon />, title: "Software testing", desc: "Manual testing & automation testing" },
@@ -32,9 +33,10 @@ export const servicesData = {
 };
 
 export const extraServices = [
-  { icon: <GroupsIcon />, title: "IT Staff Augmentation", desc: "Experts for a tech projects on any request" },
+    { icon: <CodeIcon />, title: "Custom Software Development", desc: "Bespoke solutions for web and mobile" },
   { icon: <BusinessCenterIcon />, title: "Product Discovery", desc: "Business analysis and solution architecture" },
-  { icon: <CodeIcon />, title: "Custom Software Development", desc: "Bespoke solutions for web and mobile" },
+
+  { icon: <GroupsIcon />, title: "IT Staff Augmentation", desc: "Experts for a tech projects on any request" },
 ];
 
 // Colors per category
