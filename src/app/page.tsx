@@ -46,7 +46,7 @@ export default function Home() {
           inset: 0,
           zIndex: 0,
           background:"#edf1e8",
-          // background: "linear-gradient(135deg, rgba(251,146,60,0.2) 0%, rgba(239,68,68,0.2) 50%, rgba(250,204,21,0.2) 100%)",
+          // background: " linear-gradient(0deg,rgba(155, 168, 168, 1) 0%, rgba(51, 49, 49, 1) 100%)",
           filter: "blur(60px)",
         }}
       />
