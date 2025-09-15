@@ -20,7 +20,7 @@ import {
   Campaign,
   ArrowForward,
 } from "@mui/icons-material";
-import NextLink from "next/link";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 // Service Data
@@ -201,7 +201,7 @@ export default function ServicesSection() {
               variants={cardVariants}
               style={{ height: "100%" }}
             >
-              <NextLink
+              <Link
                 href={service.href}
                 style={{ textDecoration: "none", display: "block", height: "100%" }}
               >
@@ -284,35 +284,38 @@ export default function ServicesSection() {
     </Typography>
 
     {/* CTA Button */}
-    <MuiLink
-      className="service-link"
-      variant="body2"
-      sx={{
-        fontWeight: 600,
-        color: "#000000ff",
-        textDecoration: "none",
-        display: "inline-flex",
-        border: "2px solid #00f91d",
-        px: 2,
-        py: 1,
-        borderRadius: 2,
-        alignItems: "center",
-        transition: "all 0.3s ease",
-        "& .MuiSvgIcon-root": {
-          fontSize: 18,
-          transition: "transform 0.2s ease",
-        },
-        "&:hover .MuiSvgIcon-root": {
-          transform: "translateX(4px)",
-        },
-      }}
-    >
-      Explore Service <ArrowForward sx={{ ml: 0.5 }} />
-    </MuiLink>
+   <MuiLink
+  component={Link}
+  href="/contact"
+  underline="none"
+  sx={{
+    fontWeight: 600,
+    color: "#000000ff",
+    textDecoration: "none",
+    display: "inline-flex",
+    border: "2px solid #00f91d",
+    px: 2,
+    py: 1,
+    borderRadius: 2,
+    alignItems: "center",
+    transition: "all 0.3s ease",
+    "& .MuiSvgIcon-root": {
+      fontSize: 18,
+      transition: "transform 0.2s ease",
+    },
+    "&:hover .MuiSvgIcon-root": {
+      transform: "translateX(4px)",
+    },
+  }}
+>
+  <Typography component="span">
+    Explore Service <ArrowForward sx={{ ml: 0.5 }} />
+  </Typography>
+</MuiLink>
   </CardContent>
 </Card>
 
-              </NextLink>
+              </Link>
             </motion.div>
           ))}
         </Grid>
