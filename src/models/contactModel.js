@@ -4,9 +4,10 @@ const contactSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String },
-  company: { type: String },
+  education: { type: String },
+  applyFor: { type: String },
   message: { type: String, required: true },
-  agree: { type: Boolean, default: false },
+  
   attachment: { type: String },
 }, { timestamps: true });
 

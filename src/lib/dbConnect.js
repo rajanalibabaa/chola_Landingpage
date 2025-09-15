@@ -6,7 +6,7 @@ if (!MONGODB_URI) {
   throw new Error("⚠️ Please add your MONGODB_URI to .env.local");
 }
 
-
+ 
 let isConnected = false;
 
 async function dbConnect() {

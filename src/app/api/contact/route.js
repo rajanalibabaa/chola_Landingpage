@@ -4,13 +4,15 @@ import { NextResponse } from "next/server";
 import { uploadFileToR2 } from "../../../utils/uploads/s3Uploader.js";
 import { ApiResponse } from "../../../utils/ApiResponse.js";
 
-export const config = { api: { bodyParser: false } };
+// export const config = { api: { bodyParser: false } };
 
 export async function POST(req) {
   await dbConnect();
 
   try {
     const formData = await req.formData();
+
+    console.log(formData)
 
     const name = formData.get("name");
     const company = formData.get("company");

@@ -44,21 +44,28 @@ export default function StudentFormPage() {
     Object.keys(formData).forEach((key) => data.append(key, formData[key]));
     if (resumeFile) data.append("resume", resumeFile);
 
+    console.log("data",data)
+
+
+
     try {
-      const res = await fetch("/api/student", { method: "POST", body: data });
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL+"/careers", { method: "POST", body: data });
+
+      console.log("res :",res)
       if (res.ok) {
         setIsSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          yourEducation: "",
-          applyFor: "",
-          message: "",
-        });
+        // setFormData({
+        //   name: "",
+        //   email: "",
+        //   phone: "",
+        //   yourEducation: "",
+        //   applyFor: "",
+        //   message: "",
+        // });
         setResumeFile(null);
         setTimeout(() => setIsSubmitted(false), 3000);
-      } else alert("❌ Failed to submit data!");
+      } 
+      // else alert("❌ Failed to submit data!");
     } catch (error) {
       console.error(error);
       alert("⚠️ Something went wrong!");
