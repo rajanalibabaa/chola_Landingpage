@@ -1,0 +1,23 @@
+  <Box sx={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            {[
+              { value: "200+", label: "Happy Clients" },
+              { value: "98%", label: "Retention Rate" },
+              { value: "4.9/5", label: "Avg Rating" },
+            ].map((stat, i) => (
+              <Box key={i}>
+                <Typography
+                  variant="h3"
+                  sx={{ fontWeight: "bold", color: "#00f91d" }}
+                >
+                  {stat.value}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "rgba(255,255,255,0.6)" }}
+                >
+                  {stat.label}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+       

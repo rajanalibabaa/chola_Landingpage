@@ -8,10 +8,9 @@ export const companyData = {
   "About Cleveroad": [
     { icon: <StarIcon />, title: "Media Coverage" },
     { icon: <StarIcon />, title: "Testimonials" },
-    { icon: <StarIcon />, title: "Awards" },
     { icon: <StarIcon />, title: "FAQ" },
     { icon: <StarIcon />, title: "Career" },
-    { icon: <StarIcon />, title: "Latest Press releases" },
+    { icon: <StarIcon />, title: "Latest News" },
   ],
   "Certifications & Achievements": [
     { icon: <VerifiedIcon />, title: "ISO 9001 certified", desc: "Quality control standard" },

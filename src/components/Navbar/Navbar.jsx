@@ -18,9 +18,11 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Industries", href: "/industries" },
     { name: "Expertise", href: "/expertise" },
-    { name: "Company", href: "/company" },
+    // { name: "Company", href: "/company" },
     // { name: "Project", href: "/project" },
-    { name: "Blog", href: "/blog" },
+    // { name: "Blog", href: "/blog" },
+    { name: "Careers", href: "/careers" },
+    { name: "Latest News", href: "/latest-news",  },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -29,7 +31,8 @@ export default function Navbar() {
       <Toolbar className="flex justify-between">
         <Link href="/">
           <Box className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="logo" width={110} height={40} />
+          <Image src="/logo.png" alt="logo" width={100} height={40} />
+ 
         </Box>
         </Link>
 
