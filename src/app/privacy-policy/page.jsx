@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Box, Typography, useTheme, useMediaQuery, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { motion } from "framer-motion";
 
 export default function PrivacyPolicy() {
+  const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -140,8 +142,9 @@ export default function PrivacyPolicy() {
                 background: "linear-gradient(90deg, #FFB347, #FF6F61)",
               },
             }}
+            onClick={() => router.push("/contact")}
           >
-            Back to Home
+            Contact Us
           </Button>
         </Box>
       </Box>

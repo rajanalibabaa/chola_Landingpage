@@ -20,34 +20,6 @@ const FeatureCards = () => {
 
   const features = [
     {
-      title: "On Time Delivery",
-      description:
-        "Deadlines matter. From projects to products, we ensure timely delivery with precision and reliability.",
-      img: "/OND.jpg",
-      color: "#FF6B6B",
-    },
-    {
-      title: "Quality Services",
-      description:
-        "Excellence drives every service. We deliver top-tier solutions that consistently exceed expectations.",
-      img: "/OND2.jpg",
-      color: "#4ECDC4",
-    },
-    {
-      title: "Customer Support",
-      description:
-        "Always here for you. Our dedicated team provides seamless support, 24/7, every single day.",
-      img: "/OND3.jpg",
-      color: "#45B7D1",
-    },
-    {
-      title: "Customer Satisfaction",
-      description:
-        "Your success fuels ours. We go the extra mile to achieve complete satisfaction in every interaction.",
-      img: "/OND4.jpg",
-      color: "#F9A826",
-    },
-    {
       title: "Expert Team",
       description:
         "Our experts bring innovation, experience, and creativity, ensuring every project achieves perfection.",
@@ -61,6 +33,38 @@ const FeatureCards = () => {
       img: "/OND6.jpg",
       color: "#6BCB77",
     },
+    
+    {
+      title: "Quality Services",
+      description:
+        "Excellence drives every service. We deliver top-tier solutions that consistently exceed expectations.",
+      img: "/OND2.jpg",
+      color: "#4ECDC4",
+    },
+    
+    {
+      title: "Customer Satisfaction",
+      description:
+        "Your success fuels ours. We go the extra mile to achieve complete satisfaction in every interaction.",
+      img: "/OND4.jpg",
+      color: "#F9A826",
+    },
+
+    {
+      title: "On Time Delivery",
+      description:
+        "Deadlines matter. From projects to products, we ensure timely delivery with precision and reliability.",
+      img: "/OND.jpg",
+      color: "#FF6B6B",
+    },
+    
+{
+      title: "Customer Support",
+      description:
+        "Always here for you. Our dedicated team provides seamless support, 24/7, every single day.",
+      img: "/OND3.jpg",
+      color: "#45B7D1",
+    },    
   ];
 
   // Card animation variants

@@ -29,7 +29,7 @@ const services = [
     title: "Website Design & Development",
     desc: "Crafting world-class website designs that transform your ideas into real-world experiences.",
     icon: <Language sx={{ fontSize: 40 }} />,
-    href: "/services/web-design",
+    href: "/contact",
   },
 //   {
 //     title: "Web Development",
@@ -41,33 +41,33 @@ const services = [
     title: "E-Marketplace Solutions & E-commerce Development",
     desc: "Creating flexible marketplaces for seamless purchasing and efficient management.",
     icon: <Store sx={{ fontSize: 40 }} />,
-    href: "/services/e-marketplace",
+    href: "/contact",
   },
 
   {
     title: "Custom Software Development",
     desc: "Building technology-driven, tailor-made software adopting agile SDLC processes.",
     icon: <Settings sx={{ fontSize: 40 }} />,
-    href: "/services/software-development",
+    href: "/contact",
   },
    {
     title: "Mobile App Development",
     desc: "Deploying powerful apps that captivate your mobile-savvy audience and boost business.",
     icon: <PhoneIphone sx={{ fontSize: 40 }} />,
-    href: "/services/mobile-apps",
+    href: "/contact",
   },
    {
     title: "Digital Marketing",
     desc: "Executing impactful strategies to elevate your brand’s reach and popularity.",
     icon: <Campaign sx={{ fontSize: 40 }} />,
-    href: "/services/digital-marketing",
+    href: "/contact",
   },
  
   {
     title: "Web Hosting & Maintenance",
     desc: "Providing reliable hosting & proactive maintenance for uninterrupted online presence.",
     icon: <Cloud sx={{ fontSize: 40 }} />,
-    href: "/services/hosting",
+    href: "/contact",
   },
  
 //   {
