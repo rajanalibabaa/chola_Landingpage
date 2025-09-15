@@ -13,7 +13,7 @@ export async function POST(req) {
     const name = formData.get("name");
     const email = formData.get("email");
     const phone = formData.get("phone");
-    const education = formData.get("yourEducation");
+    const education = formData.get("education");
     const applyFor = formData.get("applyFor");
     const message = formData.get("message");
     const resume = formData.get("resume");
