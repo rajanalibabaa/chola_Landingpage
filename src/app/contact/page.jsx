@@ -143,7 +143,7 @@ export default function ContactPage() {
           sx={{
             width: "60%",
             bgcolor: "primary.main",
-            background: "linear-gradient(135deg, #ff8c00 0%, #ffa94d 100%)", // Orange gradient
+            background: " linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)", // Orange gradient
             color: "white",
             display: "flex",
             flexDirection: "column",

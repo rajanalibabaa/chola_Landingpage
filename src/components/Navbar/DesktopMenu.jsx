@@ -467,14 +467,14 @@ export default function DesktopMenu({ links, pathname }) {
                   ? "orange"
                   : "inherit",
               fontWeight: isActive ? "bold" : "normal",
-              backgroundColor: link.name === "Contact" ? "blue" : "transparent",
+              backgroundColor: link.name === "Contact" ? "#ff9800" : "transparent",
               px: link.name === "Contact" ? 3 : 2,
               py: link.name === "Contact" ? 1.2 : 1,
               borderRadius: link.name === "Contact" ? "50px" : 1,
               textTransform: "none", // keep text as-is
               "&:hover": {
                 backgroundColor:
-                  link.name === "Contact" ? "darkblue" : "rgba(0,0,0,0.04)",
+                  link.name === "Contact" ? "ff9800" : "rgba(0,0,0,0.04)",
               },
             }}
           >

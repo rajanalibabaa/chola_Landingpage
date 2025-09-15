@@ -13,41 +13,41 @@ const Footer = () => {
 			px: { xs: 2, sm: 6 },
 			mt: 8,
 		}}>
-			<Grid container spacing={2} alignItems="center" sx={{display:"flex"}}>
-				<Grid item xs={12} md={4}>
-					<Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-						Chola Business Automation PVT LTD
+			<Grid container spacing={2} alignItems="center"  >
+		
+                	<Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+                        		<Grid item xs={12} md={8}>
+					<Typography variant="h6" fontWeight="bold" sx={{ mb: 0 }}>
+						<Box component="span" sx={{ color: "#ff9800", display: "inline" }}>C</Box>HOL<Box component="span" sx={{ color: "#74ed3f", display: "inline" }}>A</Box> Business Automation PVT LTD
 					</Typography>
 					<Typography variant="body2" color="grey.400">
 						Empowering your digital journey.
 					</Typography>
 				</Grid>
-                <Grid>
-				<Grid item xs={12} md={4} sx={{ textAlign: { xs: "left", md: "Right" } }}>
-					<Box>
-				
-						<Link href="/contact" color="inherit" underline="hover" sx={{ mx: 1 }}>
-							Contact
-						</Link>
-					
-					</Box>
-				</Grid>
-				<Grid item xs={12} md={4} sx={{ textAlign: { xs: "left", md: "right" } }}>
-					<IconButton href="https://facebook.com" target="_blank" sx={{ color: "#fff" }}>
-						<FacebookIcon />
-					</IconButton>
-					<IconButton href="https://twitter.com" target="_blank" sx={{ color: "#fff" }}>
-						<TwitterIcon />
-					</IconButton>
-					<IconButton href="https://linkedin.com" target="_blank" sx={{ color: "#fff" }}>
-						<LinkedInIcon />
-					</IconButton>
-				</Grid>
-                </Grid>
+                </Box>
+                <Box sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center" ,ml:"52%"}}>
+				<Link href="/contact" color="inherit" underline="hover" sx={{ mx: 1, fontWeight: "bold" }}>
+					Contact
+				</Link>
+				<Link href="/careers" color="inherit" underline="hover" sx={{ mx: 1, fontWeight: "bold" }}>
+					Careers
+				</Link>
+				<IconButton href="https://facebook.com" target="_blank" sx={{ color: "#fff" }}>
+					<FacebookIcon />
+				</IconButton>
+				<IconButton href="https://twitter.com" target="_blank" sx={{ color: "#fff" }}>
+					<TwitterIcon />
+				</IconButton>
+				<IconButton href="https://linkedin.com" target="_blank" sx={{ color: "#fff" }}>
+					<LinkedInIcon />
+				</IconButton>
+			</Box>
 			</Grid>
+			{/* End-of-footer right side links and icons */}
+		
 			<Box sx={{ borderTop: "1px solid #444", mt: 3, pt: 2, textAlign: "center" }}>
 				<Typography variant="body2" color="grey.500">
-					&copy; {new Date().getFullYear()} Chola Technologies. All rights reserved.
+					&copy; {new Date().getFullYear()} Chola Business Automation PVT LTD. All rights reserved.
 				</Typography>
 			</Box>
 		</Box>

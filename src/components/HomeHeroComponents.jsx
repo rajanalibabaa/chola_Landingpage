@@ -11,20 +11,16 @@ export default function Home() {
   return (
     <Box
       sx={{
-        minHeight: "90vh",
+        minHeight: "80vh",
         position: "relative",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        ml: { xs: 0, md: 0 },
         mt: { xs: 7 },
-        
-        
       }}
     >
-
-        
+    
 
       {/* Bold Circle Background Behind Welcome Section with first-load animation only */}
       <motion.div
@@ -257,8 +253,10 @@ export default function Home() {
               alignItems: "center",
               position: "relative",
               minHeight: { xs: "300px", md: "600px" },
+             
             }}
           >
+            <Box sx={{ ml: { xs: 0, md: 5 } }}>
             {/* Animated Circular Background */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
@@ -307,26 +305,20 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              style={{
-                position: "relative",
-                zIndex: 2,
-                 width:"800px",
-                height:"450px",
-              
-              
-              }}
+           
             >
               <Image
                 src="/home.png"
                 alt="Home Banner"
-                width={300}
-                height={850}
+                width={900}
+                height={700}
                 style={{
-                  width:"800px",
-                  height:"550px",
-               
+                   position: "relative",
+                zIndex: 2,
+                  width: "500px",
+                  height: "500px",
+                  objectFit: "cover",
                 }}
-               
               />
             </motion.div>
             
@@ -375,6 +367,7 @@ export default function Home() {
                 zIndex: 1,
               }}
             />
+          </Box>
           </Box>
         </Box>
       </motion.div>
