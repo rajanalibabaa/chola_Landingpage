@@ -78,8 +78,8 @@ export default function Home() {
           position: "absolute",
           inset: 0,
           zIndex: 0,
-          background:"#edf1e8",
-          // background: " linear-gradient(0deg,rgba(155, 168, 168, 1) 0%, rgba(51, 49, 49, 1) 100%)",
+          background:"#5E5E5E",
+          background: "linear-gradient(0deg,rgba(94, 94, 94, 1) 30%, rgba(10, 10, 10, 1) 100%)",
           filter: "blur(60px)",
         }}
       />
@@ -310,21 +310,23 @@ export default function Home() {
               style={{
                 position: "relative",
                 zIndex: 2,
-                width: "600px",
-                // maxWidth: "1000px",
-                height: "auto",
+                 width:"800px",
+                height:"450px",
+              
+              
               }}
             >
               <Image
                 src="/home.png"
                 alt="Home Banner"
-                width={800}
-                height={650}
+                width={300}
+                height={850}
                 style={{
-                  width:600,
-                  borderRadius: "24px",
+                  width:"800px",
+                  height:"550px",
+               
                 }}
-                priority
+               
               />
             </motion.div>
             

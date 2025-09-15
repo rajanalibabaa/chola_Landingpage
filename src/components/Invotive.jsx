@@ -233,7 +233,7 @@ export default function ProcessSteps() {
                         width: 80,
                         height: 80,
                         borderRadius: "50px",
-                        border: `3px solid ${step.color}`,
+                        border: `1px solid black`,
                         // backgroundColor: `${step.color}15`,
                         // border: `2px solid ${step.color}30`,
                         display: "flex",
