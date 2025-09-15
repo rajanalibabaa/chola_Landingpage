@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: { xs: "130vh", md: "100vh" },
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -19,6 +19,7 @@ export default function Home() {
         justifyContent: "center",
         background: "url(/head1.jpg) no-repeat center center/cover",
       }}
+      mt={{ xs: -10, md: 0 }}
     >
   
 
@@ -41,7 +42,7 @@ export default function Home() {
             variant="h2"
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "2rem", md: "3rem" },
+              fontSize: { xs: "2.6rem", md: "3rem" },
               lineHeight: 1.6,
               color: "white",
             }}
@@ -70,7 +71,7 @@ export default function Home() {
           <Typography
             sx={{
               mt: 2,
-              fontSize: { xs: "1rem", md: "1.25rem" },
+              fontSize: { xs: "1.3rem", md: "1.25rem" },
               fontWeight: 500,
               color: "white",
               maxWidth: 600,
@@ -108,7 +109,7 @@ export default function Home() {
           >
             🚀 Get Started
           </Button>
-          <Button
+          {/* <Button
             component={motion.button}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -123,7 +124,7 @@ export default function Home() {
             }}
           >
             Learn More
-          </Button>
+          </Button> */}
         </Box>
       </Box>
 
@@ -140,7 +141,7 @@ export default function Home() {
           position: "absolute",
           bottom: 0,
               top:{xs:"70%"},
-          left: "45%",
+          left: "55%",
           transform: "translateX(10%)",
           zIndex: 2,
           width: isMobile ? "80%" : "70%", 
@@ -154,7 +155,9 @@ export default function Home() {
           height={0}
           sizes="50vw"
           style={{
-             width: isMobile ? "80%" : "60%",
+             width: isMobile ? "90%" : "60%",
+             marginLeft: isMobile ? "-28%" : "0",
+             
             height: "auto", // ✅ keeps aspect ratio
             objectFit: "contain",
           }}

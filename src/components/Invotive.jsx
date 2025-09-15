@@ -18,7 +18,7 @@ const steps = [
     description:
       "We begin by thoroughly understanding your business needs, goals, and challenges through detailed discussions and research to create a comprehensive project blueprint.",
     icon: "/icon1.png",
-    color: "#FF6B6B",
+    // color: "#FF6B6B",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const steps = [
     description:
       "Our design team creates intuitive user interfaces and experiences while our architects develop a robust technical plan for seamless implementation.",
     icon: "/icon2.png",
-    color: "#4ECDC4",
+    // color: "#4ECDC4",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const steps = [
     description:
       "We build interactive prototypes that allow you to visualize and test the product functionality before development begins, ensuring alignment with your vision.",
     icon: "/icon3.png",
-    color: "#45B7D1",
+    // color: "#45B7D1",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const steps = [
     description:
       "Our skilled developers bring your project to life using cutting-edge technologies and agile methodologies, ensuring high-quality code and regular progress updates.",
     icon: "/icon4.png",
-    color: "#9966CC",
+    // color: "#9966CC",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const steps = [
     description:
       "We conduct rigorous testing across multiple scenarios and devices to ensure flawless performance before deploying your solution to production environments.",
     icon: "/icon5.png",
-    color: "#F9A826",
+    // color: "#F9A826",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const steps = [
     description:
       "Our relationship continues post-launch with ongoing support, maintenance, and updates to keep your solution running smoothly and efficiently.",
     icon: "/icon6.png",
-    color: "#6BCB77",
+    // color: "#6BCB77",
   },
 ];
 
@@ -292,42 +292,7 @@ export default function ProcessSteps() {
           })}
         </Grid>
 
-        {/* Process Flow Visualization (for mobile) */}
-        {isMobile && (
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              {steps.map((step, index) => (
-                <React.Fragment key={step.id}>
-                  <Box
-                    sx={{
-                      width: 16,
-                      height: 16,
-                      borderRadius: "50%",
-                      backgroundColor: step.color,
-                      mb: 1,
-                    }}
-                  />
-                  {index < steps.length - 1 && (
-                    <Box
-                      sx={{
-                        width: 2,
-                        height: 20,
-                        backgroundColor: "#ffffffff",
-                        mb: 1,
-                      }}
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </Box>
-          </Box>
-        )}
+        
       </Container>
     </Box>
   );

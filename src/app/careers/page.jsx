@@ -136,7 +136,7 @@ export default function StudentFormPage() {
 
             <form onSubmit={handleSubmit}>
               <Stack spacing={3} sx={{ width: "100%" }}>
-                <Grid container spacing={2}>
+                <Grid container  flexDirection={{ xs: "column", sm: "row", md: "column" }} spacing={3}>
                   <Grid item xs={12} sm={6}>
                     <TextField
                       label="Full Name"

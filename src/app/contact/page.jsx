@@ -246,10 +246,10 @@ export default function ContactPage() {
               Prefer to email directly?
             </Typography>
             <Typography variant="body1" sx={{ opacity: 0.9 }}>
-              info@company.com
+              support@cholabiz.com
             </Typography>
             <Typography variant="body1" sx={{ opacity: 0.9, mt: 1 }}>
-              +1 (555) 123-4567
+              +91 9444576133
             </Typography>
           </Box>
         </Box>
