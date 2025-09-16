@@ -7,16 +7,14 @@ import {
   CardContent,
   Typography,
   Container,
-  Link as MuiLink,
+  Button,
 } from "@mui/material";
 import {
   Language,
-  Code,
   Settings,
   Store,
   Cloud,
   PhoneIphone,
-  ShoppingCart,
   Campaign,
   ArrowForward,
 } from "@mui/icons-material";
@@ -31,67 +29,50 @@ const services = [
     icon: <Language sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
-//   {
-//     title: "Web Development",
-//     desc: "Delivering scalable web development solutions tailored to your business goals.",
-//     icon: <Code sx={{ fontSize: 40 }} />,
-//     href: "/services/web-development",
-//   },
- {
+  {
     title: "E-Marketplace Solutions & E-commerce Development",
     desc: "Creating flexible marketplaces for seamless purchasing and efficient management.",
     icon: <Store sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
-
   {
     title: "Custom Software Development",
     desc: "Building technology-driven, tailor-made software adopting agile SDLC processes.",
     icon: <Settings sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
-   {
+  {
     title: "Mobile App Development",
     desc: "Deploying powerful apps that captivate your mobile-savvy audience and boost business.",
     icon: <PhoneIphone sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
-   {
+  {
     title: "Digital Marketing",
-    desc: "Executing impactful strategies to elevate your brand’s reach and popularity.",
+    desc: "Executing impactful strategies to elevate your brand's reach and popularity.",
     icon: <Campaign sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
- 
   {
     title: "Web Hosting & Maintenance",
     desc: "Providing reliable hosting & proactive maintenance for uninterrupted online presence.",
     icon: <Cloud sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
- 
-//   {
-//     title: "",
-//     desc: "High-performance online stores designed to drive conversions and sales.",
-//     icon: <ShoppingCart sx={{ fontSize: 40 }} />,
-//     href: "/services/ecommerce",
-//   },
- 
 ];
 
 // Animation Variants
 const cardVariants = {
   offscreen: { opacity: 0, y: 60 },
   onscreen: (i) => ({
-  opacity: 1,
-  y: 0,
-  transition: {
-    delay: i * 0.2,
-    duration: 0.8,
-    ease: "easeOut",
-  },
-}),
-
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  }),
 };
 
 export default function ServicesSection() {
@@ -102,14 +83,23 @@ export default function ServicesSection() {
         position: "relative",
         py: { xs: 8, md: 12 },
         overflow: "hidden",
-        backgroundImage: "url('/sec1.jpg')", // <-- Replace with a tech-themed background img
+        backgroundImage: "url('/sec1.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
     >
       {/* Overlay for readability */}
-   
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+        }}
+      />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
@@ -201,121 +191,119 @@ export default function ServicesSection() {
               variants={cardVariants}
               style={{ height: "100%" }}
             >
-              <Link
-                href={service.href}
-                style={{ textDecoration: "none", display: "block", height: "100%" }}
+              <Card
+                sx={{
+                  height: "100%",
+                  borderRadius: 4,
+                  textAlign: "center",
+                  position: "relative",
+                  display: "flex",
+                  flexDirection: "column",
+                  p: 4,
+                  transition: "all 0.4s ease",
+                  background: `linear-gradient(245deg, rgba(255, 255, 255, 0.98), rgba(245,245,245,0.9))`,
+                  border: `1px solid rgba(0,0,0,0.08)`,
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                  "&:hover": {
+                    transform: "translateY(-10px) scale(1.03)",
+                    boxShadow: `0px 14px 35px rgba(0, 249, 29, 0.4)`,
+                    "& .service-icon": {
+                      bgcolor: "#00f91d",
+                      color: "black",
+                      transform: "scale(1.1)",
+                      boxShadow: "0px 6px 20px rgba(0,249,29,0.6)",
+                    },
+                    "& .service-link": {
+                      background: "#00f91d",
+                      color: "black",
+                      borderColor: "#00f91d",
+                    },
+                  },
+                }}
               >
-                <Card
-  sx={{
-    height: "100%",
-    borderRadius: 4,
-    textAlign: "center",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    p: 4,
-    transition: "all 0.4s ease",
-    background: `linear-gradient(245deg, rgba(255, 255, 255, 0.98), rgba(245,245,245,0.9))`,
-    border: `1px solid rgba(0,0,0,0.08)`,
-    boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
-    "&:hover": {
-      transform: "translateY(-10px) scale(1.03)",
-      boxShadow: `0px 14px 35px rgba(0, 249, 29, 0.4)`,
-      "& .service-icon": {
-        bgcolor: "#00f91d",
-        color: "black",
-        transform: "scale(1.1)",
-        boxShadow: "0px 6px 20px rgba(0,249,29,0.6)",
-      },
-      "& .service-link": {
-        background: "#00f91d",
-        color: "black",
-        borderColor: "#00f91d",
-      },
-    },
-  }}
->
-  {/* Floating Icon */}
-  <Box
-    className="service-icon"
-    sx={{
-      width: 90,
-      height: 90,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      bgcolor: "#f2f2f2",
-      color: "#00f91d",
-      borderRadius: "50%",
-      border: "1px solid #000000ff",
-      mx: "auto",
-      transition: "all 0.4s ease",
-      mb: 3,
-    }}
-  >
-    {service.icon}
-  </Box>
+                {/* Floating Icon */}
+                <Box
+                  className="service-icon"
+                  sx={{
+                    width: 90,
+                    height: 90,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    bgcolor: "#f2f2f2",
+                    color: "#00f91d",
+                    borderRadius: "50%",
+                    border: "1px solid #000000ff",
+                    mx: "auto",
+                    transition: "all 0.4s ease",
+                    mb: 3,
+                  }}
+                >
+                  {service.icon}
+                </Box>
 
-  <CardContent sx={{ flexGrow: 1, p: 0 }}>
-    {/* Title */}
-    <Typography
-      variant="h6"
-      sx={{
-        fontWeight: 600,
-        mb: 1.5,
-        color: "text.primary",
-        transition: "color 0.3s ease",
-      }}
-    >
-      {service.title}
-    </Typography>
+                <CardContent sx={{ flexGrow: 1, p: 0 }}>
+                  {/* Title */}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 600,
+                      mb: 1.5,
+                      color: "text.primary",
+                      transition: "color 0.3s ease",
+                    }}
+                  >
+                    {service.title}
+                  </Typography>
 
-    {/* Description */}
-    <Typography
-      variant="body2"
-      sx={{
-        color: "text.secondary",
-        mb: 3,
-        lineHeight: 1.6,
-        px: 1,
-      }}
-    >
-      {service.desc}
-    </Typography>
+                  {/* Description */}
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 3,
+                      lineHeight: 1.6,
+                      px: 1,
+                    }}
+                  >
+                    {service.desc}
+                  </Typography>
 
-    {/* CTA Button */}
-   <MuiLink
-  component={Link}
-  href="/contact"
-  underline="none"
-  sx={{
-    fontWeight: 600,
-    color: "#000000ff",
-    textDecoration: "none",
-    display: "inline-flex",
-    border: "2px solid #00f91d",
-    px: 2,
-    py: 1,
-    borderRadius: 2,
-    alignItems: "center",
-    transition: "all 0.3s ease",
-    "& .MuiSvgIcon-root": {
-      fontSize: 18,
-      transition: "transform 0.2s ease",
-    },
-    "&:hover .MuiSvgIcon-root": {
-      transform: "translateX(4px)",
-    },
-  }}
->
-  <Typography component="span">
-    Explore Service <ArrowForward sx={{ ml: 0.5 }} />
-  </Typography>
-</MuiLink>
-  </CardContent>
-</Card>
-
-              </Link>
+                  {/* CTA Button */}
+                  <Link href={service.href} passHref >
+                    <Button
+                      component="a"
+                      className="service-link"
+                      sx={{
+                        fontWeight: 600,
+                        color: "#000000ff",
+                        textDecoration: "none",
+                        display: "inline-flex",
+                        border: "2px solid #00f91d",
+                        px: 2,
+                        py: 1,
+                        borderRadius: 2,
+                        alignItems: "center",
+                        transition: "all 0.3s ease",
+                        "& .MuiSvgIcon-root": {
+                          fontSize: 18,
+                          transition: "transform 0.2s ease",
+                        },
+                        "&:hover": {
+                          background: "#00f91d",
+                          color: "black",
+                          borderColor: "#00f91d",
+                          "& .MuiSvgIcon-root": {
+                            transform: "translateX(4px)",
+                          },
+                        },
+                      }}
+                    >
+                      Explore Service <ArrowForward sx={{ ml: 0.5 }} />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </Grid>
