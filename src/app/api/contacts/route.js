@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import CholaContact from "../../../models/contactModel";
+import CholaContact from "../../../models/contactModel.js";
 import { NextResponse } from "next/server";
 import { uploadFileToR2 } from "../../../utils/uploads/s3Uploader.js";
 import { ApiResponse } from "../../../utils/ApiResponse.js";
