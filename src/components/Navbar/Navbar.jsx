@@ -31,7 +31,7 @@ export default function Navbar() {
       <Toolbar className="flex justify-between">
         <Link href="/">
           <Box className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="logo" width={100} height={40} />
+          <Image src="/logo.jpeg" alt="logo" width={100} height={40} />
  
         </Box>
         </Link>
