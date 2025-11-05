@@ -1,6 +1,6 @@
 "use client";
 import React ,{ useState ,useEffect,useRef} from "react";
-import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, Button, useTheme, useMediaQuery,CircularProgress  } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -34,36 +34,100 @@ export default function Home() {
       }}
       mt={{ xs: -10, md: 0 }}
     >
-   <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "fill",
-          zIndex: -1,
-        }}
-        onCanPlay={() => setVideoLoaded(true)}
-      >
-        <source src="/head1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+   {/* 🔹 Background Video with Blur & Overlay */}
+<Box
+  sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    overflow: "hidden",
+    zIndex: -1,
+  }}
+>
+  {/* 🔹 Video Background Layer with Image Fallback */}
+<Box
+  sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    overflow: "hidden",
+    zIndex: -1,
+  }}
+>
+  {/* 🌄 1. Static fallback image (immediately visible) */}
+  <motion.img
+    src="/head8.jpg" // 👈 your fallback image
+    alt="Background fallback"
+    initial={{ opacity: 1 }}
+    animate={{ opacity: videoLoaded ? 0 : 1 }}
+    transition={{ duration: 1, ease: "easeOut" }}
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      // filter: "blur(2px) brightness(0.8)", // visually consistent with video
+      // transition: "opacity 0.8s ease-in-out",
+    }}
+  />
+
+  {/* 🎥 2. Video layer (fades in after loading) */}
+  {/* <motion.video
+    ref={videoRef}
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+    poster="/head3.jpg"
+    onCanPlay={() => setVideoLoaded(true)}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: videoLoaded ? 1 : 0 }}
+    transition={{ duration: 1.2, ease: "easeOut" }}
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      filter: "blur(2px) brightness(0.9)",
+    }}
+  >
+    <source src="/head1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </motion.video> */}
+</Box>
+
+  {/* Optional Overlay gradient for aesthetic depth */}
+  <Box
+    sx={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "linear-gradient(280deg, rgba(0, 0, 0, 0.09) 0%, rgba(0, 0, 0, 0.29) 100%)",
+    }}
+  />
+</Box>
+{/* 🌀 Loader until video ready */}
+     
 
       
       {/* 🔹 Text Content */}
       <Box
         sx={{
-          zIndex: 3,
+          // zIndex: 3,
           maxWidth: 1200,
           width: "100%",
-          px: 2,
+          // px: 2,
           textAlign: { xs: "center", md: "left" },
         }}
       >
@@ -78,7 +142,7 @@ export default function Home() {
               fontWeight: "bold",
               fontSize: { xs: "2.6rem", md: "3rem" },
               lineHeight: 1.6,
-              color: "black",
+              color: "white",
             }}
           >
             WELCOME !!
@@ -86,12 +150,12 @@ export default function Home() {
               component="span"
               sx={{
                 display: "block",
-                background: "black",
+                background: "white",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
               }}
             >
-              <Box component="span" sx={{ color: "#ff9800" }}>C</Box> <Box component={"span"} sx={{ color: "black" }} >H O L {" "}</Box>
+              <Box component="span" sx={{ color: "#ff9800" }}>C</Box> <Box component={"span"} sx={{ color: "white" }} >H O L {" "}</Box>
               <Box component="span" sx={{ color: "#74ed3f" }}>A</Box> BUSINESS AUTOMATION
             </Box>
           </Typography>
@@ -107,17 +171,38 @@ export default function Home() {
               mt: 2,
               fontSize: { xs: "1.3rem", md: "1.25rem" },
               fontWeight: 500,
-              color: "black",
+              color: "white",
               maxWidth: 600,
             }}
           >
             We craft{" "}
-            <Box component="span" sx={{ fontWeight: "bold", color: "#ef4444" }}>
+            <Box component="span" sx={{ fontWeight: "bold", color: "#ff9800" }}>
               cutting-edge{" "}
             </Box>
             web and mobile applications that empower businesses to scale and thrive
             in the digital era.
           </Typography>
+
+           <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          <Typography
+            sx={{
+              mt: 2,
+              fontSize: { xs: "1.3rem", md: "1.25rem" },
+              fontWeight: 500,
+              color: "white",
+            }}
+          >
+            At Chola Business Automation, we specialize in delivering customized business automation software solutions designed to streamline your operations, enhance productivity, and drive growth.
+Our products and services are built to empower startups, SMEs, and enterprises to go digital with ease.
+
+            {/* Additional content can go here */}
+          </Typography>
+          </motion.div>
+
            <Button
             component={motion.button}
             whileHover={{ scale: 1.05 }}
@@ -136,14 +221,15 @@ export default function Home() {
           </Button>
         </motion.div>
 
-        <Box
+
+        {/* <Box
           sx={{
             mt: 3,
             display: "flex",
             gap: 2,
             justifyContent: { xs: "center", md: "flex-start" },
           }}
-        >
+        > */}
          
           {/* <Button
             component={motion.button}
@@ -161,11 +247,11 @@ export default function Home() {
           >
             Learn More
           </Button> */}
-        </Box>
+        {/* </Box> */}
       </Box>
 
       {/* 🔹 Woman Image at Bottom (Responsive + Animated) */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 100, scale: 0.9 }}
         animate={{ opacity: 1, y: [1, 8, 2], scale: 1.1 }} // 👈 added subtle float
         transition={{
@@ -199,7 +285,7 @@ export default function Home() {
           }}
           priority
         />
-      </motion.div>
+      </motion.div> */}
     </Box>
   );
 }
