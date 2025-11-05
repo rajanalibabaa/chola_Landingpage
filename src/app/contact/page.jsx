@@ -16,6 +16,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { keyframes } from "@emotion/react";
+import axios from "axios";
 
 // Animation for the left side
 const floatAnimation = keyframes`
@@ -42,9 +43,9 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, type: "success", message: "" });
   const [activeFeature, setActiveFeature] = useState(0);
-  
+
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const features = [
     {
@@ -79,35 +80,35 @@ export default function ContactPage() {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    // console.log("file :",file)
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const base64 = reader.result.split(",")[1];
+      // console.log("base64 :",base64)
+      setFormData((prev) => ({
+        ...prev,
+        attachment: {
+          name: file.name,
+          type: file.type,
+          base64: base64,
+        },
+      }));
+    };
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!formData.agree) {
-      setSnackbar({ open: true, type: "error", message: "You must accept the Privacy Policy." });
-      return;
-    }
-
     setLoading(true);
-
     try {
-      const formPayload = new FormData();
-      Object.keys(formData).forEach((key) => {
-        if (formData[key] !== null) formPayload.append(key, formData[key]);
-      });
-
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/contact", {
-        method: "POST",
-        body: formPayload,
-      });
-
-      if (!response.ok) {
-        setSnackbar({ open: true, type: "error", message: "Failed to send message" });
-        return;
-      }
-
-      const result = await response.json();
-      setSnackbar({ open: true, type: "success", message: result.message });
-
+      console.log(formData);
+      const res = await axios.post("/api/contact", formData);
+      setSnackbar({ open: true, type: "success", message: "Data saved ✅" });
       setFormData({
         name: "",
         company: "",
@@ -118,7 +119,7 @@ export default function ContactPage() {
         attachment: null,
       });
     } catch (err) {
-      setSnackbar({ open: true, type: "error", message: err.message || "Something went wrong" });
+      setSnackbar({ open: true, type: "error", message: "Failed ❌" });
     } finally {
       setLoading(false);
     }
@@ -134,16 +135,17 @@ export default function ContactPage() {
       sx={{
         minHeight: "100vh",
         display: "flex",
-        bgcolor: "#f8faf7", // Light green background
+        bgcolor: "#f8faf7",
       }}
     >
-      {/* Left Side with Animation */}
+      {/* Left Side */}
       {!isMobile && (
         <Box
           sx={{
             width: "60%",
             bgcolor: "primary.main",
-            background: " linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)", // Orange gradient
+            background:
+              "linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)",
             color: "white",
             display: "flex",
             flexDirection: "column",
@@ -169,46 +171,6 @@ export default function ContactPage() {
             </Typography>
           </Box>
 
-          {/* Animated circles in background */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: "10%",
-              left: "20%",
-              width: 100,
-              height: 100,
-              borderRadius: "50%",
-              bgcolor: "rgba(255,255,255,0.1)",
-              animation: `${floatAnimation} 8s ease-in-out infinite`,
-            }}
-          />
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: "15%",
-              right: "20%",
-              width: 150,
-              height: 150,
-              borderRadius: "50%",
-              bgcolor: "rgba(255,255,255,0.07)",
-              animation: `${floatAnimation} 9s ease-in-out infinite`,
-              animationDelay: "1s",
-            }}
-          />
-          <Box
-            sx={{
-              position: "absolute",
-              top: "30%",
-              right: "10%",
-              width: 80,
-              height: 80,
-              borderRadius: "50%",
-              bgcolor: "rgba(255,255,255,0.05)",
-              animation: `${floatAnimation} 7s ease-in-out infinite`,
-              animationDelay: "0.5s",
-            }}
-          />
-
           {/* Feature cards */}
           <Box sx={{ width: "100%", maxWidth: 500, mt: 4 }}>
             {features.map((feature, index) => (
@@ -218,7 +180,10 @@ export default function ContactPage() {
                   p: 3,
                   mb: 2,
                   borderRadius: 2,
-                  bgcolor: index === activeFeature ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.05)",
+                  bgcolor:
+                    index === activeFeature
+                      ? "rgba(255,255,255,0.15)"
+                      : "rgba(255,255,255,0.05)",
                   transition: "all 0.5s ease",
                   transform: index === activeFeature ? "scale(1.03)" : "scale(1)",
                   animation: index === activeFeature ? `${fadeIn} 0.5s ease` : "none",
@@ -239,23 +204,10 @@ export default function ContactPage() {
               </Box>
             ))}
           </Box>
-
-          {/* Contact information */}
-          <Box sx={{ mt: 6, textAlign: "center", animation: `${fadeIn} 1s ease` }}>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Prefer to email directly?
-            </Typography>
-            <Typography variant="body1" sx={{ opacity: 0.9 }}>
-              support@cholabiz.com
-            </Typography>
-            <Typography variant="body1" sx={{ opacity: 0.9, mt: 1 }}>
-              +91 9444576133
-            </Typography>
-          </Box>
         </Box>
       )}
 
-      {/* Right Side with Contact Form */}
+      {/* Right Side Form */}
       <Box
         sx={{
           width: isMobile ? "100%" : "55%",
@@ -263,145 +215,168 @@ export default function ContactPage() {
           alignItems: "center",
           justifyContent: "center",
           p: 2,
-          mt: 7
+          mt: 7,
         }}
       >
-        <Paper elevation={1} sx={{ 
-          p: { xs: 3, sm: 4 }, 
-          maxWidth: 600, 
-          width: "100%", 
-          borderRadius: 3,
-          bgcolor: "#ffffff"
-        }}>
-          <Typography variant="h4" align="center" fontWeight="bold" gutterBottom
-            sx={{ color: "#0df72d" }} // Orange color for heading
+        <Paper
+          elevation={1}
+          sx={{
+            p: { xs: 3, sm: 4 },
+            maxWidth: 600,
+            width: "100%",
+            borderRadius: 3,
+            bgcolor: "#ffffff",
+          }}
+        >
+          <Typography
+            variant="h4"
+            align="center"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ color: "#0df72d" }}
           >
             Contact Us
           </Typography>
-          <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            align="center"
+            color="text.secondary"
+            sx={{ mb: 3 }}
+          >
             Fill out the form and we'll get back to you as soon as possible
           </Typography>
 
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={3} sx={{ display: "grid" ,gridTemplateColumns:" repeat(2, 1fr)"}}>
+            <Grid container spacing={3} sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
               <Grid item xs={12}>
-                <TextField 
-                  label="Your full name" 
-                  name="name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  required 
-                  fullWidth 
-                  variant="outlined" 
+                <TextField
+                  label="Your full name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField 
-                  label="Company" 
-                  name="company" 
-                  value={formData.company} 
-                  onChange={handleChange} 
-                  fullWidth 
-                  variant="outlined" 
+                <TextField
+                  label="Company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField 
-                  label="Your email address" 
-                  name="email" 
-                  type="email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  required 
-                  fullWidth 
-                  variant="outlined" 
+                <TextField
+                  label="Your email address"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField 
-                  label="Your phone number" 
-                  name="phone" 
-                  type="tel" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  fullWidth 
-                  variant="outlined" 
-                />
-       
-              </Grid>
-          
-               </Grid>
-     <Grid container spacing={3} sx={{ display: "grid" ,gridTemplateColumns:" repeat(2, 1fr)"}}></Grid>
-                          <Grid item xs={12}mt={3}>
-                          <TextField 
-                    label="About a project" 
-                    name="message" 
-                    value={formData.message} 
-                    onChange={handleChange} 
-                    required 
-                    fullWidth
-                    multiline 
-                    rows={4}
-                    variant="outlined" 
-                  />
-                </Grid>
-              <Grid item xs={12}>
-                <Box sx={{ display: "flex", flexDirection: "column", mt: 3 }}>
-          
-                  <Button variant="outlined" component="label" fullWidth sx={{ 
-                    py: 1.5, 
-                    borderRadius: "8px",
-                    color: "#ff8c00", // Orange text
-                    borderColor: "#ff8c00", // Orange border
-                    "&:hover": {
-                      borderColor: "#e67e00", // Darker orange on hover
-                      backgroundColor: "rgba(255, 140, 0, 0.04)"
-                    }
-                  }}>
-                    {formData.attachment ? formData.attachment.name : "Attach a file"}
-                    <input type="file" hidden onChange={(e) => setFormData((prev) => ({ ...prev, attachment: e.target.files[0] }))} />
-                  </Button>
-                </Box>
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox name="agree" checked={formData.agree} onChange={handleChange} 
-                    sx={{ 
-                      color: "#ff8c00", // Orange checkbox
-                      "&.Mui-checked": { color: "#ff8c00" } 
-                    }} 
-                  />}
-                  label={
-                    <Typography variant="body2">
-                      By sending this form I confirm that I have read and accept the{" "}
-                      <a href="/privacy-policy" style={{ color: "#ff8c00" }}>
-                        Privacy Policy
-                      </a>
-                    </Typography>
-                  }
+                <TextField
+                  label="Your phone number"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12}>
+            </Grid>
+
+            <Grid container spacing={3} sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}></Grid>
+
+            <Grid item xs={12} mt={3}>
+              <TextField
+                label="About a project"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                fullWidth
+                multiline
+                rows={4}
+                variant="outlined"
+              />
+            </Grid>
+
+            {/* File Upload */}
+            <Grid item xs={12}>
+              <Box sx={{ display: "flex", flexDirection: "column", mt: 3 }}>
                 <Button
-                  type="submit"
-                  variant="contained"
-                  disabled={loading}
-                  sx={{ 
-                    py: 1.5, 
-                    borderRadius: "50px", 
-                    fontWeight: "bold", 
-                    width: "100%",
-                    backgroundColor: "#0df72d", // Orange background
-                    "&:hover": { backgroundColor: "#e67e00" } // Darker orange on hover
+                  variant="outlined"
+                  component="label"
+                  fullWidth
+                  sx={{
+                    py: 1.5,
+                    borderRadius: "8px",
+                    color: "#ff8c00",
+                    borderColor: "#ff8c00",
+                    "&:hover": {
+                      borderColor: "#e67e00",
+                      backgroundColor: "rgba(255, 140, 0, 0.04)",
+                    },
                   }}
                 >
-                  {loading ? <CircularProgress size={24} color="inherit" /> : "Submit"}
+                  {formData.attachment ? formData.attachment.name : "Attach a file"}
+                  <input type="file" hidden onChange={handleFileChange} />
                 </Button>
-              </Grid>
-           
+              </Box>
+            </Grid>
+
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name="agree"
+                    checked={formData.agree}
+                    onChange={handleChange}
+                    sx={{
+                      color: "#ff8c00",
+                      "&.Mui-checked": { color: "#ff8c00" },
+                    }}
+                  />
+                }
+                label={
+                  <Typography variant="body2">
+                    By sending this form I confirm that I have read and accept the{" "}
+                    <a href="/privacy-policy" style={{ color: "#ff8c00" }}>
+                      Privacy Policy
+                    </a>
+                  </Typography>
+                }
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={loading}
+                sx={{
+                  py: 1.5,
+                  borderRadius: "50px",
+                  fontWeight: "bold",
+                  width: "100%",
+                  backgroundColor: "#0df72d",
+                  "&:hover": { backgroundColor: "#e67e00" },
+                }}
+              >
+                {loading ? <CircularProgress size={24} color="inherit" /> : "Submit"}
+              </Button>
+            </Grid>
           </form>
 
-          {/* Snackbar popup */}
           <Snackbar
             open={snackbar.open}
             autoHideDuration={3000}

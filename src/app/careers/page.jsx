@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -14,15 +15,18 @@ import {
 import { motion } from "framer-motion";
 
 export default function StudentFormPage() {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     email: "",
     phone: "",
     education: "",
     applyFor: "",
     message: "",
-  });
-  const [resumeFile, setResumeFile] = useState(null);
+    attachment: null,
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [resumeFile, setResumeFile] = useState(null); // for display
   const [submitStatus, setSubmitStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -31,49 +35,39 @@ export default function StudentFormPage() {
   };
 
   const handleResumeChange = (e) => {
-    setResumeFile(e.target.files[0]);
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setResumeFile(file); // update file name display
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const base64 = reader.result.split(",")[1];
+      setFormData((prev) => ({
+        ...prev,
+        attachment: {
+          name: file.name,
+          type: file.type,
+          base64: base64,
+        },
+      }));
+    };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitStatus(null);
     setLoading(true);
-
-    const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
-    if (resumeFile) data.append("resume", resumeFile);
-
     try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "/careers",
-        { method: "POST", body: data }
-      );
-
-      if (!response.ok) throw new Error("Failed to submit form");
-
-      const result = await response.json();
-      console.log("Form Submitted:", result);
-      setSubmitStatus({
-        type: "success",
-        message: "Form submitted successfully!",
-      });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        education: "",
-        applyFor: "",
-        message: "",
-      });
+      console.log(formData);
+      await axios.post("/api/career", formData);
+      setSubmitStatus({ type: "success", message: "Data saved ✅" });
+      setFormData(initialFormData);
       setResumeFile(null);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitStatus({
-        type: "error",
-        message: "Failed to submit form. Please try again.",
-      });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: "Failed ❌" });
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -81,7 +75,7 @@ export default function StudentFormPage() {
 
   useEffect(() => {
     if (submitStatus) {
-      const timer = setTimeout(() => setSubmitStatus(null), 2000);
+      const timer = setTimeout(() => setSubmitStatus(null), 3000);
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
@@ -136,7 +130,11 @@ export default function StudentFormPage() {
 
             <form onSubmit={handleSubmit}>
               <Stack spacing={3} sx={{ width: "100%" }}>
-                <Grid container  flexDirection={{ xs: "column", sm: "row", md: "column" }} spacing={3}>
+                <Grid
+                  container
+                  spacing={3}
+                  flexDirection={{ xs: "column", sm: "row", md: "column" }}
+                >
                   <Grid item xs={12} sm={6}>
                     <TextField
                       label="Full Name"
