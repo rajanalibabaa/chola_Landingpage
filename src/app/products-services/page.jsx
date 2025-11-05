@@ -1,18 +1,8 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
-import {
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Box,
-  alpha,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
+import { Container, Typography, Card, CardContent, Box, alpha, useTheme, useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion';
 
-// Optimized services data with smaller image sizes in mind
 const services = [
   {
     id: 1,
@@ -65,88 +55,28 @@ const services = [
   },
 ];
 
-// Performance-optimized animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.4 } 
   }
 };
 
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30 
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  }
-};
-
-const imageVariants = {
-  hidden: { 
-    opacity: 0, 
-    scale: 0.9,
-    x: -50 
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    x: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { 
-    opacity: 0, 
-    x: 50 
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-// Optimized scroll progress with throttling
 const ScrollProgress = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    let ticking = false;
-    
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = Math.min(100, (scrollTop / docHeight) * 100);
+      const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(progress);
-      ticking = false;
     };
 
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollProgress);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateScrollProgress);
+    return () => window.removeEventListener('scroll', updateScrollProgress);
   }, []);
 
   return (
@@ -157,17 +87,17 @@ const ScrollProgress = () => {
         left: 0,
         width: '100%',
         height: '3px',
-        backgroundColor: alpha('#1976d2', 0.1),
+        backgroundColor: alpha('#1976d2', 0.2),
         zIndex: 1000,
       }}
     >
-      <Box
+      <motion.div
         style={{
           height: '100%',
           background: 'linear-gradient(90deg, #1976d2, #0288d1)',
           width: `${scrollProgress}%`,
-          transition: 'width 0.1s ease',
         }}
+        transition={{ duration: 0.1 }}
       />
     </Box>
   );
@@ -177,35 +107,6 @@ const ProductServicesPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
-  // Optimized mouse effect with throttling
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    let ticking = false;
-    
-    const handleMouseMove = (e) => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setMousePosition({
-            x: (e.clientX / window.innerWidth) * 10,
-            y: (e.clientY / window.innerHeight) * 10
-          });
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Only add mousemove on non-mobile devices
-    if (!isMobile) {
-      window.addEventListener('mousemove', handleMouseMove, { passive: true });
-      return () => window.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, [isMobile]);
-
-  // Memoize services to prevent unnecessary re-renders
-  const memoizedServices = useMemo(() => services, []);
 
   return (
     <>
@@ -218,58 +119,14 @@ const ProductServicesPage = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Performance-optimized background elements - only on desktop */}
-        {!isMobile && (
-          <>
-            <motion.div
-              animate={{
-                x: mousePosition.x,
-                y: mousePosition.y
-              }}
-              transition={{ type: "tween", duration: 0.5 }}
-              style={{
-                position: 'absolute',
-                top: '10%',
-                left: '10%',
-                width: '120px',
-                height: '120px',
-                borderRadius: '50%',
-                background: 'linear-gradient(45deg, #1976d2, transparent)',
-                opacity: 0.05,
-                filter: 'blur(20px)',
-                willChange: 'transform',
-              }}
-            />
-            <motion.div
-              animate={{
-                x: -mousePosition.x,
-                y: -mousePosition.y
-              }}
-              transition={{ type: "tween", duration: 0.5 }}
-              style={{
-                position: 'absolute',
-                bottom: '10%',
-                right: '10%',
-                width: '150px',
-                height: '150px',
-                borderRadius: '50%',
-                background: 'linear-gradient(45deg, #2e7d32, transparent)',
-                opacity: 0.05,
-                filter: 'blur(20px)',
-                willChange: 'transform',
-              }}
-            />
-          </>
-        )}
 
         <Container maxWidth="lg" sx={{ px: isSmallMobile ? 2 : 3, position: 'relative', zIndex: 1 }}>
-          {/* Optimized Header Section */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ 
-              duration: 0.6,
+              duration: 0.7,
               ease: "easeOut"
             }}
           >
@@ -279,7 +136,7 @@ const ProductServicesPage = () => {
               mt: isSmallMobile ? 1 : 2
             }}>
               <motion.div
-                initial={{ scale: 0.95 }}
+                initial={{ scale: 0.9 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
@@ -295,6 +152,7 @@ const ProductServicesPage = () => {
                     WebkitBackgroundClip: 'text',
                     color: 'transparent',
                     mb: 2,
+                    mt: 5,
                     fontSize: {
                       xs: '1.75rem',
                       sm: '2.5rem',
@@ -310,7 +168,7 @@ const ProductServicesPage = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.5 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
               >
                 <Typography
                   variant={isSmallMobile ? "body1" : "h6"}
@@ -332,10 +190,10 @@ const ProductServicesPage = () => {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
               >
                 <Typography sx={{
                   color: '#37d620', 
@@ -352,14 +210,13 @@ const ProductServicesPage = () => {
             </Box>
           </motion.div>
 
-          {/* Optimized Services Grid */}
           <Box sx={{ 
             display: 'flex', 
             flexDirection: 'column', 
             gap: isMobile ? 3 : 4
           }}>
-            {memoizedServices.map((service, index) => (
-              <OptimizedServiceCard 
+            {services.map((service, index) => (
+              <ServiceCard 
                 key={service.id} 
                 service={service} 
                 isEven={index % 2 === 0} 
@@ -375,29 +232,16 @@ const ProductServicesPage = () => {
   );
 };
 
-// Performance-optimized Service Card with React.memo
-const OptimizedServiceCard = React.memo(({ service, isEven, isMobile, isSmallMobile, index }) => {
+const ServiceCard = ({ service, isEven, isMobile, isSmallMobile, index }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const theme = useTheme();
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
 
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-30px" }}
-      variants={itemVariants}
-      transition={{ delay: index * 0.05 }}
-      whileHover={{ 
-        scale: isMobile ? 1 : 1.01,
-        transition: { duration: 0.2 }
-      }}
-      style={{
-        willChange: 'transform',
-      }}
+      viewport={{ once: true, margin: "-40px" }}
+      variants={fadeIn}
+      transition={{ delay: index * 0.1 }}
     >
       <Box
         sx={{
@@ -410,83 +254,61 @@ const OptimizedServiceCard = React.memo(({ service, isEven, isMobile, isSmallMob
           gap: isSmallMobile ? 2 : 3,
         }}
       >
-        {/* Optimized Image Section */}
-        <motion.div
-          variants={imageVariants}
-          whileInView="visible"
-          initial="hidden"
-          viewport={{ once: true }}
-          style={{
+        {/* Image Section - Clean without any effects */}
+        <Box
+          sx={{
             flex: isMobile ? 'none' : 1,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: isMobile ? (isSmallMobile ? 180 : 220) : 320,
+            minHeight: isMobile ? (isSmallMobile ? 200 : 250) : 350,
             width: isMobile ? '100%' : 'auto',
           }}
         >
-          <motion.div
-            whileHover={{ 
-              scale: isMobile ? 1.02 : 1.05,
-              transition: { duration: 0.2 }
+          <Box
+            component="img"
+            src={service.image}
+            alt={service.title}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+            sx={{
+              width: {
+                xs: isSmallMobile ? '200px' : '250px',
+                sm: '300px',
+                md: '350px',
+                lg: '400px'
+              },
+              height: {
+                xs: isSmallMobile ? '200px' : '250px',
+                sm: '300px',
+                md: '350px',
+                lg: '400px'
+              },
+              objectFit: 'contain',
+              opacity: imageLoaded ? 1 : 0.7,
+              transition: 'opacity 0.3s ease',
+              // Clean - no shadow, no border, no effects
             }}
-            style={{
-              willChange: 'transform',
-            }}
-          >
-            <Box
-              component="img"
-              src={service.image}
-              alt={service.title}
-              loading="lazy"
-              onLoad={handleImageLoad}
-              sx={{
-                width: {
-                  xs: isSmallMobile ? '180px' : '220px',
-                  sm: '280px',
-                  md: '320px',
-                  lg: '360px'
-                },
-                height: {
-                  xs: isSmallMobile ? '180px' : '220px',
-                  sm: '280px',
-                  md: '320px',
-                  lg: '360px'
-                },
-                objectFit: 'contain',
-                opacity: imageLoaded ? 0.9 : 0,
-                transition: 'opacity 0.3s ease, filter 0.2s ease',
-                filter: 'drop-shadow(0 6px 12px rgba(0,0,0,0.1))',
-                '&:hover': {
-                  opacity: 1,
-                  filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.15))',
-                }
-              }}
-            />
-          </motion.div>
-        </motion.div>
+          />
+        </Box>
 
-        {/* Optimized Content Section */}
-        <motion.div
-          variants={cardVariants}
-          whileInView="visible"
-          initial="hidden"
-          viewport={{ once: true }}
-          style={{
+        {/* Content Section */}
+        <Box
+          sx={{
             flex: isMobile ? 'none' : 1,
             width: isMobile ? '100%' : 'auto',
           }}
         >
           <motion.div
             whileHover={{ 
-              y: isMobile ? -2 : -4,
-              transition: { duration: 0.2 }
+              y: -4,
+              transition: { duration: 0.3 }
             }}
           >
             <Card 
               sx={{ 
-                background: `linear-gradient(135deg, ${alpha(service.color, 0.06)} 0%, ${alpha(service.color, 0.02)} 100%)`,
-                border: `1px solid ${alpha(service.color, 0.15)}`,
+                background: `linear-gradient(135deg, ${alpha(service.color, 0.08)} 0%, ${alpha(service.color, 0.03)} 100%)`,
+                border: `1px solid ${alpha(service.color, 0.2)}`,
                 borderRadius: {
                   xs: 2,
                   md: 3
@@ -508,7 +330,7 @@ const OptimizedServiceCard = React.memo(({ service, isEven, isMobile, isSmallMob
             >
               <CardContent sx={{ 
                 p: {
-                  xs: isSmallMobile ? 2.5 : 3,
+                  xs: isSmallMobile ? 2 : 3,
                   md: 4
                 }, 
                 textAlign: { 
@@ -516,98 +338,76 @@ const OptimizedServiceCard = React.memo(({ service, isEven, isMobile, isSmallMob
                   md: 'left' 
                 } 
               }}>
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.15 }}
+                <Typography
+                  variant={isSmallMobile ? "h5" : "h4"}
+                  component="h3"
+                  fontWeight="bold"
+                  gutterBottom
+                  sx={{ 
+                    mb: {
+                      xs: 2,
+                      md: 2
+                    },
+                    background: `linear-gradient(45deg, ${service.color}, ${alpha(service.color, 0.8)})`,
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                    fontSize: {
+                      xs: '1.5rem',
+                      sm: '1.75rem',
+                      md: '2.125rem'
+                    }
+                  }}
                 >
-                  <Typography
-                    variant={isSmallMobile ? "h5" : "h4"}
-                    component="h3"
-                    fontWeight="bold"
-                    gutterBottom
-                    sx={{ 
-                      mb: {
-                        xs: 2,
-                        md: 2
-                      },
-                      background: `linear-gradient(45deg, ${service.color}, ${alpha(service.color, 0.8)})`,
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      fontSize: {
-                        xs: '1.5rem',
-                        sm: '1.75rem',
-                        md: '2.125rem'
-                      }
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                </motion.div>
+                  {service.title}
+                </Typography>
                 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
+                <Typography
+                  variant={isSmallMobile ? "body2" : "h6"}
+                  component="p"
+                  color="text.secondary"
+                  sx={{
+                    lineHeight: 1.6,
+                    fontWeight: 400,
+                    fontSize: {
+                      xs: '0.875rem',
+                      sm: '1rem',
+                      md: '1.1rem'
+                    },
+                  }}
                 >
-                  <Typography
-                    variant={isSmallMobile ? "body2" : "h6"}
-                    component="p"
-                    color="text.secondary"
-                    sx={{
-                      lineHeight: 1.6,
-                      fontWeight: 400,
-                      fontSize: {
-                        xs: '0.875rem',
-                        sm: '1rem',
-                        md: '1.1rem'
-                      },
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
-                </motion.div>
+                  {service.description}
+                </Typography>
 
-                {/* Optimized decorative element */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: isSmallMobile ? '40px' : '50px' }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                  <Box
-                    sx={{
-                      width: {
-                        xs: '40px',
-                        md: '50px'
-                      },
-                      height: {
-                        xs: '3px',
-                        md: '4px'
-                      },
-                      background: `linear-gradient(90deg, ${service.color}, ${alpha(service.color, 0.5)})`,
-                      borderRadius: 2,
-                      mt: {
-                        xs: 2,
-                        md: 3
-                      },
-                      mx: { 
-                        xs: 'auto', 
-                        md: '0' 
-                      },
-                    }}
-                  />
-                </motion.div>
+                <Box
+                  sx={{
+                    width: {
+                      xs: '40px',
+                      md: '50px'
+                    },
+                    height: {
+                      xs: '3px',
+                      md: '4px'
+                    },
+                    background: `linear-gradient(90deg, ${service.color}, ${alpha(service.color, 0.5)})`,
+                    borderRadius: 2,
+                    mt: {
+                      xs: 2,
+                      md: 3
+                    },
+                    mx: { 
+                      xs: 'auto', 
+                      md: '0' 
+                    },
+                  }}
+                />
               </CardContent>
             </Card>
           </motion.div>
-        </motion.div>
+        </Box>
       </Box>
     </motion.div>
   );
-});
-
-OptimizedServiceCard.displayName = 'OptimizedServiceCard';
+};
 
 export default ProductServicesPage;
