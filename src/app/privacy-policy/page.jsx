@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,6 +14,9 @@ export default function PrivacyPolicy() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <Box
@@ -56,7 +59,6 @@ export default function PrivacyPolicy() {
         >
           Privacy Policy
         </Typography>
-        
 
         {/* --- Content --- */}
         <Typography
@@ -72,9 +74,9 @@ export default function PrivacyPolicy() {
         </Typography>
         <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           • Name, Email Address, Contact Number <br />
-          • Company Information and Business Requirements <br />
-          • Payment Details for Software Purchase (processed securely through
-          payment gateway)
+          • Company Information and Business Requirements <br />• Payment
+          Details for Software Purchase (processed securely through payment
+          gateway)
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>

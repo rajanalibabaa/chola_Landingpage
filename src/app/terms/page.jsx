@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,6 +14,9 @@ export default function TermsAndConditions() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <Box
@@ -132,7 +135,8 @@ export default function TermsAndConditions() {
               mb: 3,
             }}
           >
-            For any queries regarding these Terms and Conditions, please contact us at{" "}
+            For any queries regarding these Terms and Conditions, please contact
+            us at{" "}
             <a
               href={`mailto:support@cholabiz.com?subject=${encodeURIComponent(
                 "Inquiry about Terms and Conditions"
@@ -146,7 +150,8 @@ export default function TermsAndConditions() {
               }}
             >
               support@cholabiz.com
-            </a>.
+            </a>
+            .
           </Typography>
 
           <Button
