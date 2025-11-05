@@ -123,7 +123,7 @@ export default function AboutPage() {
               >
                 <Typography
                 variant="h4"
-                sx={{ fontWeight: 700, color: "#1e293b", mb: 3 }}
+                sx={{ fontWeight: 700, color: "#1e293b", mb: 0 }}
               >
                 Who We Are
               </Typography>
@@ -158,11 +158,18 @@ export default function AboutPage() {
    
  
 
-        <Divider sx={{ borderColor: "#e5e7eb", mb: { xs: 6, md: 10 } }} />
 
   {/* VISION & MISSION */}
-<Box sx={{ mb: { xs: 6, md: 10 } }}>
-  <Grid container spacing={6}>
+<Box 
+  sx={{ 
+    mb: { xs: 6, md: 10 },
+    backgroundColor: "rgba(241,245,249,0.5)",
+    borderRadius: "16px",
+    p: { xs: 3, md: 4 },
+    boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
+  }}
+>
+  <Grid container spacing={6} alignItems="stretch">
     {/* Vision */}
     <Grid item xs={12} md={6}>
       <motion.div
@@ -170,29 +177,48 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
+        style={{ height: "100%" }}
       >
-        <Typography
-          variant="h4"
-          sx={{ 
-            fontWeight: 700, 
-            color: "#1e293b", 
-            mb: 2,
-            fontSize: { xs: "1.5rem", md: "2rem" }
+        <Box
+          sx={{
+            height: "100%",
+            p: 3,
+            backgroundColor: "#fff",
+            borderRadius: "12px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          Our Vision
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{ 
-            color: "rgba(75,85,99,0.95)", 
-            lineHeight: 1.7,
-            fontSize: { xs: "0.9rem", md: "1rem" }
-          }}
-        >
-          To be India's most trusted business automation company delivering
-          innovative, cost-effective and result-oriented digital solutions.
-        </Typography>
+          <Typography
+            variant="h4"
+            sx={{ 
+              fontWeight: 700, 
+              color: "#1e293b", 
+              mb: 2,
+              fontSize: { xs: "1.5rem", md: "2rem" },
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <span style={{ color: "#3b82f6" }}>◆</span>
+            Our Vision
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ 
+              color: "rgba(75,85,99,0.95)", 
+              lineHeight: 1.7,
+              fontSize: { xs: "0.9rem", md: "1rem" },
+              flex: 1,
+              
+            }}
+          >
+            To be India's most trusted business automation company delivering
+            innovative, cost-effective and result-oriented digital solutions.
+          </Typography>
+        </Box>
       </motion.div>
     </Grid>
 
@@ -203,30 +229,48 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
         viewport={{ once: true }}
+        style={{ height: "100%" }}
       >
-        <Typography
-          variant="h4"
-          sx={{ 
-            fontWeight: 700, 
-            color: "#1e293b", 
-            mb: 2,
-            fontSize: { xs: "1.5rem", md: "2rem" }
+        <Box
+          sx={{
+            height: "100%",
+            p: 3,
+            backgroundColor: "#fff",
+            borderRadius: "12px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          Our Mission
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{ 
-            color: "rgba(75,85,99,0.95)", 
-            lineHeight: 1.7,
-            fontSize: { xs: "0.9rem", md: "1rem" }
-          }}
-        >
-          To automate <strong>10,000+ businesses by 2030</strong> through
-          tailored CRM, ERP and business software solutions that simplify
-          operations and boost scalability.
-        </Typography>
+          <Typography
+            variant="h4"
+            sx={{ 
+              fontWeight: 700, 
+              color: "#1e293b", 
+              mb: 2,
+              fontSize: { xs: "1.5rem", md: "2rem" },
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <span style={{ color: "#10b981" }}>◆</span>
+            Our Mission
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ 
+              color: "rgba(75,85,99,0.95)", 
+              lineHeight: 1.7,
+              fontSize: { xs: "0.9rem", md: "1rem" },
+              flex: 1,
+            }}
+          >
+            To automate <strong>10,000+ businesses by 2030</strong> through
+            tailored CRM, ERP and business software solutions that simplify
+            operations and boost scalability.
+          </Typography>
+        </Box>
       </motion.div>
     </Grid>
   </Grid>
@@ -237,15 +281,19 @@ export default function AboutPage() {
       display: "flex",
       flexDirection: { xs: "column", md: "row" },
       gap: { xs: 4, md: 8 },
-      mt: { xs: 4, md: 6 },
-      alignItems: "flex-start"
+      mt: { xs: 6, md: 8 },
+      alignItems: "stretch"
     }}
   >
     {/* Core Offerings */}
     <Box
       sx={{
         flex: 1,
-        width: "100%"
+        width: "100%",
+        backgroundColor: "#fff",
+        borderRadius: "16px",
+        p: { xs: 3, md: 4 },
+        boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
       }}
     >
       <motion.div
@@ -260,7 +308,10 @@ export default function AboutPage() {
             fontWeight: 700, 
             color: "#1e293b", 
             mb: 3,
-            fontSize: { xs: "1.5rem", md: "2rem" }
+            fontSize: { xs: "1.5rem", md: "2rem" },
+            borderBottom: "2px solid #3b82f6",
+            pb: 2,
+            display: "inline-block"
           }}
         >
           Our Core Offerings
@@ -274,41 +325,55 @@ export default function AboutPage() {
               sm: "1fr 1fr",
               md: "1fr" 
             },
-            gap: 1.5,
+            gap: 2,
             pl: 3,
             m: 0,
-            listStyleType: "disc",
+            listStyleType: "none",
             mb: 3
           }}
         >
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Business Process Automation
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            CRM Solutions
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Franchise Management Systems
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            WhatsApp Automation & Marketing Tools
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Billing, Invoicing, and Accounting Software
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Customized Web & Mobile Application Development
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Cloud-Based Business Solutions
-          </Box>
+          {[
+            "Business Process Automation",
+            "CRM Solutions",
+            "Franchise Management Systems",
+            "WhatsApp Automation & Marketing Tools",
+            "Billing, Invoicing, and Accounting Software",
+            "Customized Web & Mobile Application Development",
+            "Cloud-Based Business Solutions"
+          ].map((item, index) => (
+            <Box 
+              key={index}
+              component="li" 
+              sx={{ 
+                color: "rgba(75,85,99,0.95)", 
+                fontSize: { xs: "0.9rem", md: "1rem" },
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                p: 1.5,
+                borderRadius: "8px",
+                transition: "all 0.2s",
+                "&:hover": {
+                  backgroundColor: "rgba(59,130,246,0.05)",
+                  transform: "translateX(4px)"
+                }
+              }}
+            >
+              <span style={{ color: "#3b82f6" }}>●</span>
+              {item}
+            </Box>
+          ))}
         </Box>
         <Typography
           variant="body1"
           sx={{ 
             color: "rgba(75,85,99,0.95)", 
             lineHeight: 1.7,
-            fontSize: { xs: "0.9rem", md: "1rem" }
+            fontSize: { xs: "0.9rem", md: "1rem" },
+            p: 2,
+            backgroundColor: "rgba(59,130,246,0.05)",
+            borderRadius: "8px",
+            borderLeft: "3px solid #3b82f6"
           }}
         >
           With a team of experienced developers and business consultants, we deliver end-to-end technology solutions that help you scale efficiently and stay ahead in your industry.
@@ -320,7 +385,11 @@ export default function AboutPage() {
     <Box
       sx={{
         flex: 1,
-        width: "100%"
+        width: "100%",
+        backgroundColor: "#fff",
+        borderRadius: "16px",
+        p: { xs: 3, md: 4 },
+        boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
       }}
     >
       <motion.div
@@ -335,7 +404,10 @@ export default function AboutPage() {
             fontWeight: 700, 
             color: "#1e293b", 
             mb: 3,
-            fontSize: { xs: "1.5rem", md: "2rem" }
+            fontSize: { xs: "1.5rem", md: "2rem" },
+            borderBottom: "2px solid #10b981",
+            pb: 2,
+            display: "inline-block"
           }}
         >
           Why Choose CholaBiz
@@ -345,28 +417,43 @@ export default function AboutPage() {
           sx={{
             display: "grid",
             gridTemplateColumns: { 
-              xs: "1fr", 
-              sm: "1fr 1fr",
-              md: "1fr" 
+              xs: "1fr"
             },
-            gap: 1.5,
-            pl: 3,
+            gap: 2,
+            pl: 0,
             m: 0,
-            listStyleType: "disc"
+            listStyleType: "none"
           }}
         >
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Tailored solutions for every business type
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Robust and scalable technology
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Dedicated customer support
-          </Box>
-          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
-            Transparent pricing and reliable delivery
-          </Box>
+          {[
+            "Tailored solutions for every business type",
+            "Robust and scalable technology",
+            "Dedicated customer support",
+            "Transparent pricing and reliable delivery"
+          ].map((item, index) => (
+            <Box 
+              key={index}
+              component="li" 
+              sx={{ 
+                color: "rgba(75,85,99,0.95)", 
+                fontSize: { xs: "0.9rem", md: "1rem" },
+                backgroundColor: "rgba(16,185,129,0.05)",
+                p: 3,
+                borderRadius: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                transition: "all 0.2s",
+                "&:hover": {
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)"
+                }
+              }}
+            >
+              <span style={{ color: "#10b981", fontSize: "1.25rem" }}>✓</span>
+              {item}
+            </Box>
+          ))}
         </Box>
       </motion.div>
     </Box>
