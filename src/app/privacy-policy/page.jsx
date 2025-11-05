@@ -106,17 +106,27 @@ export default function PrivacyPolicy() {
 
         {/* --- Footer --- */}
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <Typography
-            variant="body2"
-            sx={{
-              fontStyle: "italic",
-              color: "#666",
-              mb: 3,
-            }}
-          >
-            For any privacy-related queries, please contact us at{" "}
-            <strong>support@yourwebsite.com</strong>.
-          </Typography>
+       <Typography
+  variant="body2"
+  sx={{
+    fontStyle: "italic",
+    color: "#666",
+    mb: 3,
+  }}
+>
+  For any privacy-related queries, please contact us at{" "}
+  <a
+    href="mailto:support@cholabiz.com"
+    style={{
+      color: "#1976d2",
+      textDecoration: "none",
+      fontWeight: 700,
+    }}
+  >
+    support@cholabiz.com
+  </a>
+</Typography>
+
 
           <Button
             variant="contained"
