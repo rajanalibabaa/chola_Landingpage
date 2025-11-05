@@ -157,9 +157,9 @@ const Footer = () => {
           </Box>
 
           <Stack
-            direction={{ xs: "column", sm: "row" }}
+            direction={{ xs: "grid ", md: "row", sm: "row" }}
             spacing={{ xs: 1, sm: 2, md: 3 }}
-            justifyContent={{ xs: "center", md: "flex-ceter" }}
+            justifyContent={{ xs: "center", md: "flex-center" }}
             alignItems="center"
             sx={{ flexWrap: "wrap", mt: 1 }}
           >

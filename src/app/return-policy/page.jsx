@@ -18,14 +18,14 @@ export default function ReturnPolicy() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "40vh",
         // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        mt: 6,
+        // mt: 6,
       }}
     >
       <Box
@@ -58,23 +58,23 @@ export default function ReturnPolicy() {
         </Typography>
 
         {/* Content */}
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8, mb: 2 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8, mb: 2 }}>
           Since CholaBiz offers digital software products and IT services, there are no physical goods to return.
         </Typography>
 
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8, mb: 2 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8, mb: 2 }}>
           Once the digital license or access credentials have been issued, the service is considered delivered and non-returnable.
         </Typography>
 
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8, mb: 3 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8, mb: 3 }}>
           In case of any technical issues, our team will provide rectification or replacement within the warranty/support period.
         </Typography>
 
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8, mb: 3 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8, mb: 3 }}>
           For support or questions about delivery, licensing, or technical issues, contact:
         </Typography>
 
-        <Typography variant="body1" sx={{ color: "#FF6F61", fontWeight: 600, mb: 5 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#FF6F61", fontWeight: 600, mb: 5 }}>
           <a
             href="mailto:support@cholabiz.com"
             style={{ color: "#FF6F61", textDecoration: "none" }}

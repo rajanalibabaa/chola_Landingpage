@@ -25,7 +25,7 @@ export default function TermsAndConditions() {
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        mt: 6,
+        mt: 2,
       }}
     >
       <Box
@@ -58,7 +58,7 @@ export default function TermsAndConditions() {
         </Typography>
 
         {/* --- Content --- */}
-        <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}>
           These Terms and Conditions (“Terms”) govern your use of Chola Business
           Automation Pvt. Ltd. (“CholaBiz.com”) software products and services.
           By accessing or using our website or services, you agree to comply with
@@ -68,7 +68,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           General Terms:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           By accessing or using <strong>CholaBiz.com</strong>, you agree to comply
           with these terms. These Terms and Conditions govern the sale and
           delivery of software products and related services.
@@ -77,7 +77,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Products & Services:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           All our software and services are customized or license-based digital
           products. Features, pricing, and delivery timelines are defined in
           respective project proposals or invoices.
@@ -86,7 +86,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Payment:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           All payments must be made in full before delivery. We accept online
           payments via our approved payment gateway.
         </Typography>
@@ -94,7 +94,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Delivery:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           Software delivery occurs digitally via email or secure login
           credentials after payment confirmation.
         </Typography>
@@ -102,7 +102,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Warranty & Support:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           We provide post-purchase technical support as per the terms of your
           selected plan or service agreement.
         </Typography>
@@ -110,7 +110,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Prohibited Use:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           You agree not to misuse our software, replicate code, or resell our
           intellectual property without authorization.
         </Typography>
@@ -118,7 +118,7 @@ export default function TermsAndConditions() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Governing Law:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           All disputes are subject to the jurisdiction of Chennai, Tamil Nadu.
         </Typography>
 
