@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Box, Typography, Grid, IconButton, Link, Stack } from "@mui/material";
+import { Box, Typography, Grid, IconButton, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import NextLink from "next/link"; // Correct import
 
 const Footer = () => {
   return (
@@ -55,7 +56,7 @@ const Footer = () => {
           </Typography>
         </Grid>
 
-        {/* --- Navigation Links --- */}
+        {/* --- Navigation NextLinks --- */}
         <Grid item xs={12} md={5}>
           <Stack
             direction={{ xs: "column", sm: "row" }}
@@ -64,38 +65,28 @@ const Footer = () => {
             alignItems="center"
             sx={{ flexWrap: "wrap" }}
           >
-            <Link
-              href="/contact"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Contact
-            </Link>
-            <Link
-              href="/careers"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Careers
-            </Link>
-            <Link
-              href="/terms"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Terms & Conditions
-            </Link>
-            <Link
-              href="/privacy-policy"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Privacy Policy
-            </Link>
+            {["/contact", "/careers", "/terms", "/privacy-policy"].map((path, index) => (
+              <NextLink key={index} href={path}  >
+                <Box
+                  component="a"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: "0.9rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  {path === "/contact"
+                    ? "Contact"
+                    : path === "/careers"
+                    ? "Careers"
+                    : path === "/terms"
+                    ? "Terms & Conditions"
+                    : "Privacy Policy"}
+                </Box>
+              </NextLink>
+            ))}
           </Stack>
         </Grid>
 
@@ -143,58 +134,43 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        <Box>
         <Typography variant="body2" color="grey.500" mb={1}>
           &copy; {new Date().getFullYear()} Chola Business Automation PVT LTD. All
           rights reserved.
         </Typography>
-       <Box  width={{ xs: "100%", md: "45%" }} sx={{  textAlign: "center", margin: "0 auto" ,color:"grey.500"}}>
-         <hr />
-         </Box>
 
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 1, sm: 2, md: 3 }}
-            justifyContent={{ xs: "center", md: "flex-ceter" }}
-            alignItems="center"
-            sx={{ flexWrap: "wrap" ,mt:1}}
-          >
-               <Link
-              href="/terms"
-              color="grey.500"
-              underline="hover"
-              sx={{  fontSize: "0.8rem" }}
-            >
-             Terms & Conditions
-            </Link>
-                        <Link
-              href="/privacy-policy"
-              color="grey.500"
-              underline="hover"
-              sx={{  fontSize: "0.8rem" }}
-            >
-              Privacy Policy
-            </Link>
-                  <Link
-              href="/refund-cancellation-policy"
-              color="grey.500"
-              underline="hover"
-              sx={{  fontSize: "0.8rem" }}
-            >
-               Refund & Cancellation Policy
-            </Link>
-                  <Link
-              href="/return-policy"
-              color="grey.500"
-              underline="hover"
-              sx={{ fontSize: "0.8rem" }}
-            >
-              Return Policy
-            </Link>
-           
-     </Stack>
+        <Box width={{ xs: "100%", md: "45%" }} sx={{ textAlign: "center", margin: "0 auto", color: "grey.500" }}>
+          <hr />
         </Box>
-     
+
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 1, sm: 2, md: 3 }}
+          justifyContent={{ xs: "center", md: "center" }}
+          alignItems="center"
+          sx={{ flexWrap: "wrap", mt: 1 }}
+        >
+          {[
+            { path: "/terms", label: "Terms & Conditions" },
+            { path: "/privacy-policy", label: "Privacy Policy" },
+            { path: "/refund-cancellation-policy", label: "Refund & Cancellation Policy" },
+            { path: "/return-policy", label: "Return Policy" },
+          ].map((link, idx) => (
+            <NextLink key={idx} href={link.path} passHref legacyBehavior>
+              <Box
+                component="a"
+                sx={{
+                  fontSize: "0.8rem",
+                  color: "grey.500",
+                  textDecoration: "none",
+                  "&:hover": { textDecoration: "underline" },
+                }}
+              >
+                {link.label}
+              </Box>
+            </NextLink>
+          ))}
+        </Stack>
       </Box>
     </Box>
   );
