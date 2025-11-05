@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #FF6F61, #FFB347)",
+        // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-          boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+          // boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >
@@ -108,32 +108,27 @@ export default function PrivacyPolicy() {
 
         {/* --- Footer --- */}
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <Typography
-            variant="body2"
-            sx={{
-              fontStyle: "italic",
-              color: "#666",
-              mb: 3,
-            }}
-          >
-            For any queries regarding these Terms and Conditions, please contact
-            us at{" "}
-            <a
-              href={`mailto:support@cholabiz.com?subject=${encodeURIComponent(
-                "Inquiry about Terms and Conditions"
-              )}&body=${encodeURIComponent(
-                "Hello CholaBiz Team,%0D%0A%0D%0AI would like to ask about..."
-              )}`}
-              style={{
-                color: "#FF6F61",
-                fontWeight: 600,
-                textDecoration: "none",
-              }}
-            >
-              support@cholabiz.com
-            </a>
-            .
-          </Typography>
+       <Typography
+  variant="body2"
+  sx={{
+    fontStyle: "italic",
+    color: "#666",
+    mb: 3,
+  }}
+>
+  For any privacy-related queries, please contact us at{" "}
+  <a
+    href="mailto:support@cholabiz.com"
+    style={{
+      color: "#1976d2",
+      textDecoration: "none",
+      fontWeight: 700,
+    }}
+  >
+    support@cholabiz.com
+  </a>
+</Typography>
+
 
           <Button
             variant="contained"

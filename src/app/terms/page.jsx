@@ -22,7 +22,7 @@ export default function TermsAndConditions() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #FF6F61, #FFB347)",
+        // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
@@ -41,7 +41,7 @@ export default function TermsAndConditions() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-          boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+          // boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >

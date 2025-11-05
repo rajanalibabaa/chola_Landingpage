@@ -19,7 +19,7 @@ export default function ReturnPolicy() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #FF6F61, #FFB347)",
+        // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
@@ -38,7 +38,7 @@ export default function ReturnPolicy() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-          boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+        //   boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >
@@ -76,10 +76,10 @@ export default function ReturnPolicy() {
 
         <Typography variant="body1" sx={{ color: "#FF6F61", fontWeight: 600, mb: 5 }}>
           <a
-            href="mailto:billing@cholabiz.com"
+            href="mailto:support@cholabiz.com"
             style={{ color: "#FF6F61", textDecoration: "none" }}
           >
-            billing@cholabiz.com
+            support@cholabiz.com
           </a>{" "}
           |{" "}
           <a
