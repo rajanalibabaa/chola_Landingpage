@@ -94,8 +94,8 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Chola Automation",
-              url: "https://yourdomain.com",
-              logo: "https://yourdomain.com/logo.jpeg",
+              url: "https://cholabiz.com/",
+              logo: "https://cholabiz.com/logo.jpeg",
               sameAs: [
                 "https://www.facebook.com/yourpage",
                 "https://www.linkedin.com/company/yourpage",
