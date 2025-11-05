@@ -144,10 +144,58 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="body2" color="grey.500">
+        <Box>
+        <Typography variant="body2" color="grey.500" mb={1}>
           &copy; {new Date().getFullYear()} Chola Business Automation PVT LTD. All
           rights reserved.
         </Typography>
+       <Box  width={{ xs: "100%", md: "45%" }} sx={{  textAlign: "center", margin: "0 auto" ,color:"grey.500"}}>
+         <hr />
+         </Box>
+
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={{ xs: 1, sm: 2, md: 3 }}
+            justifyContent={{ xs: "center", md: "flex-ceter" }}
+            alignItems="center"
+            sx={{ flexWrap: "wrap" ,mt:1}}
+          >
+               <Link
+              href="/terms"
+              color="grey.500"
+              underline="hover"
+              sx={{  fontSize: "0.8rem" }}
+            >
+             Terms & Conditions
+            </Link>
+                        <Link
+              href="/privacy-policy"
+              color="grey.500"
+              underline="hover"
+              sx={{  fontSize: "0.8rem" }}
+            >
+              Privacy Policy
+            </Link>
+                  <Link
+              href="/refund-cancellation-policy"
+              color="grey.500"
+              underline="hover"
+              sx={{  fontSize: "0.8rem" }}
+            >
+               Refund & Cancellation Policy
+            </Link>
+                  <Link
+              href="/return-policy"
+              color="grey.500"
+              underline="hover"
+              sx={{ fontSize: "0.8rem" }}
+            >
+              Return Policy
+            </Link>
+           
+     </Stack>
+        </Box>
+     
       </Box>
     </Box>
   );
