@@ -155,48 +155,13 @@ export default function AboutPage() {
           </Grid>
         </Box>
 
-        <Divider sx={{ borderColor: "#e5e7eb", mb: { xs: 6, md: 10 } }} />
-
-        {/* STATS */}
-        <Box sx={{ mb: { xs: 6, md: 10 } }}>
-          <Grid container spacing={4} justifyContent="center">
-            {[
-              { icon: "👥", number: "500+", label: "Clients Served" },
-              { icon: "🚀", number: "50+", label: "Projects Completed" },
-              { icon: "📈", number: "99%", label: "Client Satisfaction" },
-              { icon: "🛡️", number: "24/7", label: "Support" },
-            ].map((stat, index) => (
-              <Grid item xs={6} sm={3} key={stat.label}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Box sx={{ textAlign: "center" }}>
-                    <Typography sx={{ fontSize: "2.25rem", mb: 1 }}>
-                      {stat.icon}
-                    </Typography>
-                    <Typography
-                      variant="h5"
-                      sx={{ fontWeight: 700, color: "#1e293b" }}
-                    >
-                      {stat.number}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: "#6b7280" }}>
-                      {stat.label}
-                    </Typography>
-                  </Box>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+   
+ 
 
         <Divider sx={{ borderColor: "#e5e7eb", mb: { xs: 6, md: 10 } }} />
 
-        {/* VISION & MISSION */}
-        <Box sx={{ mb: { xs: 6, md: 10 } }}>
+  {/* VISION & MISSION */}
+<Box sx={{ mb: { xs: 6, md: 10 } }}>
   <Grid container spacing={6}>
     {/* Vision */}
     <Grid item xs={12} md={6}>
@@ -208,13 +173,22 @@ export default function AboutPage() {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: 700, color: "#1e293b", mb: 1 }}
+          sx={{ 
+            fontWeight: 700, 
+            color: "#1e293b", 
+            mb: 2,
+            fontSize: { xs: "1.5rem", md: "2rem" }
+          }}
         >
           Our Vision
         </Typography>
         <Typography
           variant="body1"
-          sx={{ color: "rgba(75,85,99,0.95)", lineHeight: 1.7 }}
+          sx={{ 
+            color: "rgba(75,85,99,0.95)", 
+            lineHeight: 1.7,
+            fontSize: { xs: "0.9rem", md: "1rem" }
+          }}
         >
           To be India's most trusted business automation company delivering
           innovative, cost-effective and result-oriented digital solutions.
@@ -232,13 +206,22 @@ export default function AboutPage() {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: 700, color: "#1e293b", mb: 1 }}
+          sx={{ 
+            fontWeight: 700, 
+            color: "#1e293b", 
+            mb: 2,
+            fontSize: { xs: "1.5rem", md: "2rem" }
+          }}
         >
           Our Mission
         </Typography>
         <Typography
           variant="body1"
-          sx={{ color: "rgba(75,85,99,0.95)", lineHeight: 1.7 }}
+          sx={{ 
+            color: "rgba(75,85,99,0.95)", 
+            lineHeight: 1.7,
+            fontSize: { xs: "0.9rem", md: "1rem" }
+          }}
         >
           To automate <strong>10,000+ businesses by 2030</strong> through
           tailored CRM, ERP and business software solutions that simplify
@@ -246,95 +229,149 @@ export default function AboutPage() {
         </Typography>
       </motion.div>
     </Grid>
-
-    
   </Grid>
-  
+
+  {/* Core Offerings & Why Choose CholaBiz */}
   <Box
-  sx={{
-    display: "flex",
-    flexDirection: { xs: "column", md: "row" }, // column on mobile, row on md+
-    gap: 6, // space between the two sections
-    mb: { xs: 6, md: 10 },
-  }}
->
-  {/* Core Offerings */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    viewport={{ once: true }}
-    style={{ flex: 1 }}
+    sx={{
+      display: "flex",
+      flexDirection: { xs: "column", md: "row" },
+      gap: { xs: 4, md: 8 },
+      mt: { xs: 4, md: 6 },
+      alignItems: "flex-start"
+    }}
   >
-    <Typography
-      variant="h4"
-      sx={{ fontWeight: 700, color: "#1e293b", mb: 2 }}
-    >
-      Our Core Offerings
-    </Typography>
+    {/* Core Offerings */}
     <Box
-      component="ul"
       sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1fr " }, // 2 columns on desktop
-        gap: 1,
-        pl: 3,
-        m: 0,
-        listStyleType: "disc",
-        mb: 2,
+        flex: 1,
+        width: "100%"
       }}
     >
-      <li>Business Process Automation</li>
-      <li>CRM Solutions</li>
-      <li>Franchise Management Systems</li>
-      <li>WhatsApp Automation & Marketing Tools</li>
-      <li>Billing, Invoicing, and Accounting Software</li>
-      <li>Customized Web & Mobile Application Development</li>
-      <li>Cloud-Based Business Solutions</li>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ 
+            fontWeight: 700, 
+            color: "#1e293b", 
+            mb: 3,
+            fontSize: { xs: "1.5rem", md: "2rem" }
+          }}
+        >
+          Our Core Offerings
+        </Typography>
+        <Box
+          component="ul"
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { 
+              xs: "1fr", 
+              sm: "1fr 1fr",
+              md: "1fr" 
+            },
+            gap: 1.5,
+            pl: 3,
+            m: 0,
+            listStyleType: "disc",
+            mb: 3
+          }}
+        >
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Business Process Automation
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            CRM Solutions
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Franchise Management Systems
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            WhatsApp Automation & Marketing Tools
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Billing, Invoicing, and Accounting Software
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Customized Web & Mobile Application Development
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Cloud-Based Business Solutions
+          </Box>
+        </Box>
+        <Typography
+          variant="body1"
+          sx={{ 
+            color: "rgba(75,85,99,0.95)", 
+            lineHeight: 1.7,
+            fontSize: { xs: "0.9rem", md: "1rem" }
+          }}
+        >
+          With a team of experienced developers and business consultants, we deliver end-to-end technology solutions that help you scale efficiently and stay ahead in your industry.
+        </Typography>
+      </motion.div>
     </Box>
-    <Typography
-      variant="body1"
-      sx={{ color: "rgba(75,85,99,0.95)", lineHeight: 1.7 }}
-    >
-      With a team of experienced developers and business consultants, we deliver end-to-end technology solutions that help you scale efficiently and stay ahead in your industry.
-    </Typography>
-  </motion.div>
 
-  {/* Why Choose CholaBiz */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.3 }}
-    viewport={{ once: true }}
-    style={{ flex: 1 }}
-  >
-    <Typography
-      variant="h4"
-      sx={{ fontWeight: 700, color: "#1e293b", mb: 2 }}
-    >
-      Why Choose CholaBiz
-    </Typography>
+    {/* Why Choose CholaBiz */}
     <Box
-      component="ul"
       sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "1fr " }, // 2 columns on desktop
-        gap: 1,
-        pl: 3,
-        m: 0,
-        listStyleType: "disc",
+        flex: 1,
+        width: "100%"
       }}
     >
-      <li>Tailored solutions for every business type</li>
-      <li>Robust and scalable technology</li>
-      <li>Dedicated customer support</li>
-      <li>Transparent pricing and reliable delivery</li>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ 
+            fontWeight: 700, 
+            color: "#1e293b", 
+            mb: 3,
+            fontSize: { xs: "1.5rem", md: "2rem" }
+          }}
+        >
+          Why Choose CholaBiz
+        </Typography>
+        <Box
+          component="ul"
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { 
+              xs: "1fr", 
+              sm: "1fr 1fr",
+              md: "1fr" 
+            },
+            gap: 1.5,
+            pl: 3,
+            m: 0,
+            listStyleType: "disc"
+          }}
+        >
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Tailored solutions for every business type
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Robust and scalable technology
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Dedicated customer support
+          </Box>
+          <Box component="li" sx={{ color: "rgba(75,85,99,0.95)", fontSize: { xs: "0.9rem", md: "1rem" } }}>
+            Transparent pricing and reliable delivery
+          </Box>
+        </Box>
+      </motion.div>
     </Box>
-  </motion.div>
+  </Box>
 </Box>
-
-</Box>
-
 
         <Divider sx={{ borderColor: "#e5e7eb", mb: { xs: 6, md: 8 } }} />
 
