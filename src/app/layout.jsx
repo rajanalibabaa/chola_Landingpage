@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Navbar/Footer";
+import SparkleCursor from "@/components/SparkleFlowEffect"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,6 +76,11 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <SparkleCursor  colors={["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff", "#00ff00", "#ffff00", "#ff00ff"]} animationDuration={800}
+        sparkleCount={10}
+                  throttleDelay={15}
+    
+        sparkleSize={12} />
 
         {/* ✅ JSON-LD Structured Data */}
         <script

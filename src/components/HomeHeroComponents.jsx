@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React ,{ useState ,useEffect,useRef} from "react";
 import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -7,6 +7,20 @@ import Image from "next/image";
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+   const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+ // Wait until video starts playing before showing content
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => setVideoLoaded(true);
+    video.addEventListener("canplay", handleCanPlay);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, []);
 
   return (
     <Box
@@ -17,12 +31,32 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "url(/head1.jpg) no-repeat center center/cover",
       }}
       mt={{ xs: -10, md: 0 }}
     >
-  
+   <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "fill",
+          zIndex: -1,
+        }}
+        onCanPlay={() => setVideoLoaded(true)}
+      >
+        <source src="/head1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
+      
       {/* 🔹 Text Content */}
       <Box
         sx={{
@@ -44,7 +78,7 @@ export default function Home() {
               fontWeight: "bold",
               fontSize: { xs: "2.6rem", md: "3rem" },
               lineHeight: 1.6,
-              color: "white",
+              color: "black",
             }}
           >
             WELCOME !!
@@ -52,12 +86,12 @@ export default function Home() {
               component="span"
               sx={{
                 display: "block",
-                background: "white",
+                background: "black",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
               }}
             >
-              <Box component="span" sx={{ color: "#ff9800" }}>C</Box> <Box component={"span"} sx={{ color: "#ffffffff" }} >H O L {" "}</Box>
+              <Box component="span" sx={{ color: "#ff9800" }}>C</Box> <Box component={"span"} sx={{ color: "black" }} >H O L {" "}</Box>
               <Box component="span" sx={{ color: "#74ed3f" }}>A</Box> BUSINESS AUTOMATION
             </Box>
           </Typography>
@@ -73,7 +107,7 @@ export default function Home() {
               mt: 2,
               fontSize: { xs: "1.3rem", md: "1.25rem" },
               fontWeight: 500,
-              color: "white",
+              color: "black",
               maxWidth: 600,
             }}
           >
@@ -84,21 +118,12 @@ export default function Home() {
             web and mobile applications that empower businesses to scale and thrive
             in the digital era.
           </Typography>
-        </motion.div>
-
-        <Box
-          sx={{
-            mt: 3,
-            display: "flex",
-            gap: 2,
-            justifyContent: { xs: "center", md: "flex-start" },
-          }}
-        >
-          <Button
+           <Button
             component={motion.button}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             sx={{
+              mt: 4,
               px: 4,
               py: 1.2,
               fontWeight: 600,
@@ -109,6 +134,17 @@ export default function Home() {
           >
             🚀 Get Started
           </Button>
+        </motion.div>
+
+        <Box
+          sx={{
+            mt: 3,
+            display: "flex",
+            gap: 2,
+            justifyContent: { xs: "center", md: "flex-start" },
+          }}
+        >
+         
           {/* <Button
             component={motion.button}
             whileHover={{ scale: 1.05 }}

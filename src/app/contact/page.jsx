@@ -135,7 +135,15 @@ export default function ContactPage() {
       sx={{
         minHeight: "100vh",
         display: "flex",
-        bgcolor: "#f8faf7",
+        bgcolor: "#ffffffff",
+                    backgroundImage: "url('/contact.png') ",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "contain",
+        backgroundPosition: " 38% center",
+        marginTop: 7,
+        flexDirection: isMobile ? "column" : "row",
+
+
       }}
     >
       {/* Left Side */}
@@ -143,10 +151,13 @@ export default function ContactPage() {
         <Box
           sx={{
             width: "60%",
-            bgcolor: "primary.main",
-            background:
-              "linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)",
-            color: "white",
+            backgroundRepeat: "no-repeat",
+            // backgroundSize: "contain",
+
+            // bgcolor: "primary.main",
+            // background:
+            //   "linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)",
+            color: "black",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -157,10 +168,12 @@ export default function ContactPage() {
           }}
         >
           <Box
+          
             sx={{
               animation: `${floatAnimation} 6s ease-in-out infinite`,
               mb: 4,
               textAlign: "center",
+              
             }}
           >
             <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2 }}>
@@ -182,7 +195,7 @@ export default function ContactPage() {
                   borderRadius: 2,
                   bgcolor:
                     index === activeFeature
-                      ? "rgba(255,255,255,0.15)"
+                      ? "rgba(101, 239, 2, 0.66)"
                       : "rgba(255,255,255,0.05)",
                   transition: "all 0.5s ease",
                   transform: index === activeFeature ? "scale(1.03)" : "scale(1)",
@@ -215,7 +228,7 @@ export default function ContactPage() {
           alignItems: "center",
           justifyContent: "center",
           p: 2,
-          mt: 7,
+          mt: 1,
         }}
       >
         <Paper
@@ -225,7 +238,7 @@ export default function ContactPage() {
             maxWidth: 600,
             width: "100%",
             borderRadius: 3,
-            bgcolor: "#ffffff",
+            bgcolor:isMobile ? "#ffffffd7" : "#ffffff8a",
           }}
         >
           <Typography
@@ -343,7 +356,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     sx={{
                       color: "#ff8c00",
-                      "&.Mui-checked": { color: "#ff8c00" },
+                      "&.Mui-checked": { color: "#48ff00ff" },
                     }}
                   />
                 }
@@ -369,7 +382,7 @@ export default function ContactPage() {
                   fontWeight: "bold",
                   width: "100%",
                   backgroundColor: "#0df72d",
-                  "&:hover": { backgroundColor: "#e67e00" },
+                  "&:hover": { backgroundColor: "#3ae600ff" },
                 }}
               >
                 {loading ? <CircularProgress size={24} color="inherit" /> : "Submit"}

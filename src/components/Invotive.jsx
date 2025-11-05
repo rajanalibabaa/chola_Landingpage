@@ -86,7 +86,7 @@ export default function ProcessSteps() {
     <Box
       sx={{
         py: { xs: 6, md: 10 },
-        background: "#FFEDD4",
+        background: "#ffffffff",
         position: "relative",
         overflow: "hidden",
       }}
