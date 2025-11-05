@@ -122,64 +122,61 @@ export default function ProcessSteps() {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
         <Box sx={{ textAlign: "center", mb: { xs: 6, md: 8 } }}>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Typography
+              sx={{
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                fontSize: 22,
+                letterSpacing: 2,
+                mb: 1,
+                color: "#00f91d",
+              }}
+            >
+              OUR PROCESS
+            </Typography>
+          </motion.div>
 
-             <motion.div
-                      initial={{ opacity: 0, y: -20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: "bold",
-                          textTransform: "uppercase",
-                          fontSize: 22,
-                          letterSpacing: 2,
-                          mb: 1,
-                          color: "#00f91d",
-                        }}
-                      >
-                        OUR PROCESS
-                      </Typography>
-                    </motion.div>
-            
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <Typography
-                        component="h2"
-                        variant="h3"
-                        sx={{ fontWeight: "bold", color: "black", mb: 2 }}
-                      >
-                        How We Bring Your Vision to Life
-                      </Typography>
-                      <Box
-                        sx={{
-                          width: 70,
-                          height: 4,
-                          background: "#00f91d",
-                          borderRadius: 2,
-                          mx: "auto",
-                        }}
-                      />
-                    </motion.div>
-            
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "rgba(0, 0, 0, 0.85)",
-                        maxWidth: 650,
-                        mx: "auto",
-                        mt: 2,
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      Our structured approach ensures that every project is delivered with precision, quality, and efficiency from conception to completion.
-                    </Typography>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              component="h2"
+              variant="h3"
+              sx={{ fontWeight: "bold", color: "black", mb: 2 }}
+            >
+              How We Bring Your Vision to Life
+            </Typography>
+            <Box
+              sx={{
+                width: 70,
+                height: 4,
+                background: "#00f91d",
+                borderRadius: 2,
+                mx: "auto",
+              }}
+            />
+          </motion.div>
 
-
-         
+          <Typography
+            variant="body1"
+            sx={{
+              color: "rgba(0, 0, 0, 0.85)",
+              maxWidth: 650,
+              mx: "auto",
+              mt: 2,
+              lineHeight: 1.6,
+            }}
+          >
+            Our structured approach ensures that every project is delivered with
+            precision, quality, and efficiency from conception to completion.
+          </Typography>
         </Box>
 
         {/* Process Steps Grid */}
@@ -202,7 +199,7 @@ export default function ProcessSteps() {
                 >
                   <Box
                     sx={{
-                        mt: { xs: 4, md: 5 },
+                      mt: { xs: 4, md: 5 },
                       p: 6,
                       pt: 6, // extra padding-top for icon space
                       height: "100%",
@@ -218,11 +215,9 @@ export default function ProcessSteps() {
                       "&:hover": {
                         transform: "translateY(-8px)",
                         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.12)",
-                      
                       },
                     }}
                   >
-
                     {/* Icon Image Floating at Top */}
                     <Box
                       sx={{
@@ -259,25 +254,26 @@ export default function ProcessSteps() {
 
                     {/* Title */}
                     <Typography
-                                  variant="h6"
-                                  sx={{
-                                    fontWeight: "bold",
-                                    color: "#FF6B6B",
-                                    mb: 1,
-                                  }}
-                                >
-                                  {step.title}
-                                  <Box
-                                              sx={{
-                                                width:100, 
-                                                height: 4,
-                                                background: "linear-gradient(90deg, #ff4a22ff, transparent)",
-                                                borderRadius: 2,
-                                                // mx: "auto",
-                                                mb: 3,
-                                              }}
-                                            />
-                                </Typography>
+                      variant="h6"
+                      sx={{
+                        fontWeight: "bold",
+                        color: "#FF6B6B",
+                        mb: 1,
+                      }}
+                    >
+                      {step.title}
+                      <Box
+                        sx={{
+                          width: 100,
+                          height: 4,
+                          background:
+                            "linear-gradient(90deg, #ff4a22ff, transparent)",
+                          borderRadius: 2,
+                          // mx: "auto",
+                          mb: 3,
+                        }}
+                      />
+                    </Typography>
                     {/* Description */}
                     <Typography
                       variant="body1"
@@ -291,8 +287,6 @@ export default function ProcessSteps() {
             );
           })}
         </Grid>
-
-        
       </Container>
     </Box>
   );

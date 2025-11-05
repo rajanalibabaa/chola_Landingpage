@@ -1,8 +1,13 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Box, Typography, useTheme, useMediaQuery, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {
+  Box,
+  Typography,
+  useTheme,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
 import { motion } from "framer-motion";
 
 export default function PrivacyPolicy() {
@@ -10,49 +15,17 @@ export default function PrivacyPolicy() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const sections = [
-    {
-      title: "1. Information We Collect",
-      content:
-        "We may collect personal details such as your name, email, phone number, and company information when you fill out forms, contact us, or use our services.",
-    },
-    {
-      title: "2. How We Use Your Information",
-      content:
-        "Your information is used to provide services, respond to inquiries, improve our offerings, and share relevant updates with you.",
-    },
-    {
-      title: "3. Data Protection",
-      content:
-        "We implement security measures to protect your data. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute safety.",
-    },
-    {
-      title: "4. Third-Party Sharing",
-      content:
-        "We do not sell or trade your information. Limited sharing may occur with trusted service providers who assist in delivering our services.",
-    },
-    {
-      title: "5. Your Rights",
-      content:
-        "You have the right to access, update, or request deletion of your personal data at any time by contacting us.",
-    },
-    {
-      title: "6. Updates to This Policy",
-      content:
-        "We may update this Privacy Policy from time to time. Please review this page regularly for changes.",
-    },
-  ];
-
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        bgcolor: "linear-gradient(135deg, #FF6F61, #FFB347)",
+        // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         px: 2,
         py: 6,
+        mt:6
       }}
     >
       <Box
@@ -65,7 +38,7 @@ export default function PrivacyPolicy() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-          boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+          // boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >
@@ -83,51 +56,77 @@ export default function PrivacyPolicy() {
         >
           Privacy Policy
         </Typography>
+        
+
+        {/* --- Content --- */}
         <Typography
-          variant="body2"
-          align="center"
-          sx={{ mb: 4, color: "#666" }}
+          variant="body1"
+          sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}
         >
-          Last updated: September 2025
+          <strong>Chola Business Automation Pvt. Ltd.</strong> respects your
+          privacy and is committed to protecting your personal information.
         </Typography>
 
-        {/* Accordion Sections */}
-        {sections.map((section, i) => (
-          <Accordion
-            key={i}
-            sx={{
-              mb: 2,
-              borderRadius: 2,
-              boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
-              "&:before": { display: "none" },
-            }}
-          >
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography fontWeight="600" sx={{ color: "#333" }}>
-                {section.title}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography sx={{ color: "#555", lineHeight: 1.7 }}>
-                {section.content}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Information We Collect:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          • Name, Email Address, Contact Number <br />
+          • Company Information and Business Requirements <br />
+          • Payment Details for Software Purchase (processed securely through
+          payment gateway)
+        </Typography>
 
-        {/* Footer */}
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Use of Information:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          Your data is used solely for:
+          <br />• Processing your orders and providing services
+          <br />• Sending invoices, receipts, and service updates
+          <br />• Improving user experience on our website
+        </Typography>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Data Security:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          We follow strict data security practices and use SSL encryption to
+          ensure your personal and payment data remains confidential.
+        </Typography>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Third-Party Disclosure:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          We do not sell or share your personal information with third parties,
+          except payment gateways or logistics partners necessary to fulfill
+          your orders.
+        </Typography>
+
+        {/* --- Footer --- */}
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <Typography
-            variant="body2"
-            sx={{
-              fontStyle: "italic",
-              color: "#666",
-              mb: 3,
-            }}
-          >
-            If you have any questions about this Privacy Policy, please contact us at{" "}
-            <strong>support@yourwebsite.com</strong>.
-          </Typography>
+       <Typography
+  variant="body2"
+  sx={{
+    fontStyle: "italic",
+    color: "#666",
+    mb: 3,
+  }}
+>
+  For any privacy-related queries, please contact us at{" "}
+  <a
+    href="mailto:support@cholabiz.com"
+    style={{
+      color: "#1976d2",
+      textDecoration: "none",
+      fontWeight: 700,
+    }}
+  >
+    support@cholabiz.com
+  </a>
+</Typography>
+
 
           <Button
             variant="contained"
