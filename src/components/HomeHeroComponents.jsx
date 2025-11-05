@@ -1,38 +1,125 @@
 "use client";
-import React from "react";
-import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Box,
+  Typography,
+  Button,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+  const router = useRouter();
+
+  // ✅ Wait until video starts playing before showing content
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => setVideoLoaded(true);
+    video.addEventListener("canplay", handleCanPlay);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, []);
 
   return (
     <Box
       sx={{
-        minHeight: { xs: "130vh", md: "100vh" },
+        minHeight: { xs: "120vh", sm: "110vh", md: "100vh" },
         position: "relative",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "url(/head1.jpg) no-repeat center center/cover",
+        px: { xs: 2, sm: 4, md: 8 },
       }}
-      mt={{ xs: -10, md: 0 }}
+      mt={{ xs: -8, md: 0 }}
     >
-  
-
-      {/* 🔹 Text Content */}
+      {/* 🔹 Background Section */}
       <Box
         sx={{
-          zIndex: 3,
-          maxWidth: 1200,
+          position: "absolute",
+          top: 0,
+          left: 0,
           width: "100%",
-          px: 2,
-          textAlign: { xs: "center", md: "left" },
+          height: "100%",
+          zIndex: -1,
         }}
       >
+        {/* 🌄 Static fallback image */}
+        <motion.img
+          src="/head8.jpg"
+          alt="Background fallback"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: videoLoaded ? 0 : 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+
+        {/* 🎥 Background video (fades in after load) */}
+        <motion.video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/head8.jpg"
+          onCanPlay={() => setVideoLoaded(true)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: videoLoaded ? 1 : 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: isMobile ? "contain" : "cover",
+            filter: "blur(2px) brightness(0.9)",
+          }}
+        >
+          <source src="/head1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </motion.video>
+
+        {/* Gradient Overlay */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(280deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.35) 100%)",
+          }}
+        />
+      </Box>
+
+      {/* 🔹 Text & Content Section */}
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: { xs: "100%", sm: "90%", md: 1100 },
+          textAlign: { xs: "center", md: "left" },
+          color: "white",
+          mx: "auto",
+        }}
+      >
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,10 +128,11 @@ export default function Home() {
           <Typography
             variant="h2"
             sx={{
-              fontWeight: "bold",
-              fontSize: { xs: "2.6rem", md: "3rem" },
-              lineHeight: 1.6,
+              fontWeight: 700,
+              fontSize: { xs: "2.1rem", sm: "2.4rem", md: "3rem", lg: "3.4rem" },
+              lineHeight: { xs: 1.3, sm: 1.4, md: 1.6 },
               color: "white",
+              letterSpacing: { xs: "0.5px", md: "1px" },
             }}
           >
             WELCOME !!
@@ -57,12 +145,21 @@ export default function Home() {
                 color: "transparent",
               }}
             >
-              <Box component="span" sx={{ color: "#ff9800" }}>C</Box> <Box component={"span"} sx={{ color: "#ffffffff" }} >H O L {" "}</Box>
-              <Box component="span" sx={{ color: "#74ed3f" }}>A</Box> BUSINESS AUTOMATION
+              <Box component="span" sx={{ color: "#ff9800" }}>
+                C
+              </Box>{" "}
+              <Box component={"span"} sx={{ color: "white" }}>
+                H O L{" "}
+              </Box>
+              <Box component="span" sx={{ color: "#74ed3f" }}>
+                A
+              </Box>{" "}
+              BUSINESS AUTOMATION
             </Box>
           </Typography>
         </motion.div>
 
+        {/* Short description */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,100 +167,70 @@ export default function Home() {
         >
           <Typography
             sx={{
-              mt: 2,
-              fontSize: { xs: "1.3rem", md: "1.25rem" },
-              fontWeight: 500,
+              mt: { xs: 1.5, sm: 2 },
+              fontSize: { xs: "1.15rem", sm: "1.2rem", md: "1.25rem" },
+              fontWeight: 400,
               color: "white",
-              maxWidth: 600,
+              maxWidth: { xs: "100%", sm: 600 },
+              mx: { xs: "auto", md: 0 },
             }}
           >
             We craft{" "}
-            <Box component="span" sx={{ fontWeight: "bold", color: "#ef4444" }}>
+            <Box component="span" sx={{ fontWeight: "bold", color: "#ff9800" }}>
               cutting-edge{" "}
             </Box>
-            web and mobile applications that empower businesses to scale and thrive
-            in the digital era.
+            web and mobile applications that empower businesses to scale and
+            thrive in the digital era.
           </Typography>
         </motion.div>
 
-        <Box
-          sx={{
-            mt: 3,
-            display: "flex",
-            gap: 2,
-            justifyContent: { xs: "center", md: "flex-start" },
-          }}
+        {/* Long paragraph */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
+          <Typography
+            sx={{
+              mt: { xs: 1.5, sm: 2 },
+              fontSize: { xs: "1.05rem", sm: "1.1rem", md: "1.2rem" },
+              fontWeight: 400,
+              color: "white",
+              lineHeight: { xs: 1.6, md: 1.7 },
+              maxWidth: { xs: "100%", sm: 650, md: 700 },
+              mx: { xs: "auto", md: 0 },
+            }}
+          >
+            At Chola Business Automation, we specialize in delivering customized
+            business automation software solutions designed to streamline your
+            operations, enhance productivity, and drive growth. Our products and
+            services are built to empower startups, SMEs, and enterprises to go
+            digital with ease.
+          </Typography>
+
+          {/* Call to Action Button */}
           <Button
             component={motion.button}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => router.push("/contact")}
             sx={{
-              px: 4,
-              py: 1.2,
+              mt: { xs: 3, sm: 4 },
+              px: { xs: 3, sm: 4, md: 5 },
+              py: { xs: 1, sm: 1.2, md: 1.4 },
               fontWeight: 600,
+              fontSize: { xs: "0.95rem", sm: "1rem", md: "1.05rem" },
               borderRadius: "50px",
-              background: "linear-gradient(90deg, #fb923c, #ef4444, #facc15)",
+              background:
+                "linear-gradient(90deg, #fb923c, #ef4444, #facc15)",
               color: "white",
+              mx: { xs: "auto", md: 0 },
             }}
           >
             🚀 Get Started
           </Button>
-          {/* <Button
-            component={motion.button}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            sx={{
-              px: 4,
-              py: 1.2,
-              fontWeight: 600,
-              borderRadius: "50px",
-              border: "2px solid #ef4444",
-              background: "rgba(255,255,255,0.9)",
-              color: "#ef4444",
-            }}
-          >
-            Learn More
-          </Button> */}
-        </Box>
+        </motion.div>
       </Box>
-
-      {/* 🔹 Woman Image at Bottom (Responsive + Animated) */}
-      <motion.div
-        initial={{ opacity: 0, y: 100, scale: 0.9 }}
-        animate={{ opacity: 1, y: [1, 8, 2], scale: 1.1 }} // 👈 added subtle float
-        transition={{
-          duration: 1.2,
-          ease: "easeOut",
-          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-              top:{xs:"70%"},
-          left: "55%",
-          transform: "translateX(10%)",
-          zIndex: 2,
-          width: isMobile ? "80%" : "70%", 
-          maxWidth: "1250px",              // max limit on large screens
-        }}
-      >
-        <Image
-          src="/head4.png"
-          alt="Standing Woman"
-          width={0}
-          height={0}
-          sizes="50vw"
-          style={{
-             width: isMobile ? "90%" : "60%",
-             marginLeft: isMobile ? "-28%" : "0",
-             
-            height: "auto", // ✅ keeps aspect ratio
-            objectFit: "contain",
-          }}
-          priority
-        />
-      </motion.div>
     </Box>
   );
 }

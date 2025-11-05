@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Typography, Grid, IconButton, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import NextLink from "next/link"; // Correct import
 
@@ -98,7 +98,7 @@ const Footer = () => {
             justifyContent={{ xs: "center", md: "flex-end" }}
           >
             <IconButton
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1H7yqbih69/"
               target="_blank"
               aria-label="Facebook"
               sx={{ color: "#fff" }}
@@ -106,15 +106,15 @@ const Footer = () => {
               <FacebookIcon />
             </IconButton>
             <IconButton
-              href="https://twitter.com"
+              href="https://www.instagram.com/mrfranchise.in/"
               target="_blank"
-              aria-label="Twitter"
+              aria-label="Instagram"
               sx={{ color: "#fff" }}
             >
-              <TwitterIcon />
+              <InstagramIcon />
             </IconButton>
             <IconButton
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/mr-franchise-www-mrfranchise-in/posts/?feedView=all&viewAsMember=true"
               target="_blank"
               aria-label="LinkedIn"
               sx={{ color: "#fff" }}

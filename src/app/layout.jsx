@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Navbar/Footer";
+import SparkleCursor from "@/components/SparkleFlowEffect"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,12 +70,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="video" href="/head1.webm" type="video/webm" />
+    
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         {children}
         <Footer />
+        <SparkleCursor  colors={["#ffbe0b", "#fb5607", "#ff006e", "#8338ec", "#3a86ff", "#00ff00", "#ffff00", "#ff00ff"]} animationDuration={800}
+        sparkleCount={10}
+                  throttleDelay={15}
+    
+        sparkleSize={12} />
 
         {/* ✅ JSON-LD Structured Data */}
         <script
@@ -84,8 +94,8 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Chola Automation",
-              url: "https://yourdomain.com",
-              logo: "https://yourdomain.com/logo.jpeg",
+              url: "https://cholabiz.com/",
+              logo: "https://cholabiz.com/logo.jpeg",
               sameAs: [
                 "https://www.facebook.com/yourpage",
                 "https://www.linkedin.com/company/yourpage",

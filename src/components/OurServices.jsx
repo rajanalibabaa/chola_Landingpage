@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Box,
   Grid,
@@ -9,54 +9,55 @@ import {
   Container,
   Button,
 } from "@mui/material";
-import {
-  Language,
-  Settings,
-  Store,
-  Cloud,
-  PhoneIphone,
-  Campaign,
-  ArrowForward,
-} from "@mui/icons-material";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const LanguageIcon = dynamic(() => import('@mui/icons-material/Language'), { ssr: false });
+const SettingsIcon = dynamic(() => import('@mui/icons-material/Settings'), { ssr: false });
+const StoreIcon = dynamic(() => import('@mui/icons-material/Store'), { ssr: false });
+const CloudIcon = dynamic(() => import('@mui/icons-material/Cloud'), { ssr: false });
+const PhoneIphoneIcon = dynamic(() => import('@mui/icons-material/PhoneIphone'), { ssr: false });
+const CampaignIcon = dynamic(() => import('@mui/icons-material/Campaign'), { ssr: false });
+const ArrowForwardIcon = dynamic(() => import('@mui/icons-material/ArrowForward'), { ssr: false });
 
 // Service Data
 const services = [
   {
     title: "Website Design & Development",
     desc: "Crafting world-class website designs that transform your ideas into real-world experiences.",
-    icon: <Language sx={{ fontSize: 40 }} />,
+    icon: <LanguageIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
   {
     title: "E-Marketplace Solutions & E-commerce Development",
     desc: "Creating flexible marketplaces for seamless purchasing and efficient management.",
-    icon: <Store sx={{ fontSize: 40 }} />,
+    icon: <StoreIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
   {
     title: "Custom Software Development",
     desc: "Building technology-driven, tailor-made software adopting agile SDLC processes.",
-    icon: <Settings sx={{ fontSize: 40 }} />,
+    icon: <SettingsIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
   {
     title: "Mobile App Development",
     desc: "Deploying powerful apps that captivate your mobile-savvy audience and boost business.",
-    icon: <PhoneIphone sx={{ fontSize: 40 }} />,
+    icon: <PhoneIphoneIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
   {
     title: "Digital Marketing",
     desc: "Executing impactful strategies to elevate your brand's reach and popularity.",
-    icon: <Campaign sx={{ fontSize: 40 }} />,
+    icon: <CampaignIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
   {
     title: "Web Hosting & Maintenance",
     desc: "Providing reliable hosting & proactive maintenance for uninterrupted online presence.",
-    icon: <Cloud sx={{ fontSize: 40 }} />,
+    icon: <CloudIcon sx={{ fontSize: 40 }} />,
     href: "/contact",
   },
 ];
@@ -76,6 +77,7 @@ const cardVariants = {
 };
 
 export default function ServicesSection() {
+
   return (
     <Box
       component="section"
@@ -86,7 +88,7 @@ export default function ServicesSection() {
         backgroundImage: "url('/sec1.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: {xs: "scroll", md: "fixed"},
       }}
     >
       {/* Overlay for readability */}
@@ -299,7 +301,7 @@ export default function ServicesSection() {
                         },
                       }}
                     >
-                      Explore Service <ArrowForward sx={{ ml: 0.5 }} />
+                      Explore Service < ArrowForwardIcon sx={{ ml: 0.5 }} />
                     </Button>
                   </Link>
                 </CardContent>
