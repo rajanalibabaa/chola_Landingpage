@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,6 +14,9 @@ export default function PrivacyPolicy() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <Box
@@ -25,7 +28,7 @@ export default function PrivacyPolicy() {
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        mt:6
+        mt: 6,
       }}
     >
       <Box
@@ -56,7 +59,6 @@ export default function PrivacyPolicy() {
         >
           Privacy Policy
         </Typography>
-        
 
         {/* --- Content --- */}
         <Typography
@@ -72,9 +74,9 @@ export default function PrivacyPolicy() {
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
           • Name, Email Address, Contact Number <br />
-          • Company Information and Business Requirements <br />
-          • Payment Details for Software Purchase (processed securely through
-          payment gateway)
+          • Company Information and Business Requirements <br />• Payment
+          Details for Software Purchase (processed securely through payment
+          gateway)
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
@@ -114,8 +116,23 @@ export default function PrivacyPolicy() {
               mb: 3,
             }}
           >
-            For any privacy-related queries, please contact us at{" "}
-            <strong>support@yourwebsite.com</strong>.
+            For any queries regarding these Terms and Conditions, please contact
+            us at{" "}
+            <a
+              href={`mailto:support@cholabiz.com?subject=${encodeURIComponent(
+                "Inquiry about Terms and Conditions"
+              )}&body=${encodeURIComponent(
+                "Hello CholaBiz Team,%0D%0A%0D%0AI would like to ask about..."
+              )}`}
+              style={{
+                color: "#FF6F61",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              support@cholabiz.com
+            </a>
+            .
           </Typography>
 
           <Button

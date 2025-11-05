@@ -270,7 +270,7 @@ export default function ServicesSection() {
                   </Typography>
 
                   {/* CTA Button */}
-                  <Link href={service.href} passHref >
+                  <Link href={service.href}  >
                     <Button
                       component="a"
                       className="service-link"

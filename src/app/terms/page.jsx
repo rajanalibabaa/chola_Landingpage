@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,6 +14,9 @@ export default function TermsAndConditions() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <Box
@@ -58,20 +61,22 @@ export default function TermsAndConditions() {
         </Typography>
 
         {/* --- Content --- */}
-        <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}>
-          These Terms and Conditions (“Terms”) govern your use of Chola Business
-          Automation Pvt. Ltd. (“CholaBiz.com”) software products and services.
-          By accessing or using our website or services, you agree to comply with
-          these Terms.
+        <Typography
+          variant="body1"
+          sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}
+        >
+          These Terms and Conditions explain the rules for using CholaBiz.com’s
+          software and services. By using our website or services, you agree to
+          follow these rules.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           General Terms:
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
-          By accessing or using <strong>CholaBiz.com</strong>, you agree to comply
-          with these terms. These Terms and Conditions govern the sale and
-          delivery of software products and related services.
+          By accessing or using <strong>CholaBiz.com</strong>, you agree to
+          comply with these terms. These Terms and Conditions govern the sale
+          and delivery of software products and related services.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
@@ -132,7 +137,8 @@ export default function TermsAndConditions() {
               mb: 3,
             }}
           >
-            For any queries regarding these Terms and Conditions, please contact us at{" "}
+            For any queries regarding these Terms and Conditions, please contact
+            us at{" "}
             <a
               href={`mailto:support@cholabiz.com?subject=${encodeURIComponent(
                 "Inquiry about Terms and Conditions"
@@ -146,7 +152,8 @@ export default function TermsAndConditions() {
               }}
             >
               support@cholabiz.com
-            </a>.
+            </a>
+            .
           </Typography>
 
           <Button

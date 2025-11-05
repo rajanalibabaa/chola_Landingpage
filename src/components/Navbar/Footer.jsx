@@ -14,7 +14,7 @@ const Footer = () => {
         color: "#fff",
         py: 4,
         px: { xs: 2, sm: 4, md: 8 },
-        mt: 8,
+        // mt: 8,
       }}
     >
       {/* Main Footer Content */}
