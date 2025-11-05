@@ -27,7 +27,7 @@ export default function Navbar() {
   ];
 
   return (
-    <AppBar position="fixed" sx={{ background: "white", color: "black", boxShadow: 2 }}>
+    <AppBar position="fixed" sx={{ background: "#000000c3", color: "white" }}>
       <Toolbar className="flex justify-between">
         <Link href="/">
           <Box className="flex items-center space-x-2">
