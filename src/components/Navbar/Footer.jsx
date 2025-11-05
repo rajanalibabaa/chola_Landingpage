@@ -4,6 +4,7 @@ import { Box, Typography, Grid, IconButton, Link, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+// import ProductServiceDescription from "../../pages/api/productservicedescription";
 
 const Footer = () => {
   return (
@@ -81,21 +82,21 @@ const Footer = () => {
               Careers
             </Link>
             <Link
-              href="/terms"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Terms & Conditions
-            </Link>
-            <Link
+  href="/products-services"
+  color="inherit"
+  underline="hover"
+  sx={{ fontWeight: 500, fontSize: "0.9rem" }}
+>
+  Products & Services
+</Link>
+            {/* <Link
               href="/privacy-policy"
               color="inherit"
               underline="hover"
               sx={{ fontWeight: 500, fontSize: "0.9rem" }}
             >
               Privacy Policy
-            </Link>
+            </Link> */}
           </Stack>
         </Grid>
 
