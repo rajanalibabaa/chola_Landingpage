@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 
-export default function PrivacyPolicy() {
+export default function TermsAndConditions() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        mt:6
+        mt: 6,
       }}
     >
       <Box
@@ -54,54 +54,72 @@ export default function PrivacyPolicy() {
             WebkitTextFillColor: "transparent",
           }}
         >
-          Privacy Policy
+          Terms and Conditions
         </Typography>
-        
 
         {/* --- Content --- */}
-        <Typography
-          variant="body1"
-          sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}
-        >
-          <strong>Chola Business Automation Pvt. Ltd.</strong> respects your
-          privacy and is committed to protecting your personal information.
+        <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}>
+          These Terms and Conditions (“Terms”) govern your use of Chola Business
+          Automation Pvt. Ltd. (“CholaBiz.com”) software products and services.
+          By accessing or using our website or services, you agree to comply with
+          these Terms.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
-          Information We Collect:
+          General Terms:
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
-          • Name, Email Address, Contact Number <br />
-          • Company Information and Business Requirements <br />
-          • Payment Details for Software Purchase (processed securely through
-          payment gateway)
+          By accessing or using <strong>CholaBiz.com</strong>, you agree to comply
+          with these terms. These Terms and Conditions govern the sale and
+          delivery of software products and related services.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
-          Use of Information:
+          Products & Services:
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
-          Your data is used solely for:
-          <br />• Processing your orders and providing services
-          <br />• Sending invoices, receipts, and service updates
-          <br />• Improving user experience on our website
+          All our software and services are customized or license-based digital
+          products. Features, pricing, and delivery timelines are defined in
+          respective project proposals or invoices.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
-          Data Security:
+          Payment:
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
-          We follow strict data security practices and use SSL encryption to
-          ensure your personal and payment data remains confidential.
+          All payments must be made in full before delivery. We accept online
+          payments via our approved payment gateway.
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
-          Third-Party Disclosure:
+          Delivery:
         </Typography>
         <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
-          We do not sell or share your personal information with third parties,
-          except payment gateways or logistics partners necessary to fulfill
-          your orders.
+          Software delivery occurs digitally via email or secure login
+          credentials after payment confirmation.
+        </Typography>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Warranty & Support:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          We provide post-purchase technical support as per the terms of your
+          selected plan or service agreement.
+        </Typography>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Prohibited Use:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          You agree not to misuse our software, replicate code, or resell our
+          intellectual property without authorization.
+        </Typography>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
+          Governing Law:
+        </Typography>
+        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+          All disputes are subject to the jurisdiction of Chennai, Tamil Nadu.
         </Typography>
 
         {/* --- Footer --- */}
@@ -114,8 +132,21 @@ export default function PrivacyPolicy() {
               mb: 3,
             }}
           >
-            For any privacy-related queries, please contact us at{" "}
-            <strong>support@yourwebsite.com</strong>.
+            For any queries regarding these Terms and Conditions, please contact us at{" "}
+            <a
+              href={`mailto:support@cholabiz.com?subject=${encodeURIComponent(
+                "Inquiry about Terms and Conditions"
+              )}&body=${encodeURIComponent(
+                "Hello CholaBiz Team,%0D%0A%0D%0AI would like to ask about..."
+              )}`}
+              style={{
+                color: "#FF6F61",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              support@cholabiz.com
+            </a>.
           </Typography>
 
           <Button
