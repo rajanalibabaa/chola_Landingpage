@@ -272,38 +272,39 @@ export default function ServicesSection() {
                   </Typography>
 
                   {/* CTA Button */}
-                  <Link href={service.href} passHref >
-                    <Button
-                      component="a"
-                      className="service-link"
-                      sx={{
-                        fontWeight: 600,
-                        color: "#000000ff",
-                        textDecoration: "none",
-                        display: "inline-flex",
-                        border: "2px solid #00f91d",
-                        px: 2,
-                        py: 1,
-                        borderRadius: 2,
-                        alignItems: "center",
-                        transition: "all 0.3s ease",
-                        "& .MuiSvgIcon-root": {
-                          fontSize: 18,
-                          transition: "transform 0.2s ease",
-                        },
-                        "&:hover": {
-                          background: "#00f91d",
-                          color: "black",
-                          borderColor: "#00f91d",
-                          "& .MuiSvgIcon-root": {
-                            transform: "translateX(4px)",
-                          },
-                        },
-                      }}
-                    >
-                      Explore Service < ArrowForwardIcon sx={{ ml: 0.5 }} />
-                    </Button>
-                  </Link>
+                 // CTA Button - CORRECTED VERSION
+<Link href={service.href} passHref>
+  <Button
+    component="a"
+    className="service-link"
+    sx={{
+      fontWeight: 600,
+      color: "#000000ff",
+      textDecoration: "none",
+      display: "inline-flex",
+      border: "2px solid #00f91d",
+      px: 2,
+      py: 1,
+      borderRadius: 2,
+      alignItems: "center",
+      transition: "all 0.3s ease",
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        transition: "transform 0.2s ease",
+      },
+      "&:hover": {
+        background: "#00f91d",
+        color: "black",
+        borderColor: "#00f91d",
+        "& .MuiSvgIcon-root": {
+          transform: "translateX(4px)",
+        },
+      },
+    }}
+  >
+    Explore Service <ArrowForwardIcon sx={{ ml: 0.5 }} />
+  </Button>
+</Link>
                 </CardContent>
               </Card>
             </motion.div>
