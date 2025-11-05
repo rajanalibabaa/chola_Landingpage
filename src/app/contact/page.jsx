@@ -136,7 +136,7 @@ export default function ContactPage() {
         minHeight: "100vh",
         display: "flex",
         bgcolor: "#ffffffff",
-                    backgroundImage: "url('/contact.png') ",
+                    backgroundImage: "url('/contact.jpeg') ",
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
         backgroundPosition: " 38% center",
