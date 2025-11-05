@@ -16,7 +16,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { keyframes } from "@emotion/react";
-import axios from "axios";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import GroupsIcon from '@mui/icons-material/Groups';
+import BuildIcon from '@mui/icons-material/Build';
+// import axios from "axios";
 
 // Animation for the left side
 const floatAnimation = keyframes`
@@ -47,21 +50,21 @@ export default function ContactPage() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const features = [
+   const features = [
     {
       title: "Fast Response",
       description: "We typically respond to all inquiries within 24 hours",
-      icon: "⏱️",
+      icon: <AccessTimeIcon sx={{ fontSize: 40, color: "#1976d2" }} />,
     },
     {
       title: "Expert Team",
       description: "Our specialists have 10+ years of industry experience",
-      icon: "👨‍💼",
+      icon: <GroupsIcon sx={{ fontSize: 40, color: "#2e7d32" }} />,
     },
     {
       title: "Custom Solutions",
       description: "We tailor our services to meet your specific needs",
-      icon: "🛠️",
+      icon: <BuildIcon sx={{ fontSize: 40, color: "#ed6c02" }} />,
     },
   ];
 
