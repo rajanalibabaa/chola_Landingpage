@@ -234,7 +234,7 @@ export default function ContactPage() {
         <Paper
           elevation={1}
           sx={{
-            p: { xs: 3, sm: 4 },
+            p: { xs: 3, sm: 4,md:1 },
             maxWidth: 600,
             width: "100%",
             borderRadius: 3,

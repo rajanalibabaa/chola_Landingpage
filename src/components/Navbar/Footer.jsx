@@ -82,13 +82,13 @@ const Footer = () => {
               Careers
             </Link>
             <Link
-  href="/products-services"
-  color="inherit"
-  underline="hover"
-  sx={{ fontWeight: 500, fontSize: "0.9rem" }}
->
-  Products & Services
-</Link>
+              href="/products-services"
+              color="inherit"
+              underline="hover"
+              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
+            >
+              Products & Services
+            </Link>
             {/* <Link
               href="/privacy-policy"
               color="inherit"
@@ -145,46 +145,49 @@ const Footer = () => {
         }}
       >
         <Box>
-        <Typography variant="body2" color="grey.500" mb={1}>
-          &copy; {new Date().getFullYear()} Chola Business Automation PVT LTD. All
-          rights reserved.
-        </Typography>
-       <Box  width={{ xs: "100%", md: "45%" }} sx={{  textAlign: "center", margin: "0 auto" ,color:"grey.500"}}>
-         <hr />
-         </Box>
+          <Typography variant="body2" color="grey.500" mb={1}>
+            &copy; {new Date().getFullYear()} Chola Business Automation PVT LTD.
+            All rights reserved.
+          </Typography>
+          <Box
+            width={{ xs: "100%", md: "45%" }}
+            sx={{ textAlign: "center", margin: "0 auto", color: "grey.500" }}
+          >
+            <hr />
+          </Box>
 
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={{ xs: 1, sm: 2, md: 3 }}
             justifyContent={{ xs: "center", md: "flex-ceter" }}
             alignItems="center"
-            sx={{ flexWrap: "wrap" ,mt:1}}
+            sx={{ flexWrap: "wrap", mt: 1 }}
           >
-               <Link
+            <Link
               href="/terms"
               color="grey.500"
               underline="hover"
-              sx={{  fontSize: "0.8rem" }}
+              sx={{ fontSize: "0.8rem" }}
             >
-             Terms & Conditions
+              Terms & Conditions
             </Link>
-                        <Link
+            <Link
               href="/privacy-policy"
               color="grey.500"
               underline="hover"
-              sx={{  fontSize: "0.8rem" }}
+              sx={{ fontSize: "0.8rem" }}
             >
               Privacy Policy
             </Link>
-                  <Link
+            <Link
               href="/refund-cancellation-policy"
               color="grey.500"
               underline="hover"
-              sx={{  fontSize: "0.8rem" }}
+              sx={{ fontSize: "0.8rem" }}
             >
-               Refund & Cancellation Policy
+              Refund & Cancellation Policy
             </Link>
-                  <Link
+            <Link
               href="/return-policy"
               color="grey.500"
               underline="hover"
@@ -192,10 +195,8 @@ const Footer = () => {
             >
               Return Policy
             </Link>
-           
-     </Stack>
+          </Stack>
         </Box>
-     
       </Box>
     </Box>
   );
