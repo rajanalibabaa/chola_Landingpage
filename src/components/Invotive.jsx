@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import {
-  Box,
-  Grid,
-  Typography,
-  Container,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -17,48 +15,42 @@ const steps = [
     title: "Requirement Analysis",
     description:
       "We begin by thoroughly understanding your business needs, goals, and challenges through detailed discussions and research to create a comprehensive project blueprint.",
-    icon: "/icon1.png",
-    // color: "#FF6B6B",
+    icon: "/cholabiz_analysis.png",
   },
   {
     id: 2,
     title: "Design & Planning",
     description:
       "Our design team creates intuitive user interfaces and experiences while our architects develop a robust technical plan for seamless implementation.",
-    icon: "/icon2.png",
-    // color: "#4ECDC4",
+    icon: "/cholabiz_designplaning.png",
   },
   {
     id: 3,
     title: "Prototyping",
     description:
       "We build interactive prototypes that allow you to visualize and test the product functionality before development begins, ensuring alignment with your vision.",
-    icon: "/icon3.png",
-    // color: "#45B7D1",
+    icon: "/cholabiz_prototyping.png",
   },
   {
     id: 4,
     title: "Development",
     description:
       "Our skilled developers bring your project to life using cutting-edge technologies and agile methodologies, ensuring high-quality code and regular progress updates.",
-    icon: "/icon4.png",
-    // color: "#9966CC",
+    icon: "/cholabiz_develope.png",
   },
   {
     id: 5,
     title: "Testing & Deployment",
     description:
       "We conduct rigorous testing across multiple scenarios and devices to ensure flawless performance before deploying your solution to production environments.",
-    icon: "/icon5.png",
-    // color: "#F9A826",
+    icon: "/cholabiz_testingdevelope.png",
   },
   {
     id: 6,
     title: "Support & Maintenance",
     description:
       "Our relationship continues post-launch with ongoing support, maintenance, and updates to keep your solution running smoothly and efficiently.",
-    icon: "/icon6.png",
-    // color: "#6BCB77",
+    icon: "/cholabiz_support.png",
   },
 ];
 
@@ -229,8 +221,6 @@ export default function ProcessSteps() {
                         height: 80,
                         borderRadius: "50px",
                         border: `1px solid black`,
-                        // backgroundColor: `${step.color}15`,
-                        // border: `2px solid ${step.color}30`,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -247,6 +237,7 @@ export default function ProcessSteps() {
                       <Image
                         src={step.icon}
                         alt={step.title}
+                        priority
                         width={40}
                         height={40}
                       />

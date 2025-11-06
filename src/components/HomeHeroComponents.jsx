@@ -1,18 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import Button from "@mui/material/Button";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef(null);
   const router = useRouter();
@@ -56,7 +52,7 @@ export default function Home() {
       >
         {/* 🌄 Static fallback image */}
         <motion.img
-          src="/head8.jpg"
+          src="/cholabiz_homepagebackground.jpg"
           alt="Background fallback"
           initial={{ opacity: 1 }}
           animate={{ opacity: videoLoaded ? 0 : 1 }}
@@ -67,33 +63,6 @@ export default function Home() {
             objectFit: "cover",
           }}
         />
-
-        {/* 🎥 Background video (fades in after load) */}
-        <motion.video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster="/head8.jpg"
-          onCanPlay={() => setVideoLoaded(true)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: videoLoaded ? 1 : 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: isMobile ? "contain" : "cover",
-            filter: "blur(2px) brightness(0.9)",
-          }}
-        >
-          <source src="/head1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </motion.video>
 
         {/* Gradient Overlay */}
         <Box
@@ -123,47 +92,82 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 700,
-              fontSize: { xs: "2.1rem", sm: "2.4rem", md: "3rem", lg: "3.4rem" },
-              lineHeight: { xs: 1.3, sm: 1.4, md: 1.6 },
-              color: "white",
-              letterSpacing: { xs: "0.5px", md: "1px" },
-            }}
-          >
-            WELCOME !!
-            <Box
-              component="span"
-              sx={{
-                display: "block",
-                background: "white",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              <Box component="span" sx={{ color: "#ff9800" }}>
-                C
-              </Box>{" "}
-              <Box component={"span"} sx={{ color: "white" }}>
-                H O L{" "}
-              </Box>
-              <Box component="span" sx={{ color: "#74ed3f" }}>
-                A
-              </Box>{" "}
-              BUSINESS AUTOMATION
-            </Box>
-          </Typography>
+            <Typography
+  variant="h2"
+  sx={{
+    fontWeight: 700,
+    fontSize: {
+      xs: "2.1rem",
+      sm: "2.4rem",
+      md: "3rem",
+      lg: "3.4rem",
+    },
+    lineHeight: { xs: 1.3, sm: 1.4, md: 1.3 },
+    color: "white",
+    letterSpacing: { xs: "0.5px" },
+  }}
+>
+  WELCOME !!
+  <Box
+    component="span"
+    sx={{
+      display: { xs: "block", md: "block" },
+      background: "white",
+      WebkitBackgroundClip: "text",
+      color: "transparent",
+    }}
+  >
+    {/* CHOLA word with custom colors */}
+    <Box
+      component="span"
+      sx={{
+        display: "inline",
+        background: "none",
+        color: "inherit",
+      }}
+    >
+      <Box component="span" sx={{ color: "#ff9800" }}>
+        C
+      </Box>
+      <Box component="span" sx={{ color: "white" }}>
+        HOL
+      </Box>
+      <Box component="span" sx={{ color: "#74ed3f" }}>
+        A
+      </Box>
+    </Box>
+
+    {/* Subtitle text */}
+    <Box
+      component="span"
+      sx={{
+        ml: 1,
+        fontWeight: 700,
+    fontSize: {
+      xs: "2.1rem",
+      sm: "2.4rem",
+      md: "3rem",
+      lg: "3.4rem",
+    },
+    lineHeight: { xs: 1.3, sm: 1.4, md: 1.3 },
+    color: "white",
+    letterSpacing: { xs: "0.5px" },
+      }}
+    >
+      BUSINESS AUTOMATION
+    </Box>
+  </Box>
+</Typography>
+
         </motion.div>
 
         {/* Short description */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
           <Typography
             sx={{
@@ -188,7 +192,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Typography
             sx={{
@@ -221,8 +225,7 @@ export default function Home() {
               fontWeight: 600,
               fontSize: { xs: "0.95rem", sm: "1rem", md: "1.05rem" },
               borderRadius: "50px",
-              background:
-                "linear-gradient(90deg, #fb923c, #ef4444, #facc15)",
+              background: "linear-gradient(90deg, #fb923c, #ef4444, #facc15)",
               color: "white",
               mx: { xs: "auto", md: 0 },
             }}

@@ -1,26 +1,42 @@
 "use client";
 import React, { useMemo } from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Container,
-  Button,
-} from "@mui/material";
+import Button from "@mui/material/Button";
+
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-const LanguageIcon = dynamic(() => import('@mui/icons-material/Language'), { ssr: false });
-const SettingsIcon = dynamic(() => import('@mui/icons-material/Settings'), { ssr: false });
-const StoreIcon = dynamic(() => import('@mui/icons-material/Store'), { ssr: false });
-const CloudIcon = dynamic(() => import('@mui/icons-material/Cloud'), { ssr: false });
-const PhoneIphoneIcon = dynamic(() => import('@mui/icons-material/PhoneIphone'), { ssr: false });
-const CampaignIcon = dynamic(() => import('@mui/icons-material/Campaign'), { ssr: false });
-const ArrowForwardIcon = dynamic(() => import('@mui/icons-material/ArrowForward'), { ssr: false });
+const LanguageIcon = dynamic(() => import("@mui/icons-material/Language"), {
+  ssr: false,
+});
+const SettingsIcon = dynamic(() => import("@mui/icons-material/Settings"), {
+  ssr: false,
+});
+const StoreIcon = dynamic(() => import("@mui/icons-material/Store"), {
+  ssr: false,
+});
+const CloudIcon = dynamic(() => import("@mui/icons-material/Cloud"), {
+  ssr: false,
+});
+const PhoneIphoneIcon = dynamic(
+  () => import("@mui/icons-material/PhoneIphone"),
+  { ssr: false }
+);
+const CampaignIcon = dynamic(() => import("@mui/icons-material/Campaign"), {
+  ssr: false,
+});
+const ArrowForwardIcon = dynamic(
+  () => import("@mui/icons-material/ArrowForward"),
+  { ssr: false }
+);
 
 // Service Data
 const services = [
@@ -77,7 +93,6 @@ const cardVariants = {
 };
 
 export default function ServicesSection() {
-
   return (
     <Box
       component="section"
@@ -85,10 +100,10 @@ export default function ServicesSection() {
         position: "relative",
         py: { xs: 8, md: 12 },
         overflow: "hidden",
-        backgroundImage: "url('/sec1.jpg')",
+        backgroundImage: "url('/cholabiz_overservices.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: {xs: "scroll", md: "fixed"},
+        backgroundAttachment: { xs: "scroll", md: "fixed" },
       }}
     >
       {/* Overlay for readability */}
@@ -272,37 +287,36 @@ export default function ServicesSection() {
                   </Typography>
 
                   <Button
-  component={Link}
-  href={service.href}
-  className="service-link"
-  sx={{
-    fontWeight: 600,
-    color: "#000000ff",
-    textDecoration: "none",
-    display: "inline-flex",
-    border: "2px solid #00f91d",
-    px: 2,
-    py: 1,
-    borderRadius: 2,
-    alignItems: "center",
-    transition: "all 0.3s ease",
-    "& .MuiSvgIcon-root": {
-      fontSize: 18,
-      transition: "transform 0.2s ease",
-    },
-    "&:hover": {
-      background: "#00f91d",
-      color: "black",
-      borderColor: "#00f91d",
-      "& .MuiSvgIcon-root": {
-        transform: "translateX(4px)",
-      },
-    },
-  }}
->
-  Explore Service <ArrowForwardIcon sx={{ ml: 0.5 }} />
-</Button>
-
+                    component={Link}
+                    href={service.href}
+                    className="service-link"
+                    sx={{
+                      fontWeight: 600,
+                      color: "#000000ff",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      border: "2px solid #00f91d",
+                      px: 2,
+                      py: 1,
+                      borderRadius: 2,
+                      alignItems: "center",
+                      transition: "all 0.3s ease",
+                      "& .MuiSvgIcon-root": {
+                        fontSize: 18,
+                        transition: "transform 0.2s ease",
+                      },
+                      "&:hover": {
+                        background: "#00f91d",
+                        color: "black",
+                        borderColor: "#00f91d",
+                        "& .MuiSvgIcon-root": {
+                          transform: "translateX(4px)",
+                        },
+                      },
+                    }}
+                  >
+                    Explore Service <ArrowForwardIcon sx={{ ml: 0.5 }} />
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>

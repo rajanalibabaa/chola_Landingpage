@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import {
-  Box,
-  Typography,
-  useTheme,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
+import   useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
 
 export default function ReturnPolicy() {
@@ -19,13 +17,11 @@ export default function ReturnPolicy() {
     <Box
       sx={{
         minHeight: "40vh",
-        // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        // mt: 6,
       }}
     >
       <Box
@@ -38,7 +34,6 @@ export default function ReturnPolicy() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-        //   boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >

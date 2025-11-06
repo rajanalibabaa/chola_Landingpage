@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  Box,
-  Typography,
-  useTheme,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
+
+import   useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
+
 import { motion } from "framer-motion";
 
 export default function TermsAndConditions() {

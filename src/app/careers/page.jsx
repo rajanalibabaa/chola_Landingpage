@@ -1,18 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Box,
-  Button,
-  Grid,
-  TextField,
-  Paper,
-  Stack,
-  Typography,
-  Alert,
-  CircularProgress,
-  Divider,
-} from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import { motion } from "framer-motion";
 
 export default function StudentFormPage() {
@@ -79,7 +76,7 @@ export default function StudentFormPage() {
     <Box
       sx={{
         backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('/hero-background.jpg')",
+          "linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('/cholabiz_carrer_background.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -145,7 +142,8 @@ export default function StudentFormPage() {
 
             <Box
               component="img"
-              src="/carrer.jpg"
+              src="/cholabiz_carrer.jpg"
+              
               alt="Join Our Team"
               sx={{
                 width: "100%",

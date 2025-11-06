@@ -1,14 +1,12 @@
 "use client";
 import React from "react";
-import {
-  Box,
-  Card,
-  Typography,
-  Grid,
-  alpha,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Card from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
 
 // Wrap MUI Card as motion.div
@@ -23,14 +21,14 @@ const FeatureCards = () => {
       title: "Expert Team",
       description:
         "Our experts bring innovation, experience, and creativity, ensuring every project achieves perfection.",
-      img: "/OND5.jpg",
+      img: "/cholabiz_expert_team.jpg",
       color: "#9966CC",
     },
     {
       title: "Proven Results",
       description:
         "Our track record speaks for itself — measurable results, real impact, and trusted by industry leaders.",
-      img: "/OND6.jpg",
+      img: "/cholabiz_proven_Results.jpg",
       color: "#6BCB77",
     },
     
@@ -38,7 +36,7 @@ const FeatureCards = () => {
       title: "Quality Services",
       description:
         "Excellence drives every service. We deliver top-tier solutions that consistently exceed expectations.",
-      img: "/OND2.jpg",
+      img: "/cholabiz_qualityservices.jpg",
       color: "#4ECDC4",
     },
     
@@ -46,7 +44,7 @@ const FeatureCards = () => {
       title: "Customer Satisfaction",
       description:
         "Your success fuels ours. We go the extra mile to achieve complete satisfaction in every interaction.",
-      img: "/OND4.jpg",
+      img: "/cholabiz_customersatisfaction.jpg",
       color: "#F9A826",
     },
 
@@ -54,7 +52,7 @@ const FeatureCards = () => {
       title: "On Time Delivery",
       description:
         "Deadlines matter. From projects to products, we ensure timely delivery with precision and reliability.",
-      img: "/OND.jpg",
+      img: "/cholabiz_ontimedelivery.jpg",
       color: "#FF6B6B",
     },
     
@@ -62,7 +60,7 @@ const FeatureCards = () => {
       title: "Customer Support",
       description:
         "Always here for you. Our dedicated team provides seamless support, 24/7, every single day.",
-      img: "/OND3.jpg",
+      img: "/cholabiz_customersupport.jpg",
       color: "#45B7D1",
     },    
   ];

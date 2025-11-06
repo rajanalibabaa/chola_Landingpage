@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { Box, Typography, Grid, IconButton, Link, Stack } from "@mui/material";
+import Stack  from "@mui/material/Stack";
+import Link from "@mui/material/Link";
+import  IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -33,6 +39,7 @@ const Footer = () => {
             sx={{
               mb: 1,
               display: "flex",
+              gap : .1,
               justifyContent: { xs: "center", md: "flex-start" },
               alignItems: "center",
               flexWrap: "wrap",
@@ -42,11 +49,14 @@ const Footer = () => {
               C
             </Box>
             HOL
-            <Box component="span" sx={{ color: "#74ed3f" }}>
+            <Box component="span"  sx={{ color: "#74ed3f" }}>
               A
             </Box>{" "}
-            Business Automation PVT LTD
+            <Box component="span" ml={0.5}>
+              Business Automation Pvt. Ltd.,
+            </Box>
           </Typography>
+          
           <Typography
             variant="body2"
             color="grey.400"
@@ -57,21 +67,37 @@ const Footer = () => {
         </Grid>
 
         {/* --- Navigation Links --- */}
-        <Grid item xs={12} md={5}>
+        {/* <Grid item xs={12} md={5}>
           <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 1, sm: 2, md: 3 }}
-            justifyContent={{ xs: "center", md: "flex-end" }}
+            direction={{ xs: "column", sm: "row", md: "column" }}
+            spacing={{ xs: 1, sm: 2, md: 1 }}
+            justifyContent={{ xs: "center", md: "flex-start" }}
             alignItems="center"
             sx={{ flexWrap: "wrap" }}
           >
             <Link
-              href="/contact"
+              href="/"
               color="inherit"
               underline="hover"
               sx={{ fontWeight: 500, fontSize: "0.9rem" }}
             >
-              Contact
+              Home
+            </Link>
+            <Link
+              href="/about"
+              color="inherit"
+              underline="hover"
+              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
+            >
+              About Us
+            </Link>
+            <Link
+              href="/products-services"
+              color="inherit"
+              underline="hover"
+              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
+            >
+              Products & Services
             </Link>
             <Link
               href="/careers"
@@ -82,23 +108,17 @@ const Footer = () => {
               Careers
             </Link>
             <Link
-              href="/products-services"
+              href="/contact"
               color="inherit"
               underline="hover"
               sx={{ fontWeight: 500, fontSize: "0.9rem" }}
             >
-              Products & Services
+              Contact
             </Link>
-            {/* <Link
-              href="/privacy-policy"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Privacy Policy
-            </Link> */}
+            
+            
           </Stack>
-        </Grid>
+        </Grid> */}
 
         {/* --- Social Media Icons --- */}
         <Grid item xs={12} md={3}>
@@ -124,7 +144,7 @@ const Footer = () => {
               <InstagramIcon />
             </IconButton>
             <IconButton
-              href="https://www.linkedin.com/company/mr-franchise-www-mrfranchise-in/posts/?feedView=all&viewAsMember=true"
+              href="https://teams.live.com/l/message/19:uni01_fvcnf6rju3iwoudnxia5y3bp53ot5zrlz2fb26xwnb3qcc7yibvq@thread.v2/1762348356356?context=%7B%22contextType%22%3A%22chat%22%7D"
               target="_blank"
               aria-label="LinkedIn"
               sx={{ color: "#fff" }}
@@ -146,7 +166,7 @@ const Footer = () => {
       >
         <Box>
           <Typography variant="body2" color="grey.500" mb={1}>
-            &copy; {new Date().getFullYear()} Chola Business Automation PVT LTD.
+            &copy; {new Date().getFullYear()} CHOLA Business Automation Pvt. Ltd.,
             All rights reserved.
           </Typography>
           <Box

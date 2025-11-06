@@ -1,20 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  CircularProgress,
-  FormControlLabel,
-  TextField,
-  Typography,
-  Paper,
-  Grid,
-  Snackbar,
-  Alert,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import   useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import   FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
+import CircularProgress from "@mui/material/CircularProgress";
+import Alert from "@mui/material/Alert";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
+
+import Grid from "@mui/material/Grid";
+import Snackbar from "@mui/material/Snackbar";
 import { keyframes } from "@emotion/react";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -139,7 +139,7 @@ export default function ContactPage() {
         minHeight: "100vh",
         display: "flex",
         bgcolor: "#ffffffff",
-                    backgroundImage: "url('/contact.jpeg') ",
+                    backgroundImage: "url('/cholabiz_contact.jpeg') ",
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
         backgroundPosition: " 38% center",
@@ -155,11 +155,6 @@ export default function ContactPage() {
           sx={{
             width: "60%",
             backgroundRepeat: "no-repeat",
-            // backgroundSize: "contain",
-
-            // bgcolor: "primary.main",
-            // background:
-            //   "linear-gradient(90deg,rgba(110, 150, 35, 1) 0%, rgba(212, 99, 99, 1) 54%, rgba(252, 176, 69, 1) 100%)",
             color: "black",
             display: "flex",
             flexDirection: "column",
