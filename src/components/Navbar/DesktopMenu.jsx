@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import { Box, Button, Typography, Divider, Grid } from "@mui/material";
+import  Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import Link from "next/link";
 import { servicesData, extraServices, categoryColors } from "./servicesData";
 import { expertiseData, expertiseColors } from "./expertiseData";
@@ -301,158 +305,158 @@ export default function DesktopMenu({ links, pathname }) {
         }
 
         // company dropdown
-        if (link.name === "Company") {
-          return (
-            <Box
-              key={link.name}
-              sx={{
-                position: "relative",
-                "&:hover .dropdown": { display: "grid" },
-              }}
-            >
-              <Button
-                sx={{
-                  color: isActive ? "orange" : "inherit",
-                  fontWeight: isActive ? "bold" : "normal",
-                }}
-              >
-                {link.name}
-              </Button>
-              <Box
-                className="dropdown"
-                sx={{
-                  display: "none",
-                  position: "absolute",
-                  top: "100%",
-                  left: "72%", // 👈 anchor in the middle
-                  transform: "translateX(-72%)",
-                  width: "800px",
-                  background: "white",
-                  boxShadow: 3,
-                  borderRadius: 2,
-                   p: 5,
-                  zIndex: 1200,
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: 3,
-                }}
-              >
-                {Object.entries(companyData).map(([category, items]) => (
-                  <Box key={category}>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        fontWeight: "bold",
-                        color: companyColors[category],
-                        mb: 1,
-                      }}
-                    >
-                      {category}
-                    </Typography>
-                    {items.map((item, i) => (
-                      <Box
-                        key={i}
-                        sx={{
-                          mb: 1,
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 1,
-                        }}
-                      >
-                        {React.cloneElement(item.icon, {
-                          sx: { color: companyColors[category] },
-                        })}
-                        <Box>
-                          <Typography variant="body1" fontWeight="500">
-                            {item.title}
-                          </Typography>
-                          {item.desc && (
-                            <Typography variant="body2" color="text.secondary">
-                              {item.desc}
-                            </Typography>
-                          )}
-                        </Box>
-                      </Box>
-                    ))}
-                  </Box>
-                ))}
-              </Box>
-            </Box>
-          );
-        }
+        // if (link.name === "Company") {
+        //   return (
+        //     <Box
+        //       key={link.name}
+        //       sx={{
+        //         position: "relative",
+        //         "&:hover .dropdown": { display: "grid" },
+        //       }}
+        //     >
+        //       <Button
+        //         sx={{
+        //           color: isActive ? "orange" : "inherit",
+        //           fontWeight: isActive ? "bold" : "normal",
+        //         }}
+        //       >
+        //         {link.name}
+        //       </Button>
+        //       <Box
+        //         className="dropdown"
+        //         sx={{
+        //           display: "none",
+        //           position: "absolute",
+        //           top: "100%",
+        //           left: "72%", // 👈 anchor in the middle
+        //           transform: "translateX(-72%)",
+        //           width: "800px",
+        //           background: "white",
+        //           boxShadow: 3,
+        //           borderRadius: 2,
+        //            p: 5,
+        //           zIndex: 1200,
+        //           gridTemplateColumns: "repeat(2, 1fr)",
+        //           gap: 3,
+        //         }}
+        //       >
+        //         {Object.entries(companyData).map(([category, items]) => (
+        //           <Box key={category}>
+        //             <Typography
+        //               variant="subtitle1"
+        //               sx={{
+        //                 fontWeight: "bold",
+        //                 color: companyColors[category],
+        //                 mb: 1,
+        //               }}
+        //             >
+        //               {category}
+        //             </Typography>
+        //             {items.map((item, i) => (
+        //               <Box
+        //                 key={i}
+        //                 sx={{
+        //                   mb: 1,
+        //                   display: "flex",
+        //                   alignItems: "flex-start",
+        //                   gap: 1,
+        //                 }}
+        //               >
+        //                 {React.cloneElement(item.icon, {
+        //                   sx: { color: companyColors[category] },
+        //                 })}
+        //                 <Box>
+        //                   <Typography variant="body1" fontWeight="500">
+        //                     {item.title}
+        //                   </Typography>
+        //                   {item.desc && (
+        //                     <Typography variant="body2" color="text.secondary">
+        //                       {item.desc}
+        //                     </Typography>
+        //                   )}
+        //                 </Box>
+        //               </Box>
+        //             ))}
+        //           </Box>
+        //         ))}
+        //       </Box>
+        //     </Box>
+        //   );
+        // }
 
-        if (link.name === "Blog") {
-          return (
-            <Box
-              key={link.name}
-              sx={{
-                position: "relative",
-                "&:hover .dropdown": { display: "grid" },
-              }}
-            >
-              <Button
-                sx={{
-                  color: isActive ? "orange" : "inherit",
-                  fontWeight: isActive ? "bold" : "normal",
-                }}
-              >
-                {link.name}
-              </Button>
-              <Box
-                className="dropdown"
-                sx={{
-                  display: "none",
-                  position: "absolute",
-                  top: "100%",
-                  left: "85%", // 👈 anchor in the middle
-                  transform: "translateX(-85%)",
-                  width: "800px",
-                  background: "white",
-                  boxShadow: 3,
-                  borderRadius: 2,
-                   p: 5,
-                  zIndex: 1200,
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: 3,
-                }}
-              >
-                {Object.entries(blogData).map(([category, items]) => (
-                  <Box key={category}>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        fontWeight: "bold",
-                        color: blogColors[category],
-                        mb: 1,
-                      }}
-                    >
-                      {category}
-                    </Typography>
-                    {items.map((item, i) => (
-                      <Box
-                        key={i}
-                        sx={{
-                          mb: 1,
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 1,
-                        }}
-                      >
-                        {React.cloneElement(item.icon, {
-                          sx: { color: blogColors[category] },
-                        })}
-                        <Box>
-                          <Typography variant="body1" fontWeight="500">
-                            {item.title}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    ))}
-                  </Box>
-                ))}
-              </Box>
-            </Box>
-          );
-        }
+        // if (link.name === "Blog") {
+        //   return (
+        //     <Box
+        //       key={link.name}
+        //       sx={{
+        //         position: "relative",
+        //         "&:hover .dropdown": { display: "grid" },
+        //       }}
+        //     >
+        //       <Button
+        //         sx={{
+        //           color: isActive ? "orange" : "inherit",
+        //           fontWeight: isActive ? "bold" : "normal",
+        //         }}
+        //       >
+        //         {link.name}
+        //       </Button>
+        //       <Box
+        //         className="dropdown"
+        //         sx={{
+        //           display: "none",
+        //           position: "absolute",
+        //           top: "100%",
+        //           left: "85%", // 👈 anchor in the middle
+        //           transform: "translateX(-85%)",
+        //           width: "800px",
+        //           background: "white",
+        //           boxShadow: 3,
+        //           borderRadius: 2,
+        //            p: 5,
+        //           zIndex: 1200,
+        //           gridTemplateColumns: "repeat(3, 1fr)",
+        //           gap: 3,
+        //         }}
+        //       >
+        //         {Object.entries(blogData).map(([category, items]) => (
+        //           <Box key={category}>
+        //             <Typography
+        //               variant="subtitle1"
+        //               sx={{
+        //                 fontWeight: "bold",
+        //                 color: blogColors[category],
+        //                 mb: 1,
+        //               }}
+        //             >
+        //               {category}
+        //             </Typography>
+        //             {items.map((item, i) => (
+        //               <Box
+        //                 key={i}
+        //                 sx={{
+        //                   mb: 1,
+        //                   display: "flex",
+        //                   alignItems: "flex-start",
+        //                   gap: 1,
+        //                 }}
+        //               >
+        //                 {React.cloneElement(item.icon, {
+        //                   sx: { color: blogColors[category] },
+        //                 })}
+        //                 <Box>
+        //                   <Typography variant="body1" fontWeight="500">
+        //                     {item.title}
+        //                   </Typography>
+        //                 </Box>
+        //               </Box>
+        //             ))}
+        //           </Box>
+        //         ))}
+        //       </Box>
+        //     </Box>
+        //   );
+        // }
 
         return (
           <Button
@@ -460,6 +464,7 @@ export default function DesktopMenu({ links, pathname }) {
             component={Link}
             href={link.href}
             sx={{
+              mt: -.5,
               color:
                 link.name === "Contact"
                   ? "white"

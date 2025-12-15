@@ -4,6 +4,7 @@ import HeroCard from "@/components/HomeHeroComponents";
 import OverViewsections from "@/components/OurServices";
 import Section2 from "@/components/TestimonialSlider";
 import ProcessSteps from "@/components/Invotive";
+import OurProjects from "@/components/OurProjects";
 import { Fab, Zoom } from "@mui/material";
 import { WhatsApp, ArrowUpward } from "@mui/icons-material";
 
@@ -41,6 +42,7 @@ export default function Home() {
       <OverViewsections />
       <Section2 />
       <ProcessSteps />
+      <OurProjects/>
 
       {/* 🌐 Floating Buttons */}
       <Zoom in={true}>

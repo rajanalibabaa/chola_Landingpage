@@ -1,31 +1,35 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  Box,
-  Typography,
-  useTheme,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
+
+
+import   useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
+
 import { motion } from "framer-motion";
 
 export default function PrivacyPolicy() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "75vh",
         // background: "linear-gradient(135deg, #FF6F61, #FFB347)",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         px: 2,
         py: 6,
-        mt:6
+        mt:2
       }}
     >
       <Box
@@ -38,7 +42,6 @@ export default function PrivacyPolicy() {
           width: "100%",
           bgcolor: "white",
           borderRadius: 3,
-          // boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
           p: { xs: 3, sm: 6 },
         }}
       >
@@ -56,11 +59,10 @@ export default function PrivacyPolicy() {
         >
           Privacy Policy
         </Typography>
-        
 
         {/* --- Content --- */}
         <Typography
-          variant="body1"
+          variant="ca"
           sx={{ color: "#444", lineHeight: 1.8, mb: 3 }}
         >
           <strong>Chola Business Automation Pvt. Ltd.</strong> respects your
@@ -70,17 +72,17 @@ export default function PrivacyPolicy() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Information We Collect:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           • Name, Email Address, Contact Number <br />
-          • Company Information and Business Requirements <br />
-          • Payment Details for Software Purchase (processed securely through
-          payment gateway)
+          • Company Information and Business Requirements <br />• Payment
+          Details for Software Purchase (processed securely through payment
+          gateway)
         </Typography>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Use of Information:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           Your data is used solely for:
           <br />• Processing your orders and providing services
           <br />• Sending invoices, receipts, and service updates
@@ -90,7 +92,7 @@ export default function PrivacyPolicy() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Data Security:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           We follow strict data security practices and use SSL encryption to
           ensure your personal and payment data remains confidential.
         </Typography>
@@ -98,7 +100,7 @@ export default function PrivacyPolicy() {
         <Typography variant="h6" sx={{ mt: 3, mb: 1, color: "#FF6F61" }}>
           Third-Party Disclosure:
         </Typography>
-        <Typography variant="body1" sx={{ color: "#555", lineHeight: 1.8 }}>
+        <Typography variant={isMobile ? "caption" : "body1"} sx={{ color: "#555", lineHeight: 1.8 }}>
           We do not sell or share your personal information with third parties,
           except payment gateways or logistics partners necessary to fulfill
           your orders.

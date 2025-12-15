@@ -1,6 +1,13 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
-import { Container, Typography, Card, CardContent, Box, alpha, useTheme, useMediaQuery } from '@mui/material';
+import   useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme,alpha } from "@mui/material/styles";
+import   Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+
+import CardContent from "@mui/material/CardContent";
+import Box from "@mui/material/Box";
+import  Typography from "@mui/material/Typography";
 import { motion } from 'framer-motion';
 
 const services = [
@@ -8,49 +15,49 @@ const services = [
     id: 1,
     title: "Business Automation Software",
     description: "Custom solutions to automate business workflows, reduce manual work, and improve efficiency.",
-    image: "/business-automation-service.jpg",
+    image: "/cholabiz_business-automation-service.jpg",
     color: "#1976d2"
   },
   {
     id: 2,
     title: "CRM Software",
     description: "Advanced Customer Relationship Management system tailored for industries like real estate, retail, franchise, and service sectors.",
-    image: "/crmsoftware.jpg",
+    image: "/cholabiz_crmsoftware.jpg",
     color: "#2e7d32"
   },
   {
     id: 3,
     title: "Franchise Management System",
     description: "Comprehensive platform for franchise lead management, communication, sales tracking, and reporting.",
-    image: "/FRANCHISE-MANAGEMENT.jpeg",
+    image: "/cholabiz_managementimage.jpeg",
     color: "#ed6c02"
   },
   {
     id: 4,
     title: "WhatsApp Business Automation",
     description: "Integration of WhatsApp APIs for lead nurturing, automated notifications, and customer support.",
-    image: "/whatsappbusiness.png",
+    image: "/cholabiz_whatsappbusiness.png",
     color: "#25D366"
   },
   {
     id: 5,
     title: "Billing & Invoicing System",
     description: "Smart GST-compliant billing and accounting software for small to mid-sized businesses.",
-    image: "/billinginvoice.jpg",
+    image: "/cholabiz_billinginvoice.jpg",
     color: "#9c27b0"
   },
   {
     id: 6,
     title: "Website & App Development",
     description: "Custom website and mobile app development using MERN, React, Laravel, and other modern frameworks.",
-    image: "/webdev_1.jpg",
+    image: "/cholabiz_website.jpg",
     color: "#d32f2f"
   },
   {
     id: 7,
     title: "Digital Marketing & Automation Tools",
     description: "Lead generation, campaign management, and analytics automation tools.",
-    image: "/digitalmarketing_1.jpeg",
+    image: "/cholabiz_digitalmarketing.jpeg",
     color: "#0288d1"
   },
 ];
@@ -462,6 +469,7 @@ const ServiceCard = ({ service, isEven, isMobile, isSmallMobile, index, scrollY 
         >
           <Box
             component="img"
+            
             src={service.image}
             alt={service.title}
             loading="lazy"
