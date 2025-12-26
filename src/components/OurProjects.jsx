@@ -283,6 +283,7 @@ const ProjectCard = ({ project, isMobile = false }) => {
             fontWeight: 700,
             mb: { xs: 0, md: 2 },
             textAlign: "center",
+            color: "#000000ff",
             fontSize: { 
               xs: "1rem", 
               sm: "1.05rem", 
