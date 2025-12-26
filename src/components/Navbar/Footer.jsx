@@ -67,7 +67,7 @@ const Footer = () => {
           >
             {["/contact", "/careers", "/terms", "/privacy-policy"].map((path, index) => (
               <NextLink key={index} href={path}  >
-                <Box
+                <div
                   component="a"
                   sx={{
                     fontWeight: 500,
@@ -84,7 +84,7 @@ const Footer = () => {
                     : path === "/terms"
                     ? "Terms & Conditions"
                     : "Privacy Policy"}
-                </Box>
+                </div>
               </NextLink>
             ))}
           </Stack>
@@ -156,8 +156,8 @@ const Footer = () => {
             { path: "/refund-cancellation-policy", label: "Refund & Cancellation Policy" },
             { path: "/return-policy", label: "Return Policy" },
           ].map((link, idx) => (
-            <NextLink key={idx} href={link.path} passHref legacyBehavior>
-              <Box
+            <NextLink key={idx} href={link.path}  >
+              <div
                 component="a"
                 sx={{
                   fontSize: "0.8rem",
@@ -167,7 +167,7 @@ const Footer = () => {
                 }}
               >
                 {link.label}
-              </Box>
+              </div>
             </NextLink>
           ))}
         </Stack>
