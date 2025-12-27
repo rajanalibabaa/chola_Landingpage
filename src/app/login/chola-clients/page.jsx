@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PostApiCall } from "../../../utils/apiClient";
-import Popup from "../../../components/ui/Popup";
+import PopupSnackbar from "../../../components/ui/PopupSnackbar";
 import {
   Box,
   Typography,
@@ -209,7 +209,7 @@ export default function CholaClientsLogin() {
           )}
         </Stack>
 
-        <Popup
+        <PopupSnackbar
           open={open}
           message={msg}
           severity={color}
