@@ -24,21 +24,37 @@ export default function CholaClientsLogin() {
   const [msg, setMsg] = useState("");
   const [color, setColor] = useState("");
 
- 
-  
   const [loadingSend, setLoadingSend] = useState(false);
   const [loadingVerify, setLoadingVerify] = useState(false);
-  const [loadingLogin, setLoadingLogin] = useState(false);
   const [token, setToken] = useState(null);
 
   const handleSendOtp = async () => {
     setLoadingSend(true);
+
+    if (!email) {
+      setOpen(true);
+      setMsg(res.message);
+      setColor("error");
+      setTimeout(() => {
+        setOpen(false);
+        setMsg("");
+      }, 1500);
+    }
 
     try {
       const res = await PostApiCall("http://localhost:5050/api/v1/otp/send", {
         email,
       });
 
+      if ([400, 404, 500, 505, 409, 401].includes(res.statuscode)) {
+        setOpen(true);
+        setMsg(res.message || res.data.message);
+        setColor("error");
+        setTimeout(() => {
+          setOpen(false);
+          setMsg("");
+        }, 1500);
+      }
       if (res.statuscode === 200) {
         setToken(res.data.token);
         setOpen(true);
@@ -59,7 +75,6 @@ export default function CholaClientsLogin() {
     }
   };
 
-  
   const handleResendOtp = async () => {
     setLoadingSend(true);
 
@@ -67,6 +82,16 @@ export default function CholaClientsLogin() {
       const res = await PostApiCall("http://localhost:5050/api/v1/otp/send", {
         email,
       });
+
+      if ([400, 404, 500, 505, 409, 401].includes(res.statuscode)) {
+        setOpen(true);
+        setMsg(res.message);
+        setColor("error");
+        setTimeout(() => {
+          setOpen(false);
+          setMsg("");
+        }, 1500);
+      }
 
       if (res.statuscode === 200) {
         setToken(res.data.token);
@@ -89,26 +114,53 @@ export default function CholaClientsLogin() {
     }
   };
 
-
   const handleVerifyOtp = async () => {
     setLoadingVerify(true);
     try {
-      handleResendOtp();
-      setOtpVerified(true);
+      const res = await PostApiCall(
+        "http://localhost:5050/api/v1/chola/client/login",
+        { otp },
+        token,
+        true
+      );
+
+      if ([400, 404, 500, 505, 409, 401].includes(res.statuscode)) {
+        setOpen(true);
+        setMsg(res.message || res.data.message);
+        setColor("error");
+        setTimeout(() => {
+          setLoadingVerify(false);
+          setOpen(false);
+          setMsg("");          
+        }, 1500);
+      }
+    
+      if (res.statuscode === 200) {
+        setToken("");
+        setOpen(true);
+        setOtpSent(true);
+        setMsg(res.message);
+        setColor("success");
+        setTimeout(() => {
+          setLoadingVerify(false);
+          setOpen(false);
+          setMsg(""); 
+          const redirect   = `https://${res.data.path}/admin/${res.data.token}`    
+          window.location.href = redirect;
+        }, 1500);
+      }
     } catch (err) {
       console.error("Error verifying OTP:", err.message);
-    } finally {
-      setLoadingVerify(false);
-    }
-  };
 
-  const handleLogin = () => {
-    setLoadingLogin(true);
-    // Simulate login process
-    setTimeout(() => {
-      console.log("Login with email:", email);
-      setLoadingLogin(false);
-    }, 2000);
+      setOpen(true);
+      setMsg(err.message || err.message);
+      setColor("error");
+      setTimeout(() => {
+        setOpen(false);
+        setMsg("");
+        setLoadingVerify(false);
+      }, 1500);
+    }
   };
 
   return (
@@ -194,18 +246,6 @@ export default function CholaClientsLogin() {
                 {loadingSend ? "Resending..." : "Resend OTP"}
               </Button>
             </>
-          )}
-
-          {otpVerified && (
-            <Button
-              variant="contained"
-              color="success"
-              onClick={handleLogin}
-              disabled={loadingLogin}
-              startIcon={loadingLogin && <CircularProgress size={20} />}
-            >
-              {loadingLogin ? "Logging in..." : "Login"}
-            </Button>
           )}
         </Stack>
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios"
 
 export const GetApiCall = async(url, params = {},token) => {
 
@@ -18,13 +18,14 @@ export const GetApiCall = async(url, params = {},token) => {
     return res;
 }
 
-export const PostApiCall = async (url, payload = {}, token = '') => {
+export const PostApiCall = async (url, payload = {}, token = '',withCredentials) => {
   try {
     const res = await axios.post(url, payload, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token ? `Bearer ${token}` : '',
       },
+      withCredentials: withCredentials === true? true : false
     });
 
     return res.data; 
