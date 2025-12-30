@@ -2,6 +2,9 @@ import React from 'react';
 import { Snackbar, Alert } from '@mui/material';
 
 const PopupSnackbar = ({ open, message, severity = 'info', onClose, autoHideDuration = 1000 }) => {
+
+console.log("PopupSnackbar Props:", { open, message, severity, autoHideDuration }); // Debug
+
   return (
     <Snackbar
       open={open}
