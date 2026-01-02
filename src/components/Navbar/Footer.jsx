@@ -2,6 +2,8 @@
 import React from "react";
 import Stack  from "@mui/material/Stack";
 import Link from "@mui/material/Link";
+import NextLink from "next/link";
+
 import  IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -75,48 +77,28 @@ const Footer = () => {
             alignItems="center"
             sx={{ flexWrap: "wrap" }}
           >
-            <Link
-              href="/"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              About Us
-            </Link>
-            <Link
-              href="/products-services"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Products & Services
-            </Link>
-            <Link
-              href="/careers"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Careers
-            </Link>
-            <Link
-              href="/contact"
-              color="inherit"
-              underline="hover"
-              sx={{ fontWeight: 500, fontSize: "0.9rem" }}
-            >
-              Contact
-            </Link>
-            
-            
+            {["/contact", "/careers", "/terms", "/privacy-policy"].map((path, index) => (
+              <NextLink key={index} href={path}  >
+                <div
+                  component="a"
+                  sx={{
+                    fontWeight: 500,
+                    fontSize: "0.9rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    "&:hover": { textDecoration: "underline" },
+                  }}
+                >
+                  {path === "/contact"
+                    ? "Contact"
+                    : path === "/careers"
+                    ? "Careers"
+                    : path === "/terms"
+                    ? "Terms & Conditions"
+                    : "Privacy Policy"}
+                </div>
+              </NextLink>
+            ))}
           </Stack>
         </Grid> */}
 
@@ -217,6 +199,35 @@ const Footer = () => {
             </Link>
           </Stack>
         </Box>
+
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 1, sm: 2, md: 3 }}
+          justifyContent={{ xs: "center", md: "center" }}
+          alignItems="center"
+          sx={{ flexWrap: "wrap", mt: 1 }}
+        >
+          {[
+            { path: "/terms", label: "Terms & Conditions" },
+            { path: "/privacy-policy", label: "Privacy Policy" },
+            { path: "/refund-cancellation-policy", label: "Refund & Cancellation Policy" },
+            { path: "/return-policy", label: "Return Policy" },
+          ].map((link, idx) => (
+            <NextLink key={idx} href={link.path}  >
+              <div
+                component="a"
+                sx={{
+                  fontSize: "0.8rem",
+                  color: "grey.500",
+                  textDecoration: "none",
+                  "&:hover": { textDecoration: "underline" },
+                }}
+              >
+                {link.label}
+              </div>
+            </NextLink>
+          ))}
+        </Stack>
       </Box>
     </Box>
   );

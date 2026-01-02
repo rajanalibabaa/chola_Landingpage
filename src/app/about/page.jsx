@@ -48,7 +48,7 @@ export default function AboutPage() {
               objectPosition: "center",
             }}
             onError={(e) => {
-              console.error("Image failed to load:", e);
+              console.log("Image failed to load:", e);
               e.target.style.backgroundColor = "#1e293b";
             }}
           />
