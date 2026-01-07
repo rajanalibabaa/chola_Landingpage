@@ -117,7 +117,7 @@ export default function CholaClientRegistration() {
     setError("");
     setMessage("");
     try {
-      const response = await api.post("http://localhost:5174/api/v1/otp/reg-send-resend", {
+      const response = await api.post("http://localhost:5050/api/v1/otp/reg-send-resend", {
         email: formData.email,
       });
       
