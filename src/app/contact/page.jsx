@@ -134,6 +134,160 @@ export default function ContactPage() {
   };
 
   return (
+  
+      <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", p: 2 }}>
+      <Typography  variant="h4" align="center" fontWeight="bold" sx={{ mt: 10  , color: "#ff9900" }}>
+        Contact Chola Business Automation Private Limited – Custom Software Development Company in Chennai, Tamil Nadu, India
+      </Typography>
+      <Typography variant="h4" align="center" color="text.secondary" sx={{ mt: 5, pl : 2, color:"black" , fontWeight:"bold" }}>
+        Introduction – Let’s Build Your Digital Solution
+      </Typography>
+      <Box
+              sx={{
+                width: 90,
+                height: 4,
+                background: "#00f91d",
+                borderRadius: 2,
+                mx: "auto",
+              }}
+            />
+      
+      <Typography  variant="body1" align="center" color="text.secondary" sx={{ p : 2, color:"black" }}>
+        Thank you for your interest in Chola Business Automation Private Limited (CholaBiz), a leading custom software development company in Chennai, Tamil Nadu, India.
+Whether you are looking for custom software development, CRM, ERP, HRMS solutions, SaaS platforms, website development, e-commerce portals, or digital marketing services, our team is ready to help you transform your business with powerful technology solutions.
+We work with businesses across India and global markets including the USA, UK, Canada, and UAE, delivering scalable and cost-effective solutions tailored to your needs.
+      </Typography>
+      <Typography variant="h4" align="center" color="text.secondary" sx={{ mt: 5, pl : 2, color:"black" , fontWeight:"bold" }}>
+        Our Services – Let’s Discuss Your Requirements
+      </Typography>
+      <Box
+              sx={{
+                width: 90,
+                height: 4,
+                background: "#00f91d",
+                borderRadius: 2,
+                mx: "auto",
+              }}
+            />
+  <Typography  variant="body1" align="center" color="text.secondary" sx={{ p : 2, color:"black" }}>
+    We offer a wide range of services:
+    </Typography>
+    <Box sx={{ mt: 4, px: 2, display: "flex", justifyContent: "center" }}>
+  <Grid container spacing={3} sx={{ maxWidth: 1800 }}>
+    
+    {/* Card 1 */}
+    <Grid item xs={12} md={6} alignContent={"center"} >
+      <Paper
+        sx={{
+          alignItems: "center",
+          p: 3,
+          borderRadius: 3,
+           width: "100%",
+          height: "100%",
+          transition: "0.3s",
+          "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+        }}
+      >
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          💻 Custom Software Development
+        </Typography>
+        <Typography variant="body2">
+          • CRM software<br />
+          • ERP systems<br />
+          • HRMS software<br />
+          • Accounting software<br />
+          • SaaS platforms<br />
+          • Embedded systems
+        </Typography>
+        <Typography sx={{ mt: 2, color: "#ff9800", fontWeight: "bold" }}>
+          👉 Explore: /software-development
+        </Typography>
+      </Paper>
+    </Grid>
+
+    {/* Card 2 */}
+    <Grid item xs={12} md={6} sx={{display:"flex",justifyContent:"center"}}>
+      <Paper
+        sx={{
+          p: 3,
+          borderRadius: 3,
+          width: "100%",
+          height: "100%",
+          transition: "0.3s",
+          "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+        }}
+      >
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          🌐 Website Design & Development
+        </Typography>
+        <Typography variant="body2">
+           • Business websites<br />
+           • Corporate websites<br />
+           • Web portals<br />
+           • Landing pages
+        </Typography>
+        <Typography sx={{ mt: 2, color: "#ff9800", fontWeight: "bold" }}>
+          👉 Explore: /website-design-development
+        </Typography>
+      </Paper>
+    </Grid>
+
+    {/* Card 3 */}
+    <Grid item xs={12} md={6} sx={{display:"flex",justifyContent:"center"}}>
+      <Paper
+        sx={{
+          p: 3,
+          borderRadius: 3,
+           width: "100%",
+          height: "100%",
+          transition: "0.3s",
+          "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+        }}
+      >
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          🛒 E-commerce Development
+        </Typography>
+        <Typography variant="body2">
+          • Online stores<br />
+          • Multi-vendor marketplaces<br />
+          • Payment integrations
+        </Typography>
+        <Typography sx={{ mt: 2, color: "#ff9800", fontWeight: "bold" }}>
+          👉 Explore: /ecommerce-development
+        </Typography>
+      </Paper>
+    </Grid>
+
+    {/* Card 4 */}
+    <Grid item xs={12} md={6} sx={{display:"flex",justifyContent:"center"}}>
+      <Paper
+        sx={{
+          p: 3,
+          borderRadius: 3,
+           width: "100%",
+          height: "100%",
+          transition: "0.3s",
+          "&:hover": { transform: "translateY(-5px)", boxShadow: 6 },
+        }}
+      >
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          📢 Digital Marketing Services
+        </Typography>
+        <Typography variant="body2">
+          • SEO<br />
+          • Google Ads<br />
+          • Social media marketing<br />
+          • Lead generation
+        </Typography>
+        <Typography sx={{ mt: 2, color: "#ff9800", fontWeight: "bold" }}>
+          👉 Explore: /digital-marketing-services
+        </Typography>
+      </Paper>
+    </Grid>
+
+  </Grid>
+</Box>
+      
     <Box
       sx={{
         minHeight: "100vh",
@@ -400,6 +554,7 @@ export default function ContactPage() {
           </Snackbar>
         </Paper>
       </Box>
+    </Box>
     </Box>
   );
 }
