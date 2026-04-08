@@ -117,7 +117,7 @@ export default function CholaClientRegistration() {
     setError("");
     setMessage("");
     try {
-      const response = await api.post("http://localhost:5050/api/v1/otp/reg-send-resend", {
+      const response = await api.post("https://clientbackend.cholabiz.com/api/v1/otp/reg-send-resend", {
         email: formData.email,
       });
       
@@ -157,7 +157,7 @@ export default function CholaClientRegistration() {
     setLoading(true);
     setError("");
     try {
-      const response = await api.post("http://localhost:5050/api/v1/otp/reg-verify", {
+      const response = await api.post("https://clientbackend.cholabiz.com/api/v1/otp/reg-verify", {
         email: formData.email,
         otp,
       });
@@ -286,7 +286,7 @@ export default function CholaClientRegistration() {
       // console.log("Submitting registration with token:", token.substring(0, 20) + "..."); // Debug
 
       // Make the API call with token in the URL parameter
-      const response = await api.post(`http://localhost:5050/api/v1/registration`, formData);
+      const response = await api.post(`https://clientbackend.cholabiz.com/api/v1/registration`, formData);
       console.log("Submitting registration with data:", response); // Debug
       
       console.log("Registration Response:", response); // Debug
@@ -380,7 +380,9 @@ export default function CholaClientRegistration() {
     <Box
       sx={{
         minHeight: "100vh",
-        bgcolor: "#f5f5f5",
+        backgroundImage: `url('/clientloginbg.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -554,9 +556,7 @@ export default function CholaClientRegistration() {
             disabled={submitLoading}
             sx={{ 
               minWidth: 200,
-              bgcolor: submitLoading ? 'grey.400' : 
-                       hasFormErrors() ? 'warning.main' : 
-                       !isFormComplete() ? 'info.main' : 'primary.main',
+              bgcolor: submitLoading ? 'grey.400' : hasFormErrors() ? 'warning.main' : !isFormComplete() ? 'info.main' : 'warning.main',
               '&:hover': {
                 bgcolor: submitLoading ? 'grey.400' : 
                          hasFormErrors() ? 'warning.dark' : 

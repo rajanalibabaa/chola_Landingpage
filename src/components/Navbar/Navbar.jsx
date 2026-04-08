@@ -111,8 +111,8 @@ export default function Navbar() {
                   sx={{ width: 40, height: 40 }}
                 />
               ) : (
-                <Avatar sx={{ bgcolor: "#1976d2", width: 40, height: 40 }}>
-                  <Person />
+                <Avatar sx={{ bgcolor: "#44f924ff", width: 40, height: 40 }}>
+                  <Person sx={{ color: "black" }} />
                 </Avatar>
               )}
             </IconButton>

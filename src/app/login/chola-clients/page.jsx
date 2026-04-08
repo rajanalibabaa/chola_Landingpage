@@ -43,7 +43,7 @@ export default function CholaClientsLogin() {
       return;
     }
     try {
-      const res = await PostApiCall("http://localhost:5050/api/v1/otp/send", {
+      const res = await PostApiCall("https://clientbackend.cholabiz.com/api/v1/otp/send", {
         email,
       });
 
@@ -73,12 +73,12 @@ export default function CholaClientsLogin() {
     setLoadingVerify(true);
     try {
       const res = await PostApiCall(
-        "http://localhost:5050/api/v1/chola/client/login",
+        "https://clientbackend.cholabiz.com/api/v1/chola/client/login",
         { otp },
         token,
         true
       );
-alert(JSON.stringify(res));
+// alert(JSON.stringify(res));
 
       if (res.statuscode === 200) {
         setMsg(res.message);
@@ -112,7 +112,9 @@ alert(JSON.stringify(res));
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+        backgroundImage: `url('/clientloginbg.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <Paper
@@ -122,7 +124,7 @@ alert(JSON.stringify(res));
           backgroundColor:
             theme.palette.mode === "dark"
               ? "rgba(18, 18, 18, 0.85)"
-              : "rgba(255, 255, 255, 0.85)",
+              : "rgba(255, 255, 255, 1)",
           padding: 4,
           width: 400,
           borderRadius: 4,
@@ -167,7 +169,7 @@ alert(JSON.stringify(res));
             <Button
               variant="contained"
               size="large"
-              sx={{ borderRadius: 2, py: 1.2 }}
+              sx={{ borderRadius: 2, py: 1.2,backgroundColor: '#ff9800', '&:hover': {backgroundColor: '#ff9900ba'} }}
               onClick={handleSendOtp}
               disabled={loadingSend}
               startIcon={loadingSend && <CircularProgress size={20} />}
@@ -193,7 +195,7 @@ alert(JSON.stringify(res));
               <Button
                 variant="contained"
                 size="large"
-                sx={{ borderRadius: 2, py: 1.2 }}
+                sx={{ borderRadius: 2, py: 1.2,backgroundColor: '#ff9800', '&:hover': {backgroundColor: '#ff9900ba'} }}
                 disabled={loadingVerify}
                 onClick={handleVerifyOtp}
                 startIcon={loadingVerify && <CircularProgress size={20} />}
